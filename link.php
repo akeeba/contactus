@@ -20,10 +20,10 @@ $symlink_folders = array(
 	'translations/component/frontend/en-GB'		=> 'component/language/frontend/en-GB',
 
 	# FOF
-	'../fof/fof'								=> 'component/fof',
+	#'../fof/fof'								=> 'component/fof',
 
 	# Akeeba Strapper
-	'../fof/strapper'							=> 'component/strapper',
+	#'../fof/strapper'							=> 'component/strapper',
 );
 
 // =============================================================================

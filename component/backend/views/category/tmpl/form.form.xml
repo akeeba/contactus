@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	@package	contactus
+	@copyright	Copyright (c)2013 Nicholas K. Dionysopoulos / AkeebaBackup.com
+	@license	GNU General Public License version 2 or later
+	
+	Items view form file
+-->
+<form
+	lessfiles="media://com_contactus/css/backend.less||media://com_contactus/css/backend.css"
+>
+	<fieldset name="basic_configuration"
+		label="COM_CONTACTUS_CATEGORIES_GROUP_BASIC"
+	>
+		<field name="title" type="text"
+			label="COM_CONTACTUS_CATEGORIES_FIELD_TITLE"
+			description="COM_CONTACTUS_CATEGORIES_FIELD_TITLE_DESC"
+			class="input-xlarge"
+			required="true"
+		/>
+		
+		<field name="email" type="text"
+			label="COM_CONTACTUS_CATEGORIES_FIELD_EMAIL"
+			description="COM_CONTACTUS_CATEGORIES_FIELD_EMAIL_DESC"
+			class="input-large"
+			required="true"
+		/>
+
+		<field name="access" type="accesslevel"
+			label="COM_CONTACTUS_CATEGORIES_FIELD_ACCESS"
+			description="COM_CONTACTUS_CATEGORIES_FIELD_ACCESS_DESC"
+			required="true"
+		/>
+
+		<field name="enabled" type="list" label="JSTATUS"
+			labelclass="todo-label"
+			description="JFIELD_PUBLISHED_DESC" class="inputbox"
+			filter="intval" size="1" default="1"
+		>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+	</fieldset>
+</form>

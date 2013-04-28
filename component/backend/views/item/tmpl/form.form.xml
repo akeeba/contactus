@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	@package	contactus
+	@copyright	Copyright (c)2013 Nicholas K. Dionysopoulos / AkeebaBackup.com
+	@license	GNU General Public License version 2 or later
+	
+	Items view form file
+-->
+<form
+	lessfiles="media://com_contactus/css/backend.less||media://com_contactus/css/backend.css"
+>
+	<fieldset name="basic_information"
+		label="COM_CONTACTUS_ITEMS_GROUP_BASIC"
+	>
+		<field name="contactus_category_id" type="sql"
+			label="COM_CONTACTUS_ITEMS_FIELD_CONTACTUS_CATEGORY_ID"
+			translate="false"
+			query="SELECT * FROM #__contactus_categories ORDER BY ordering ASC"
+			key_field="contactus_category_id" value_field="title"
+			required="true"
+		/>
+		
+		<field name="fromname" type="text"
+			label="COM_CONTACTUS_ITEMS_FIELD_FROMNAME"
+			class="input-xlarge"
+			required="true"
+		/>
+		
+		<field name="fromemail" type="text"
+			label="COM_CONTACTUS_ITEMS_FIELD_FROMEMAIL"
+			class="input-xlarge"
+			required="true"
+		/>
+
+		<field name="enabled" type="list" label="JSTATUS"
+			labelclass="todo-label"
+			description="JFIELD_PUBLISHED_DESC" class="inputbox"
+			filter="intval" size="1" default="1"
+		>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+	</fieldset>
+	
+	<fieldset name="basic_information"
+		label="COM_CONTACTUS_ITEMS_GROUP_BASIC"
+	>
+		<field name="subject" type="text"
+			label="COM_CONTACTUS_ITEMS_FIELD_SUBJECT"
+			required="true" />
+
+		<field name="body" type="editor"
+			label="COM_CONTACTUS_ITEMS_FIELD_BODY"
+			filter="JComponentHelper::filterText" buttons="true"
+			required="true" />
+	</fieldset>
+
+</form>

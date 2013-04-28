@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	@package	contactus
+	@copyright	Copyright (c)2013 Nicholas K. Dionysopoulos / AkeebaBackup.com
+	@license	GNU General Public License version 2 or later
+	
+	Items view form file
+-->
+<form
+	lessfiles="media://com_contactus/css/backend.less||media://com_contactus/css/backend.css"
+	type="browse"
+	show_header="1"
+	show_filters="1"
+	show_pagination="1"
+	norows_placeholder="COM_CONTACTUS_COMMON_NORECORDS"
+>
+	<headerset>
+		<header name="contactus_item_id" type="rowselect" tdwidth="20" />
+		
+		<header name="contactus_category_id" type="fieldsql" tdwidth="20"
+			translate="false" query="SELECT * FROM #__contactus_categories ORDER BY ordering ASC"
+			key_field="contactus_category_id" value_field="title"
+		/>
+		
+		<header name="fromname" type="fieldsearchable" sortable="true"
+			buttons="no" buttonclass="btn"
+		/>
+		
+		<header name="fromemail" type="fieldsearchable" sortable="true"
+			buttons="no" buttonclass="btn"
+		/>
+		
+		<header name="created_on" type="field" sortable="true" tdwidth="8%" />
+		
+		<header name="subject" type="fieldsearchable" sortable="true"
+			buttons="no" buttonclass="btn"
+		/>
+		
+		<header name="enabled" type="published" sortable="true" tdwidth="8%" />
+	</headerset>
+
+	<fieldset name="items">
+		<field name="contactus_item_id" type="selectrow"/>
+		
+		<field name="contactus_category_id" type="sql"
+				translate="false" query="SELECT * FROM #__contactus_categories"
+			key_field="contactus_category_id" value_field="title"
+		/>
+
+		<field name="fromname" type="text"/>
+		 
+		<field name="fromemail" type="text"/>
+		
+		<field name="created_on" type="calendar"/>
+		 
+		<field name="subject" type="text"
+			show_link="true"
+			url="index.php?option=com_contactus&amp;view=item&amp;id=[ITEM:ID]"
+		 />
+
+		<field name="enabled" type="published"/>
+	</fieldset>
+</form>
