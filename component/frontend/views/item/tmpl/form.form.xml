@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	@package	contactus
+	@copyright	Copyright (c)2013 Nicholas K. Dionysopoulos / AkeebaBackup.com
+	@license	GNU General Public License version 2 or later
+	
+	Items view form file for the front-end
+-->
+<form
+	lessfiles="media://com_contactus/css/frontend.less||media://com_contactus/css/frontend.css"
+>
+	<fieldset name="basic_information">
+		<field name="contactus_category_id" type="model"
+			label="COM_CONTACTUS_ITEMS_FIELD_CONTACTUS_CATEGORY_ID"
+			translate="false"
+			model="ContactusModelCategories" apply_access="true"
+			key_field="contactus_category_id" value_field="title"
+			required="true"
+		/>
+		
+		<field name="fromname" type="text"
+			label="COM_CONTACTUS_ITEMS_FIELD_FROMNAME"
+			class="input-xlarge"
+			required="true"
+		/>
+		
+		<field name="fromemail" type="text"
+			label="COM_CONTACTUS_ITEMS_FIELD_FROMEMAIL"
+			class="input-xlarge"
+			required="true"
+		/>
+
+	</fieldset>
+	
+	<fieldset name="message">
+		<field name="subject" type="text"
+			label="COM_CONTACTUS_ITEMS_FIELD_SUBJECT"
+			class="input-xxlarge"
+			required="true"
+		/>
+		<field name="body" type="editor"
+			label="COM_CONTACTUS_ITEMS_FIELD_BODY"
+			filter="JComponentHelper::filterText" buttons="true"
+			required="true" />
+	</fieldset>
+	
+	<fieldset name="submit" class="form-actions">
+		<field name="btnSubmit" type="button"
+			text="COM_CONTACTUS_ITEMS_BTN_SUBMIT"
+			class="btn-primary"
+			icon="icon-white icon-ok"
+		/>
+	</fieldset>
+
+</form>
