@@ -12,11 +12,9 @@
 
 	<!-- Public front end files -->
 	<files folder="frontend">
-		<filename>index.html</filename>
 		<filename>contactus.php</filename>
 		
 		<folder>controllers</folder>
-		<folder>models</folder>
 		<folder>views</folder>
 	</files>
 
@@ -56,9 +54,7 @@
 	
 	<!-- Media files -->
 	<media destination="com_contactus" folder="media">
-		<folder>css</folder>
 		<folder>images</folder>
-		<folder>js</folder>
 	</media>
 
 	<!-- Administrator back-end section -->
@@ -69,18 +65,13 @@
 
 		<!-- Back-end files -->
 		<files folder="backend">
-			<folder>controllers</folder>
-			<folder>models</folder>
 			<folder>sql</folder>
-			<folder>tables</folder>
 			<folder>views</folder>
 
 			<filename>access.xml</filename>
 			<filename>config.xml</filename>
 			<filename>contactus.php</filename>
-			<filename>dispatcher.php</filename>
 			<filename>fof.xml</filename>
-			<filename>index.html</filename>
 		</files>
 
 		<!-- Back-end translation files -->

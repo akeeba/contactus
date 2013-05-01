@@ -1,4 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <fof>
-    <!-- Currently empty, only used for the autoloader to recognise this component as FOF-powered -->
+	<!-- Component back-end options -->
+	<backend>
+		<!-- Dispatcher options -->
+		<dispatcher>
+			<option name="default_view">items</option>
+		</dispatcher>
+	</backend>
+	
+	<!-- Component front-end options -->
+	<frontend>
+		<!-- Dispatcher options -->
+		<dispatcher>
+			<option name="default_view">item</option>
+		</dispatcher>
+		<!-- Options common for all views -->
+		<view name="*">
+			<!-- Per-task ACL settings. The star task sets the default ACL privileges for all tasks. -->
+			<acl>
+				<task name="*">core.manage</task>
+			</acl>
+		</view>
+		<view name="item">
+			<!-- Task mapping -->
+			<taskmap>
+				<task name="browse">add</task>
+				<task name="read">add</task>
+				<task name="edit">add</task>
+			</taskmap>
+			<!-- Per-task ACL settings. An empty string removes ACL checks. -->
+			<acl>
+				<task name="add"></task>
+				<task name="save"></task>
+			</acl>
+		</view>
+	</frontend>
 </fof>
