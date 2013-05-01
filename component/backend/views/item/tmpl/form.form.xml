@@ -12,10 +12,10 @@
 	<fieldset name="basic_information"
 		label="COM_CONTACTUS_ITEMS_GROUP_BASIC"
 	>
-		<field name="contactus_category_id" type="sql"
+		<field name="contactus_category_id" type="model"
 			label="COM_CONTACTUS_ITEMS_FIELD_CONTACTUS_CATEGORY_ID"
 			translate="false"
-			query="SELECT * FROM #__contactus_categories ORDER BY ordering ASC"
+			model="ContactusModelCategories" apply_access="false"
 			key_field="contactus_category_id" value_field="title"
 			required="true"
 		/>
