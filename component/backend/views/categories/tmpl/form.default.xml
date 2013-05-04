@@ -7,7 +7,6 @@
 	Items view form file
 -->
 <form
-	lessfiles="media://com_contactus/css/backend.less||media://com_contactus/css/backend.css"
 	type="browse"
 	show_header="1"
 	show_filters="1"

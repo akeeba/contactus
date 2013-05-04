@@ -6,9 +6,7 @@
 	
 	Items view form file
 -->
-<form
-	lessfiles="media://com_contactus/css/backend.less||media://com_contactus/css/backend.css"
->
+<form>
 	<fieldset name="basic_configuration"
 		label="COM_CONTACTUS_CATEGORIES_GROUP_BASIC"
 	>
