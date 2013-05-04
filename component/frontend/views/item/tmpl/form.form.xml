@@ -6,9 +6,7 @@
 	
 	Items view form file for the front-end
 -->
-<form
-	lessfiles="media://com_contactus/css/frontend.less||media://com_contactus/css/frontend.css"
->
+<form>
 	<fieldset name="basic_information">
 		<field name="contactus_category_id" type="model"
 			label="COM_CONTACTUS_ITEMS_FIELD_CONTACTUS_CATEGORY_ID"
@@ -42,6 +40,17 @@
 			label="COM_CONTACTUS_ITEMS_FIELD_BODY"
 			filter="JComponentHelper::filterText" buttons="true"
 			required="true" />
+	</fieldset>
+	
+	<fieldset name="captcha_area">
+		<field
+			name="captcha"
+			type="captcha"
+			label="COM_CONTACTUS_ITEMS_FIELD_CAPTCHA_LABEL"
+			description="COM_CONTACTUS_ITEMS_FIELD_CAPTCHA_DESC"
+			validate="captcha"
+			namespace="contactus"
+		/>
 	</fieldset>
 	
 	<fieldset name="submit" class="form-actions">
