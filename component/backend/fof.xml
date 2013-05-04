@@ -18,7 +18,7 @@
 		<view name="*">
 			<!-- Per-task ACL settings. The star task sets the default ACL privileges for all tasks. -->
 			<acl>
-				<task name="*">core.manage</task>
+				<task name="*">false</task>
 			</acl>
 		</view>
 		<view name="item">
