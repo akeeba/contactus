@@ -6,7 +6,7 @@
 	
 	Items view form file
 -->
-<form>
+<form validate="true">
 	<fieldset name="basic_configuration"
 		label="COM_CONTACTUS_CATEGORIES_GROUP_BASIC"
 	>

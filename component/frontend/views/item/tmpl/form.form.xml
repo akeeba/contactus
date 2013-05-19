@@ -6,7 +6,7 @@
 	
 	Items view form file for the front-end
 -->
-<form>
+<form validate="true">
 	<fieldset name="basic_information">
 		<field name="contactus_category_id" type="model"
 			label="COM_CONTACTUS_ITEMS_FIELD_CONTACTUS_CATEGORY_ID"
