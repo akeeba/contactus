@@ -55,6 +55,7 @@
 	
 	<fieldset name="submit" class="form-actions">
 		<field name="btnSubmit" type="button"
+			label=" "
 			text="COM_CONTACTUS_ITEMS_BTN_SUBMIT"
 			class="btn-primary"
 			icon="icon-white icon-ok"
