@@ -62,7 +62,7 @@
 	<administration>
 		<!-- Administration menu -->
 		<menu view="items"
-			img="../media/com_cotnactus/images/contactus-16.png">COM_CONTACTUS</menu>
+			img="../media/com_contactus/images/contactus-16.png">COM_CONTACTUS</menu>
 
 		<!-- Back-end files -->
 		<files folder="backend">
