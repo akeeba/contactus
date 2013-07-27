@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS `#__contactus_categories` (
   `title` varchar(255) NOT NULL DEFAULT '',
   `email` varchar(255) DEFAULT '',
   `access` int(5) NOT NULL DEFAULT '1',
+  `language` varchar(50) NOT NULL DEFAULT '*',
   `ordering` int(10) NOT NULL DEFAULT '0',
   `enabled` tinyint(3) NOT NULL DEFAULT '0',
   `created_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',

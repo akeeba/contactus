@@ -29,6 +29,13 @@
 			description="COM_CONTACTUS_CATEGORIES_FIELD_ACCESS_DESC"
 			required="true"
 		/>
+		
+		<field name="language" type="language"
+			label="COM_CONTACTUS_CATEGORIES_FIELD_LANGUAGE"
+			description="COM_CONTACTUS_CATEGORIES_FIELD_LANGUAGE_DESC"
+			none="COM_CONTACTUS_CATEGORIES_FIELD_LANGUAGE_NONE"
+			required="true"
+		/>
 
 		<field name="enabled" type="list" label="JSTATUS"
 			labelclass="todo-label"

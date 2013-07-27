@@ -1,0 +1,1 @@
+ALTER TABLE `#__contactus_categories` ADD COLUMN `language` varchar(50) NOT NULL DEFAULT '*' AFTER `access`;
