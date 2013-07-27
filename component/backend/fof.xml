@@ -26,7 +26,7 @@
 				<task name="*">false</task>
 			</acl>
 			<config>
-				<option name="behaviors">filter,access,language</option>
+				<option name="behaviors">filters,access,language</option>
 			</config>
 		</view>
 		<view name="item">
