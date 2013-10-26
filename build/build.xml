@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!--
+	ContactUs build file for Phing
+	written by Nicholas K. Dionysopoulos
+	
+	Run "phing" from the build directory to build the component and plugins
+-->
+<project name="ContactUsDemoComponent" description="ContactUs FOF Demo Component" default="all" >
+	<property file="./build.properties" />
+	
+	<!--						   DIRECTORY DEFINITIONS					 -->
+	<!-- The project root -->
+	<property name="dirs.root" value=".." />
+	<!-- Where our component files can be found -->
+	<property name="dirs.component" value="../component" />
+	<!-- Where the installation packages will be output -->
+	<property name="dirs.release" value="../release" />
+	
+	<!-- Default version number; please don't touch it, it's a magic value!  -->
+	<property name="version" value="git" />
+
+	<!--							CUSTOM PHING TASKS						 -->
+	
+	<!-- The ZipMe task is a major improvement over the plain old Zip task   -->
+	<taskdef name="zipme" classname="phingext.ZipmeTask" />
+	<!-- Our gitversion task works like svnversion, but for Git and Git-SVN repositories -->
+	<taskdef name="gitversion" classname="phingext.GitVersionTask" />
+
+	<!--
+	====================================================================================================
+	File sets
+	====================================================================================================
+	-->
+	<fileset dir="${dirs.component}" id="contactusfiles">
+		<include name="**" />
+	</fileset>	
+
+	<!--
+	====================================================================================================
+	Tasks - General
+	====================================================================================================
+	-->
+	
+	<target name="git" description="Makes basic stuff"
+		depends="new-release,setup-properties,component-package">
+	</target>
+	
+	<target name="all" description="Makes everything"
+		depends="new-release,setup-properties,component-package">
+	</target>
+
+	<target name="new-release" description="Empty the release directory">
+		<!-- Recreate the release directory -->
+		<delete quiet="true" includeemptydirs="true">
+			<fileset dir="${dirs.release}/">
+				<include name="*.zip" />
+			</fileset>
+		</delete>
+	</target>
+	
+	<target name="setup-properties" description="Set up version and build properties">
+		<!-- Initialize the build.date timestamp -->
+		<tstamp>
+			<format property="build.date" pattern="%Y-%m-%d" />
+		</tstamp>
+
+		<!-- Initialize the version if it's not set -->
+		<if>
+			<equals arg1="${version}" arg2="git" />
+			<then>
+				<gitversion workingCopy="${dirs.root}" propertyName="git.lastrevision" />
+				<property name="version" value="rev${git.lastrevision}" override="true" />
+			</then>
+		</if>
+	</target>
+
+	<!--
+	====================================================================================================
+	Tasks - Joomla! packages
+	====================================================================================================
+	-->
+	
+	<target name="component-package" description="Component package build"
+		depends="new-release,setup-properties">
+		<!-- Create the package -->
+		
+		<copy file="./templates/com_contactus.xml" tofile="${dirs.component}/com_contactus.xml" overwrite="true">
+			<filterchain>
+				<replacetokens begintoken="##" endtoken="##">
+					<token key="DATE" value="${build.date}" />
+					<token key="VERSION" value="${version}" />
+				</replacetokens>				
+			</filterchain>
+		</copy>
+		
+		<zipme basedir="${dirs.component}" destFile="${dirs.release}/com_contactus-${version}.zip" includeEmptyDirs="true">
+			<fileset refid="contactusfiles" />
+		</zipme>
+	</target>
+
+</project>
