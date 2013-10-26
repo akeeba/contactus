@@ -1,7 +1,7 @@
 .idea/*
 /nbproject/private/
 
-/component/com_contactus.xml
+component/com_contactus.xml
 /component/language/frontend/en-GB
 /component/language/backend/en-GB
 /release/*.zip
