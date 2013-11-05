@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is necessray to instruct Joomla! never to create a menu item linking to
+this view. When is sees the hidden="true" attribute it will skip it when building
+the list of menu item types.
+-->
+<metadata>
+        <view hidden="true" />
+</metadata>
