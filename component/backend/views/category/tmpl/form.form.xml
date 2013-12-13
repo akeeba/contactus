@@ -37,7 +37,7 @@
 			required="true"
 		/>
 
-		<field name="enabled" type="list" label="JSTATUS"
+        <field name="enabled" type="list" label="JSTATUS"
 			labelclass="todo-label"
 			description="JFIELD_PUBLISHED_DESC" class="inputbox"
 			filter="intval" size="1" default="1"
@@ -46,4 +46,22 @@
 			<option value="0">JUNPUBLISHED</option>
 		</field>
 	</fieldset>
+
+    <fieldset name="auto_reply"
+      label="COM_CONTACTUS_CATEGORIES_GROUP_AUTOREPLY"
+    >
+        <field name="sendautoreply" type="list" label="COM_CONTACTUS_CATEGORIES_FIELD_AUTOREPLY"
+               labelclass="todo-label"
+               description="COM_CONTACTUS_CATEGORIES_FIELD_AUTOREPLY_DESC" class="inputbox"
+               filter="intval" size="1" default="O"
+                >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field name="autoreply" type="editor"
+               label="COM_CONTACTUS_CATEGORIES_FIELD_AUTOREPLY"
+               filter="JComponentHelper::filterText" buttons="true"
+               required="true" />
+    </fieldset>
 </form>

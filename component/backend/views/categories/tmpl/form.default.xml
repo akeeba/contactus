@@ -27,7 +27,7 @@
 		<header name="access" type="accesslevel" sortable="true" />
 		
 		<header name="ordering" type="ordering" sortable="true" tdwidth="1%" />
-		
+
 		<header name="enabled" type="published" sortable="true" tdwidth="8%" />
 
 		<header name="language" type="language" sortable="true" none="COM_CONTACTUS_CATEGORIES_FIELD_LANGUAGE_NONE" />		
@@ -47,8 +47,8 @@
 
 		<field name="ordering" type="ordering" labelclass="order"/>
 
-		<field name="enabled" type="published"/>
-		
+        <field name="enabled" type="published"/>
+
 		<field name="language" type="language" sortable="true" none="COM_CONTACTUS_CATEGORIES_FIELD_LANGUAGE_NONE" />
 	</fieldset>
 </form>

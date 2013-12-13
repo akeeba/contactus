@@ -2,6 +2,8 @@ CREATE TABLE IF NOT EXISTS `#__contactus_categories` (
   `contactus_category_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL DEFAULT '',
   `email` varchar(255) DEFAULT '',
+  `sendautoreply` tinyint(3) DEFAULT 0,
+  `autoreply` text,
   `access` int(5) NOT NULL DEFAULT '1',
   `language` varchar(50) NOT NULL DEFAULT '*',
   `ordering` int(10) NOT NULL DEFAULT '0',
