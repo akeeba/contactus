@@ -2,7 +2,7 @@
 /**
  * @package		contactus
  * @subpackage	projectmanagement
- * @copyright	(c) 2012-2013, Nicholas K. Dionysopoulos / Akeeba Ltd.
+ * @copyright	(c) 2012-2014 Nicholas K. Dionysopoulos / Akeeba Ltd.
  * @license		GNU/GPL version 3 or, at your option, any later version
  *
  * link.php – The internal symlinking script

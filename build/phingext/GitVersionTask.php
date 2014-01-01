@@ -9,7 +9,7 @@ putenv("DYLD_LIBRARY_PATH=''");
  * Git latest tree hash to Phing property
  * @version $Id$
  * @package akeebabuilder
- * @copyright Copyright (c)2009-2011 Nicholas K. Dionysopoulos
+ * @copyright Copyright (c)2009-2014 Nicholas K. Dionysopoulos
  * @license GNU GPL version 3 or, at your option, any later version
  * @author nicholas
  */
