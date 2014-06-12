@@ -7,7 +7,7 @@
 
 defined('_JEXEC') or die();
 
-class ContactusControllerItem extends FOFController
+class ContactusControllerItem extends F0FController
 {
 	protected function onAfterSave()
 	{

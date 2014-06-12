@@ -8,7 +8,7 @@
 	<copyright>Copyright (c)2013 Nicholas K. Dionysopoulos / Akeeba Ltd</copyright>
 	<license>GNU GPL v3 or later</license>
 	<version>##VERSION##</version>
-	<description>A simple contact form component used to demonstrate the FOF framework</description>
+	<description>A simple contact form component used to demonstrate the F0F framework</description>
 
 	<!-- Public front end files -->
 	<files folder="frontend">

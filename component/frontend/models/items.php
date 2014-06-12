@@ -5,13 +5,13 @@
  * @license		GNU General Public License version 2 or later
  */
 
-class ContactusModelItems extends FOFModel
+class ContactusModelItems extends F0FModel
 {
 	/**
 	 * This method is only called after a record is saved. We will hook on it
 	 * to send an email to the address specified in the category.
 	 *
-	 * @param   FOFTable  $table  The FOFTable which was just saved
+	 * @param   F0FTable  $table  The F0FTable which was just saved
 	 */
 	protected function onAfterSave(&$table)
 	{
@@ -36,7 +36,7 @@ class ContactusModelItems extends FOFModel
 
 		// Load the category and set the recipient to this category's
 		// email address
-		$category = FOFModel::getTmpInstance('Categories', 'ContactusModel')
+		$category = F0FModel::getTmpInstance('Categories', 'ContactusModel')
 			->getItem($table->contactus_category_id);
 		$emails = explode(',', $category->email);
 
@@ -68,7 +68,7 @@ class ContactusModelItems extends FOFModel
 	private function _sendEmailToUser($table)
 	{
 		// Load the category and check the autoreply status
-		$category = FOFModel::getTmpInstance('Categories', 'ContactusModel')
+		$category = F0FModel::getTmpInstance('Categories', 'ContactusModel')
 			->getItem($table->contactus_category_id);
 
 		if (!$category->sendautoreply)
@@ -101,7 +101,7 @@ class ContactusModelItems extends FOFModel
 		$mailer->Send();
 	}
 
-	private function _preProcessAutoreply($text, FOFTable $item, FOFTable $category)
+	private function _preProcessAutoreply($text, F0FTable $item, F0FTable $category)
 	{
 		$replacements = array(
 			'[SITENAME]'		=> JFactory::getConfig()->get('sitename'),
