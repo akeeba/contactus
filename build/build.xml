@@ -5,7 +5,7 @@
 	
 	Run "phing" from the build directory to build the component and plugins
 -->
-<project name="ContactUsDemoComponent" description="ContactUs FOF Demo Component" default="all" >
+<project name="ContactUsDemoComponent" description="ContactUs F0F Demo Component" default="all" >
 	<property file="./build.properties" />
 	
 	<!--						   DIRECTORY DEFINITIONS					 -->

@@ -7,6 +7,6 @@
 
 defined('_JEXEC') or die();
 
-require_once JPATH_LIBRARIES.'/fof/include.php';
+require_once JPATH_LIBRARIES.'/f0f/include.php';
 
-FOFDispatcher::getTmpInstance('com_contactus')->dispatch();
+F0FDispatcher::getTmpInstance('com_contactus')->dispatch();
