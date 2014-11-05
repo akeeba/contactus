@@ -16,7 +16,13 @@ class ContactusControllerItem extends F0FController
 	 */
 	protected function onAfterSave()
 	{
-		$this->setRedirect(JRoute::_('index.php?option=com_contactus&view=thankyou'));
+		/** @var ContactusModelItems $model */
+		$model = $this->getThisModel();
+
+		if ($model->saveSuccessful)
+		{
+			$this->setRedirect(JRoute::_('index.php?option=com_contactus&view=thankyou'));
+		}
 
 		return true;
 	}

@@ -7,6 +7,9 @@
 
 class ContactusModelItems extends F0FModel
 {
+	/** @var   bool  Did we save the record successfully? Used by the controller for conditional redirection to the Thank You page. */
+	public $saveSuccessful = false;
+
 	/**
 	 * This method is only called after a record is saved. We will hook on it
 	 * to send an email to the address specified in the category.
@@ -21,6 +24,7 @@ class ContactusModelItems extends F0FModel
 
 		if ($result !== false)
 		{
+			$this->saveSuccessful = true;
 			$this->_sendEmailToAdministrators($table);
 			$this->_sendEmailToUser($table);
 		}
