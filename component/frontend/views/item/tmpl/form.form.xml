@@ -6,7 +6,8 @@
 	
 	Items view form file for the front-end
 -->
-<form validate="true" serverside_validate="true">
+<form validate="true" serverside_validate="true" customTask="save">
+
 	<fieldset name="basic_information">
 		<field name="contactus_category_id" type="model"
 			label="COM_CONTACTUS_ITEMS_FIELD_CONTACTUS_CATEGORY_ID"
@@ -57,7 +58,7 @@
 		<field name="btnSubmit" type="button"
 			label=" "
 			text="COM_CONTACTUS_ITEMS_BTN_SUBMIT"
-			class="btn-primary"
+			class="btn-large btn-primary"
 			icon="icon-white icon-ok"
 		/>
 	</fieldset>
