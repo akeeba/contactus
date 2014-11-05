@@ -9,9 +9,15 @@ defined('_JEXEC') or die();
 
 class ContactusControllerItem extends F0FController
 {
+	/**
+	 * Redirects the user to the Thank You page after successfully receiving the message
+	 *
+	 * @return  bool  True to continue processing
+	 */
 	protected function onAfterSave()
 	{
 		$this->setRedirect(JRoute::_('index.php?option=com_contactus&view=thankyou'));
+
 		return true;
 	}
 }

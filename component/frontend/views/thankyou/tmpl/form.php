@@ -8,6 +8,10 @@
 defined('_JEXEC') or die();
 ?>
 <div class="hero-unit">
-	<h1><?php echo JText::_('COM_CONTACTUS_THANKYOU_MSG_HEADER') ?></h1>
-	<p><?php echo JText::_('COM_CONTACTUS_THANKYOU_MSG_BODY') ?></p>
+	<h1>
+		<?php echo JText::_('COM_CONTACTUS_THANKYOU_MSG_HEADER') ?>
+	</h1>
+	<p>
+		<?php echo JText::_('COM_CONTACTUS_THANKYOU_MSG_BODY') ?>
+	</p>
 </div>

@@ -12,6 +12,8 @@ class ContactusModelItems extends F0FModel
 	 * to send an email to the address specified in the category.
 	 *
 	 * @param   F0FTable  $table  The F0FTable which was just saved
+	 *
+	 * @return  bool
 	 */
 	protected function onAfterSave(&$table)
 	{
@@ -26,6 +28,11 @@ class ContactusModelItems extends F0FModel
 		return $result;
 	}
 
+	/**
+	 * Sends an email to all contact category administrators.
+	 *
+	 * @param   F0FTable  $table  The saved message
+	 */
 	private function _sendEmailToAdministrators($table)
 	{
 		// Get a reference to the Joomla! mailer object
@@ -65,6 +72,11 @@ class ContactusModelItems extends F0FModel
 		$mailer->Send();
 	}
 
+	/**
+	 * Sends an email to the user who filed the contact message
+	 *
+	 * @param   F0FTable  $table  The saved message
+	 */
 	private function _sendEmailToUser($table)
 	{
 		// Load the category and check the autoreply status
@@ -101,6 +113,15 @@ class ContactusModelItems extends F0FModel
 		$mailer->Send();
 	}
 
+	/**
+	 * Pre-processes the text of the automatic reply, replacing variables in it.
+	 *
+	 * @param   string     $text      The original text
+	 * @param   \F0FTable  $item      The received contact message
+	 * @param   \F0FTable  $category  The contact category of the received contact message
+	 *
+	 * @return  string  The processed message
+	 */
 	private function _preProcessAutoreply($text, F0FTable $item, F0FTable $category)
 	{
 		$replacements = array(

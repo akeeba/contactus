@@ -7,6 +7,8 @@
 
 defined('_JEXEC') or die();
 
+// Load FOF
 require_once JPATH_LIBRARIES.'/f0f/include.php';
 
+// Execute the component
 F0FDispatcher::getTmpInstance('com_contactus')->dispatch();

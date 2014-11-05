@@ -36,10 +36,10 @@
 				<task name="read">add</task>
 				<task name="edit">add</task>
 			</taskmap>
-			<!-- Per-task ACL settings. An empty string removes ACL checks. -->
+			<!-- Per-task ACL settings. "true" removes ACL checks. -->
 			<acl>
-				<task name="add"></task>
-				<task name="save"></task>
+				<task name="add">true</task>
+				<task name="save">true</task>
 			</acl>
 		</view>
 		<view name="thankyou">
@@ -49,9 +49,9 @@
 				<task name="read">add</task>
 				<task name="edit">add</task>
 			</taskmap>
-			<!-- Per-task ACL settings. An empty string removes ACL checks. -->
+			<!-- Per-task ACL settings. "true" removes ACL checks. -->
 			<acl>
-				<task name="add"></task>
+				<task name="add">true</task>
 			</acl>
 		</view>
 	</frontend>
