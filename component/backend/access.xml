@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+	@package	contactus
+	@copyright	Copyright (c)2013-2016 Nicholas K. Dionysopoulos / AkeebaBackup.com
+	@license	GNU General Public License version 2 or later
+-->
 <access component="com_contactus">
 	<section name="component">
 		<action name="core.admin" title="JACTION_ADMIN" description="JACTION_ADMIN_COMPONENT_DESC" />

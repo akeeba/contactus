@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
+	@package	contactus
+	@copyright	Copyright (c)2013-2016 Nicholas K. Dionysopoulos / AkeebaBackup.com
+	@license	GNU General Public License version 2 or later
+
 This file is necessary to help Joomla! understand how to create menu items to our
 view. The <default> element tells Joomla! to create a menu item for this component
 (com_contactus) and view (items), without any other parameters.
