@@ -5,11 +5,20 @@
 	@license	GNU General Public License version 2 or later
 -->
 <fof>
+	<!-- Common settings -->
+	<common>
+		<container>
+			<option name="componentNamespace">Akeeba\ContactUs</option>
+			<option name="factoryClass">FOF30\Factory\MagicFactory</option>
+			<option name="scaffolding">0</option>
+		</container>
+	</common>
+
 	<!-- Component back-end options -->
 	<backend>
 		<!-- Dispatcher options -->
 		<dispatcher>
-			<option name="default_view">items</option>
+			<option name="defaultView">Items</option>
 		</dispatcher>
 	</backend>
 	
@@ -17,8 +26,12 @@
 	<frontend>
 		<!-- Dispatcher options -->
 		<dispatcher>
-			<option name="default_view">item</option>
+			<option name="defaultView">Item</option>
 		</dispatcher>
+		<!-- Options for the Categories model -->
+		<model name="Categories">
+			<behaviors merge="0">Filters,Access,Language</behaviors>
+		</model>
 		<!-- Options common for all views -->
 		<view name="*">
 			<!-- Per-task ACL settings. The star task sets the default ACL privileges for all tasks. -->
@@ -26,15 +39,14 @@
 				<task name="*">false</task>
 			</acl>
 		</view>
-		<view name="category">
+		<!-- Options for the Category view -->
+		<view name="Category">
 			<acl>
 				<task name="*">false</task>
 			</acl>
-			<config>
-				<option name="behaviors">filters,access,language</option>
-			</config>
 		</view>
-		<view name="item">
+		<!-- Options for the Item view -->
+		<view name="Item">
 			<!-- Task mapping -->
 			<taskmap>
 				<task name="browse">add</task>
@@ -47,7 +59,8 @@
 				<task name="save">true</task>
 			</acl>
 		</view>
-		<view name="thankyou">
+		<!-- Options for the ThankYou view -->
+		<view name="ThankYou">
 			<!-- Task mapping -->
 			<taskmap>
 				<task name="browse">add</task>
