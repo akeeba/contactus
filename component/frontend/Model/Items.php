@@ -5,50 +5,49 @@
  * @license		GNU General Public License version 2 or later
  */
 
-class ContactusModelItems extends F0FModel
+namespace Akeeba\ContactUs\Site\Model;
+
+use FOF30\Container\Container;
+use FOF30\Model\DataModel;
+
+class Items extends DataModel
 {
 	/** @var   bool  Did we save the record successfully? Used by the controller for conditional redirection to the Thank You page. */
 	public $saveSuccessful = false;
+
+	public function __construct(Container $container, array $config)
+	{
+		parent::__construct($container, $config);
+
+		$this->belongsTo('category', 'Categories', 'contactus_category_id', 'contactus_category_id');
+	}
 
 	/**
 	 * This method is only called after a record is saved. We will hook on it
 	 * to send an email to the address specified in the category.
 	 *
-	 * @param   F0FTable  $table  The F0FTable which was just saved
-	 *
 	 * @return  bool
 	 */
-	protected function onAfterSave(&$table)
+	protected function onAfterSave()
 	{
-		$result = parent::onAfterSave($table);
-
-		if ($result !== false)
-		{
-			$this->saveSuccessful = true;
-			$this->_sendEmailToAdministrators($table);
-			$this->_sendEmailToUser($table);
-		}
-
-		return $result;
+		$this->saveSuccessful = true;
+		$this->_sendEmailToAdministrators();
+		$this->_sendEmailToUser();
 	}
 
 	/**
 	 * Sends an email to all contact category administrators.
-	 *
-	 * @param   F0FTable  $table  The saved message
 	 */
-	private function _sendEmailToAdministrators($table)
+	private function _sendEmailToAdministrators()
 	{
 		// Get a reference to the Joomla! mailer object
-		$mailer = JFactory::getMailer();
+		$mailer = \JFactory::getMailer();
 
 		// Set up the sender
-		$mailer->SetFrom($table->fromemail, $table->fromname);
+		$mailer->SetFrom($this->fromemail, $this->fromname);
 
-		// Load the category and set the recipient to this category's
-		// email address
-		$category = F0FModel::getTmpInstance('Categories', 'ContactusModel')
-			->getItem($table->contactus_category_id);
+		// Load the category and set the recipient to this category's email address
+		$category = $this->category;
 		$emails = explode(',', $category->email);
 
 		if (empty($emails))
@@ -62,15 +61,15 @@ class ContactusModelItems extends F0FModel
 		}
 
 		// Set the subject
-		$subject = JText::sprintf('COM_CONTACTUS_ITEMS_MSG_EMAIL_SUBJECT',
-			JFactory::getConfig()->get('sitename'),
+		$subject = \JText::sprintf('COM_CONTACTUS_ITEMS_MSG_EMAIL_SUBJECT',
+			\JFactory::getConfig()->get('sitename'),
 			$category->title,
-			$table->subject);
+			$this->subject);
 
 		$mailer->setSubject($subject);
 
 		// Set the body
-		$mailer->MsgHTML($table->body);
+		$mailer->MsgHTML($this->body);
 
 		// Send the email
 		$mailer->Send();
@@ -78,14 +77,11 @@ class ContactusModelItems extends F0FModel
 
 	/**
 	 * Sends an email to the user who filed the contact message
-	 *
-	 * @param   F0FTable  $table  The saved message
 	 */
-	private function _sendEmailToUser($table)
+	private function _sendEmailToUser()
 	{
 		// Load the category and check the autoreply status
-		$category = F0FModel::getTmpInstance('Categories', 'ContactusModel')
-			->getItem($table->contactus_category_id);
+		$category = $this->category;
 
 		if (!$category->sendautoreply)
 		{
@@ -93,20 +89,20 @@ class ContactusModelItems extends F0FModel
 		}
 
 		$autoReply = $category->autoreply;
-		$autoReply = $this->_preProcessAutoreply($autoReply, $table, $category);
+		$autoReply = $this->_preProcessAutoreply($autoReply, $category);
 
 		// Get a reference to the Joomla! mailer object
-		$mailer = JFactory::getMailer();
+		$mailer = \JFactory::getMailer();
 
 		// Set up the sender
-		$fromemail = JFactory::getConfig()->get('mailfrom');
-		$fromname = JFactory::getConfig()->get('fromname');
+		$fromemail = \JFactory::getConfig()->get('mailfrom');
+		$fromname = \JFactory::getConfig()->get('fromname');
 		$mailer->SetFrom($fromemail, $fromname);
 
 		$mailer->addRecipient($table->fromemail);
 
 		// Set the subject
-		$subject = JText::sprintf('COM_CONTACTUS_ITEMS_MSG_AUTOREPLY_SUBJECT', JFactory::getConfig()->get('sitename'));
+		$subject = \JText::sprintf('COM_CONTACTUS_ITEMS_MSG_AUTOREPLY_SUBJECT', \JFactory::getConfig()->get('sitename'));
 
 		$mailer->setSubject($subject);
 
@@ -121,19 +117,18 @@ class ContactusModelItems extends F0FModel
 	 * Pre-processes the text of the automatic reply, replacing variables in it.
 	 *
 	 * @param   string     $text      The original text
-	 * @param   \F0FTable  $item      The received contact message
-	 * @param   \F0FTable  $category  The contact category of the received contact message
+	 * @param   DataModel  $category  The contact category of the received contact message
 	 *
 	 * @return  string  The processed message
 	 */
-	private function _preProcessAutoreply($text, F0FTable $item, F0FTable $category)
+	private function _preProcessAutoreply($text, DataModel $category)
 	{
 		$replacements = array(
-			'[SITENAME]'		=> JFactory::getConfig()->get('sitename'),
+			'[SITENAME]'		=> \JFactory::getConfig()->get('sitename'),
 			'[CATEGORY]'		=> $category->title,
 		);
 
-		$rawData = $item->getData();
+		$rawData = $this->getData();
 
 		foreach ($rawData as $key => $value)
 		{

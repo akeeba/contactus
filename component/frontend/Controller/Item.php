@@ -5,9 +5,14 @@
  * @license		GNU General Public License version 2 or later
  */
 
+namespace Akeeba\ContactUs\Site\Controller;
+
+use Akeeba\ContactUs\Site\Model\Items;
+use FOF30\Controller\DataController;
+
 defined('_JEXEC') or die();
 
-class ContactusControllerItem extends F0FController
+class Item extends DataController
 {
 	/**
 	 * Redirects the user to the Thank You page after successfully receiving the message
@@ -16,12 +21,12 @@ class ContactusControllerItem extends F0FController
 	 */
 	protected function onAfterSave()
 	{
-		/** @var ContactusModelItems $model */
-		$model = $this->getThisModel();
+		/** @var Items $model */
+		$model = $this->getModel();
 
 		if ($model->saveSuccessful)
 		{
-			$this->setRedirect(JRoute::_('index.php?option=com_contactus&view=thankyou'));
+			$this->setRedirect(\JRoute::_('index.php?option=com_contactus&view=ThankYou'));
 		}
 
 		return true;
