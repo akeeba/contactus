@@ -15,13 +15,6 @@ class Items extends DataModel
 	/** @var   bool  Did we save the record successfully? Used by the controller for conditional redirection to the Thank You page. */
 	public $saveSuccessful = false;
 
-	public function __construct(Container $container, array $config)
-	{
-		parent::__construct($container, $config);
-
-		$this->belongsTo('category', 'Categories', 'contactus_category_id', 'contactus_category_id');
-	}
-
 	/**
 	 * This method is only called after a record is saved. We will hook on it
 	 * to send an email to the address specified in the category.

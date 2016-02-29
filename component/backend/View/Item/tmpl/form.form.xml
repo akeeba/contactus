@@ -10,27 +10,27 @@
 	<fieldset name="basic_information"
 		label="COM_CONTACTUS_ITEMS_GROUP_BASIC"
 	>
-		<field name="contactus_category_id" type="model"
+		<field name="contactus_category_id" type="Model"
 			label="COM_CONTACTUS_ITEMS_FIELD_CONTACTUS_CATEGORY_ID"
 			translate="false"
-			model="ContactusModelCategories" apply_access="false"
+			model="Categories" apply_access="false"
 			key_field="contactus_category_id" value_field="title"
 			required="true"
 		/>
 		
-		<field name="fromname" type="text"
+		<field name="fromname" type="Text"
 			label="COM_CONTACTUS_ITEMS_FIELD_FROMNAME"
 			class="input-xlarge"
 			required="true"
 		/>
 		
-		<field name="fromemail" type="text"
+		<field name="fromemail" type="Text"
 			label="COM_CONTACTUS_ITEMS_FIELD_FROMEMAIL"
 			class="input-xlarge"
 			required="true"
 		/>
 
-		<field name="enabled" type="list" label="JSTATUS"
+		<field name="enabled" type="List" label="JSTATUS"
 			labelclass="todo-label"
 			description="JFIELD_PUBLISHED_DESC" class="inputbox"
 			filter="intval" size="1" default="1"
@@ -43,11 +43,11 @@
 	<fieldset name="basic_information"
 		label="COM_CONTACTUS_ITEMS_GROUP_BASIC"
 	>
-		<field name="subject" type="text"
+		<field name="subject" type="Text"
 			label="COM_CONTACTUS_ITEMS_FIELD_SUBJECT"
 			required="true" />
 
-		<field name="body" type="editor"
+		<field name="body" type="Editor"
 			label="COM_CONTACTUS_ITEMS_FIELD_BODY"
 			filter="JComponentHelper::filterText" buttons="true"
 			required="true" />

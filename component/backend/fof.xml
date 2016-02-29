@@ -12,6 +12,10 @@
 			<option name="factoryClass">FOF30\Factory\MagicFactory</option>
 			<option name="scaffolding">0</option>
 		</container>
+		<model name="Items">
+			<relation type="belongsTo" name="category"
+					  foreignModelClass="Categories" />
+		</model>
 	</common>
 
 	<!-- Component back-end options -->
@@ -20,6 +24,10 @@
 		<dispatcher>
 			<option name="defaultView">Items</option>
 		</dispatcher>
+		<!-- Common Model options -->
+		<model name="*">
+			<behaviors merge="1">Filters</behaviors>
+		</model>
 	</backend>
 	
 	<!-- Component front-end options -->

@@ -14,41 +14,41 @@
 	norows_placeholder="COM_CONTACTUS_COMMON_NORECORDS"
 >
 	<headerset>
-		<header name="contactus_category_id" type="rowselect" tdwidth="20" />
+		<header name="contactus_category_id" type="RowSelect" tdwidth="20" label="#" />
 		
-		<header name="title" type="fieldsearchable" sortable="true"
+		<header name="title" type="Searchable" sortable="true"
 			buttons="no" buttonclass="btn"
 		/>
 		
-		<header name="email" type="fieldsearchable" sortable="true"
+		<header name="email" type="Searchable" sortable="true"
 			buttons="no" buttonclass="btn"
 		/>
 
-		<header name="access" type="accesslevel" sortable="true" />
+		<header name="access" type="AccessLevel" sortable="true" />
 		
-		<header name="ordering" type="ordering" sortable="true" tdwidth="1%" />
+		<header name="ordering" type="Ordering" sortable="true" tdwidth="1%" />
 
-		<header name="enabled" type="published" sortable="true" tdwidth="8%" />
+		<header name="enabled" type="Published" sortable="true" tdwidth="8%" />
 
-		<header name="language" type="language" sortable="true" none="COM_CONTACTUS_CATEGORIES_FIELD_LANGUAGE_NONE" />		
+		<header name="language" type="Language" sortable="true" none="COM_CONTACTUS_CATEGORIES_FIELD_LANGUAGE_NONE" />
 	</headerset>
 
 	<fieldset name="items">
-		<field name="contactus_category_id" type="selectrow"/>
+		<field name="contactus_category_id" type="SelectRow"/>
 		
-		<field name="title" type="text"
+		<field name="title" type="Text"
 			show_link="true"
 			url="index.php?option=com_contactus&amp;view=category&amp;id=[ITEM:ID]"
 		 />
 		 
-		<field name="email" type="text" />
+		<field name="email" type="Text" />
 		
-		<field name="access" type="accesslevel" />
+		<field name="access" type="AccessLevel" />
 
-		<field name="ordering" type="ordering" labelclass="order"/>
+		<field name="ordering" type="Ordering" labelclass="order"/>
 
-        <field name="enabled" type="published"/>
+        <field name="enabled" type="Published"/>
 
-		<field name="language" type="language" sortable="true" none="COM_CONTACTUS_CATEGORIES_FIELD_LANGUAGE_NONE" />
+		<field name="language" type="Language" sortable="true" none="COM_CONTACTUS_CATEGORIES_FIELD_LANGUAGE_NONE" />
 	</fieldset>
 </form>
