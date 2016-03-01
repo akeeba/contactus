@@ -13,10 +13,10 @@
 	<!-- Public front end files -->
 	<files folder="frontend">
 		<filename>contactus.php</filename>
-		
-		<folder>controllers</folder>
-		<folder>models</folder>
-		<folder>views</folder>
+
+		<folder>Controller</folder>
+		<folder>Model</folder>
+		<folder>View</folder>
 	</files>
 
 	<!-- Front end translation files -->
@@ -43,7 +43,7 @@
 			<file driver="mysqli">sql/install/mysql/uninstall.sql</file>
 		</sql>
 	</uninstall>
-	
+
 	<!-- SQL files to run on update -->
 	<!--
 	<update>
@@ -52,7 +52,7 @@
 		</schemas>
 	</update>
 	-->
-	
+
 	<!-- Media files -->
 	<media destination="com_contactus" folder="media">
 		<folder>images</folder>
@@ -62,12 +62,12 @@
 	<administration>
 		<!-- Administration menu -->
 		<menu view="items"
-			img="../media/com_contactus/images/contactus-16.png">COM_CONTACTUS</menu>
+			  img="../media/com_contactus/images/contactus-16.png">COM_CONTACTUS</menu>
 
 		<!-- Back-end files -->
 		<files folder="backend">
 			<folder>sql</folder>
-			<folder>views</folder>
+			<folder>View</folder>
 
 			<filename>access.xml</filename>
 			<filename>config.xml</filename>
@@ -84,7 +84,7 @@
 	</administration>
 
 	<!-- Installation / uninstallation script file -->
-	<!--<scriptfile>script.contactus.php</scriptfile>-->
+	<scriptfile>script.contactus.php</scriptfile>
 
 	<!-- Update servers -->
 	<!--
