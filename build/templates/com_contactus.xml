@@ -17,6 +17,7 @@
 		<folder>Controller</folder>
 		<folder>Model</folder>
 		<folder>View</folder>
+		<folder>views</folder>
 	</files>
 
 	<!-- Front end translation files -->
