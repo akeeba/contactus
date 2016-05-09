@@ -39,7 +39,7 @@
 		/>
 		<field name="body" type="Editor"
 			label="COM_CONTACTUS_ITEMS_FIELD_BODY"
-			filter="JComponentHelper::filterText" buttons="true"
+			filter="JComponentHelper::filterText" buttons="false"
 			required="true" />
 	</fieldset>
 	
