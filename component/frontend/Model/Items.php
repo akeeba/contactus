@@ -37,7 +37,12 @@ class Items extends DataModel
 		$mailer = \JFactory::getMailer();
 
 		// Set up the sender
-		$mailer->SetFrom($this->fromemail, $this->fromname);
+		$fromemail = \JFactory::getConfig()->get('mailfrom');
+		$fromname = \JFactory::getConfig()->get('fromname');
+		$mailer->setFrom($fromemail, $fromname);
+
+		// Set up the reply to address
+		$mailer->addReplyTo($this->fromemail, $this->fromname);
 
 		// Load the category and set the recipient to this category's email address
 		$category = $this->category;
@@ -62,7 +67,7 @@ class Items extends DataModel
 		$mailer->setSubject($subject);
 
 		// Set the body
-		$mailer->MsgHTML($this->body);
+		$mailer->msgHTML($this->body);
 
 		// Send the email
 		$mailer->Send();
@@ -90,9 +95,9 @@ class Items extends DataModel
 		// Set up the sender
 		$fromemail = \JFactory::getConfig()->get('mailfrom');
 		$fromname = \JFactory::getConfig()->get('fromname');
-		$mailer->SetFrom($fromemail, $fromname);
+		$mailer->setFrom($fromemail, $fromname);
 
-		$mailer->addRecipient($table->fromemail);
+		$mailer->addRecipient($this->fromemail);
 
 		// Set the subject
 		$subject = \JText::sprintf('COM_CONTACTUS_ITEMS_MSG_AUTOREPLY_SUBJECT', \JFactory::getConfig()->get('sitename'));
@@ -100,7 +105,7 @@ class Items extends DataModel
 		$mailer->setSubject($subject);
 
 		// Set the body
-		$mailer->MsgHTML($autoReply);
+		$mailer->msgHTML($autoReply);
 
 		// Send the email
 		$mailer->Send();
