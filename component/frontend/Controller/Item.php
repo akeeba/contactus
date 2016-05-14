@@ -7,13 +7,27 @@
 
 namespace Akeeba\ContactUs\Site\Controller;
 
+use Akeeba\ContactUs\Site\Controller\Mixin\PredefinedTaskList;
 use Akeeba\ContactUs\Site\Model\Items;
+use FOF30\Container\Container;
 use FOF30\Controller\DataController;
 
 defined('_JEXEC') or die();
 
 class Item extends DataController
 {
+	use PredefinedTaskList;
+
+	public function __construct(Container $container, array $config)
+	{
+		parent::__construct($container, $config);
+
+		$this->predefinedTaskList = [
+			'add',
+		    'save'
+		];
+	}
+
 	/**
 	 * Redirects the user to the Thank You page after successfully receiving the message
 	 *
