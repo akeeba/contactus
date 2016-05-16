@@ -45,7 +45,10 @@ class Items extends DataModel
 		$mailer->addReplyTo($this->fromemail, $this->fromname);
 
 		// Load the category and set the recipient to this category's email address
-		$category = $this->category;
+
+		/** @var DataModel $category */
+		$category = $this->container->factory->model('Categories')->tmpInstance();
+		$category->findOrFail($this->contactus_category_id);
 		$emails = explode(',', $category->email);
 
 		if (empty($emails))
@@ -79,7 +82,9 @@ class Items extends DataModel
 	private function _sendEmailToUser()
 	{
 		// Load the category and check the autoreply status
-		$category = $this->category;
+		/** @var DataModel $category */
+		$category = $this->container->factory->model('Categories')->tmpInstance();
+		$category->findOrFail($this->contactus_category_id);
 
 		if (!$category->sendautoreply)
 		{
