@@ -32,7 +32,12 @@
 	
 	<!-- Component front-end options -->
 	<frontend>
-		<!-- Dispatcher options -->
+        <container>
+            <option name="factoryClass">FOF30\Factory\BasicFactory</option>
+        </container>
+
+
+        <!-- Dispatcher options -->
 		<dispatcher>
 			<option name="defaultView">Item</option>
 		</dispatcher>

@@ -52,7 +52,7 @@
 			namespace="contactus"
 		/>
 	</fieldset>
-	
+
 	<fieldset name="submit" class="form-actions">
 		<field name="btnSubmit" type="Button"
 			label=" "
