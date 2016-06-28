@@ -5,10 +5,10 @@
 	<author>Nicholas K. Dionysopoulos</author>
 	<authorEmail>nicholas@akeebabackup.com</authorEmail>
 	<authorUrl>http://www.akeebabackup.com</authorUrl>
-	<copyright>Copyright (c)2013 Nicholas K. Dionysopoulos / Akeeba Ltd</copyright>
+	<copyright>Copyright (c)2013-2016 Nicholas K. Dionysopoulos / Akeeba Ltd</copyright>
 	<license>GNU GPL v3 or later</license>
 	<version>##VERSION##</version>
-	<description>A simple contact form component used to demonstrate the F0F framework</description>
+	<description>A simple contact form component used to demonstrate the FOF 3 framework</description>
 
 	<!-- Public front end files -->
 	<files folder="frontend">
@@ -83,14 +83,4 @@
 		</languages>
 
 	</administration>
-
-	<!-- Installation / uninstallation script file -->
-	<scriptfile>script.contactus.php</scriptfile>
-
-	<!-- Update servers -->
-	<!--
-	<updateservers>
-		<server type="extension" priority="1" name="Contact Us"><![CDATA[http://www.example.com/contactus.xml]]></server>
-	</updateservers>
-	-->
 </extension>

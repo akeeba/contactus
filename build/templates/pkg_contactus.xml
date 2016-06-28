@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.3.0" type="package" method="upgrade">
+    <name>Contact Us package</name>
+    <author>Nicholas K. Dionysopoulos</author>
+    <creationDate>##DATE##</creationDate>
+    <packagename>contactus</packagename>
+    <version>##VERSION##</version>
+    <url>https://www.akeebabackup.com</url>
+    <packager>Akeeba Ltd</packager>
+    <packagerurl>https://www.akeebabackup.com</packagerurl>
+    <copyright>Copyright (c)2013-2016 Akeeba Ltd / Nicholas K. Dionysopoulos</copyright>
+    <license>GNU GPL v3 or later</license>
+    <description>Contact Us installation package v.##VERSION##</description>
+
+    <!-- List of extensions to install -->
+    <files>
+        <!-- Component -->
+        <file type="component" id="com_contactus">com_contactus.zip</file>
+
+        <!-- Modules -->
+        <!--<file type="module" client="site" id="mod_example">mod_example.zip</file>-->
+
+        <!-- Plugins: system -->
+        <!--<file type="plugin" group="system" id="example">plg_system_example.zip</file>-->
+    </files>
+
+    <!-- Installation script -->
+    <scriptfile>script.contactus.php</scriptfile>
+</extension>

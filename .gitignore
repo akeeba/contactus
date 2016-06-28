@@ -1,8 +1,17 @@
 .idea/*
-/nbproject/private/
 
-component/com_contactus.xml
-/component/language/frontend/en-GB
+/build/bin
+/build/buildlang
+/build/epub
+/build/phingext
+/build/tools
+/build/override.properties
+
+/component/*.xml
+
 /component/language/backend/en-GB
-/release/*.zip
-.DS_Store
+/component/language/frontend/en-GB
+
+/release
+
+/*/.DS_Store
