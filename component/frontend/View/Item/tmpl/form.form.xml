@@ -15,26 +15,32 @@
 			model="Categories" apply_access="true"
 			key_field="contactus_category_id" value_field="title"
 			required="true"
-		/>
+		   class="col-xs-12"
+		>
+			<state key="filter_order">ordering</state>
+			<state key="filter_order_Dir">asc</state>
+			<state key="limit">100</state>
+			<state key="limitstart">0</state>
+		</field>
 		
 		<field name="fromname" type="Text"
 			label="COM_CONTACTUS_ITEMS_FIELD_FROMNAME"
-			class="input-xlarge"
+			class="col-xs-12"
 			required="true"
 		/>
 		
 		<field name="fromemail" type="Text"
 			label="COM_CONTACTUS_ITEMS_FIELD_FROMEMAIL"
-			class="input-xlarge"
+			class="col-xs-12"
 			required="true"
 		/>
 
 	</fieldset>
 	
-	<fieldset name="message">
+	<fieldset name="message" class="clearfix">
 		<field name="subject" type="Text"
 			label="COM_CONTACTUS_ITEMS_FIELD_SUBJECT"
-			class="input-xxlarge"
+			class="col-xs-12"
 			required="true"
 		/>
 		<field name="body" type="Editor"

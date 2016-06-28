@@ -7,7 +7,7 @@
 
 defined('_JEXEC') or die();
 ?>
-<div class="hero-unit">
+<div class="jumbotron">
 	<h1>
 		<?php echo JText::_('COM_CONTACTUS_THANKYOU_MSG_HEADER') ?>
 	</h1>
