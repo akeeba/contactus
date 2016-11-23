@@ -29,6 +29,26 @@ class Item extends DataController
 	}
 
 	/**
+	 * Let guest users see the contact form
+	 *
+	 * @return  bool
+	 */
+	protected function onBeforeAdd()
+	{
+		return true;
+	}
+
+	/**
+	 * Let guest users submit the contact form
+	 *
+	 * @return  bool
+	 */
+	protected function onBeforeSave()
+	{
+		return true;
+	}
+
+	/**
 	 * Redirects the user to the Thank You page after successfully receiving the message
 	 *
 	 * @return  bool  True to continue processing
