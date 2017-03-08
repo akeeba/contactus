@@ -9,9 +9,6 @@
 
 /component/*.xml
 
-/component/language/backend/en-GB
-/component/language/frontend/en-GB
-
 /release
 
 /*/.DS_Store
