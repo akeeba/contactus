@@ -7,8 +7,13 @@
 
 namespace Akeeba\ContactUs\Site\Model;
 
+use Akeeba\TicketSystem\Admin\Helper\Permissions;
+use Akeeba\TicketSystem\Site\Model\Posts;
+use Akeeba\TicketSystem\Site\Model\Tickets;
 use FOF30\Container\Container;
 use FOF30\Model\DataModel;
+use JUser;
+use RuntimeException;
 
 class Items extends DataModel
 {
@@ -24,8 +29,26 @@ class Items extends DataModel
 	protected function onAfterSave()
 	{
 		$this->saveSuccessful = true;
-		$this->_sendEmailToAdministrators();
-		$this->_sendEmailToUser();
+
+		// Load the category and get the ATS ticket category
+		/** @var DataModel $category */
+		$category = $this->container->factory->model('Categories')->tmpInstance();
+		$category->findOrFail($this->contactus_category_id);
+		$atsCategoryID = $category->ticketcategory;
+
+		try
+		{
+			// Try to file a ticket instead of sending emails
+			$this->createTicket($atsCategoryID, $this->subject, $this->body, $this->fromemail);
+		}
+		catch (\Exception $e)
+		{
+			// If I couldn't file a ticket, send emails
+			$this->_sendEmailToAdministrators();
+			$this->_sendEmailToUser();
+		}
+
+		return true;
 	}
 
 	/**
@@ -144,5 +167,106 @@ class Items extends DataModel
 		}
 
 		return $text;
+	}
+
+	/**
+	 * Try to create an ATS ticket from the contact form. Throws an exception if that fails or there is no user with
+	 * this email address registered on our site.
+	 *
+	 * @param $atsCategoryID
+	 * @param $subject
+	 * @param $body
+	 * @param $email
+	 */
+	private function createTicket($atsCategoryID, $subject, $body, $email)
+	{
+		if (empty($atsCategoryID))
+		{
+			throw new RuntimeException("No ATS category specified");
+		}
+
+		// Find a user by this email address
+		$user = $this->getUserByEmail($email);
+
+		if (empty($user) || !is_object($user) || !($user instanceof JUser))
+		{
+			throw new RuntimeException("Cannot find a user for email address $email");
+		}
+
+		// Get the ATS container
+		$atsContainer = Container::getInstance('com_ats');
+
+		// Does the category exist?
+		/** @var \Akeeba\TicketSystem\Site\Model\Categories $category */
+		$category = $atsContainer->factory->model('Categories')->tmpInstance();
+		$category->findOrFail($atsCategoryID);
+
+		// Get ACL permissions
+		$perms = Permissions::getAclPrivileges($atsCategoryID, $user->id);
+
+		// Can I post to the category?
+		if (!$perms['core.create'])
+		{
+			throw new RuntimeException("User {$user->username} cannot post to category {$category->title}");
+		}
+
+		$ticketData = [
+			'title'      => $subject . " [Contact form]",
+			'status'     => 'O',
+			'origin'     => 'web',
+			'priority'   => 5,
+			'public'     => 0,
+			'created_by' => $user->id,
+			'catid'      => $atsCategoryID,
+		];
+
+		$postData = [
+			'content'      => '',
+			'content_html' => $body,
+			'origin'       => 'web',
+			'enabled'      => 1,
+			'created_by'   => $user->id,
+		];
+
+		// --- Create the ticket
+		/** @var Tickets $ticketModel */
+		$ticketModel = $atsContainer->factory->model('Tickets')->tmpInstance();
+		/** @var Posts $postModel */
+		$postModel = $atsContainer->factory->model('Posts')->tmpInstance();
+
+		$ticketModel->save($ticketData);
+
+		$ats_ticket_id             = $ticketModel->getId();
+		$postData['ats_ticket_id'] = $ats_ticket_id;
+		$postModel->save($postData);
+	}
+
+	private function getUserByEmail($email)
+	{
+		try
+		{
+			// Force load the JUser class
+			class_exists('JUser', true);
+
+			$email = trim($email);
+			$db    = $this->container->db;
+			$query = $db->getQuery(true)
+				->select($db->qn('id'))
+				->from($db->qn('#__users'))
+				->where($db->qn('email') . ' = ' . $db->q($email));
+
+			$id = $db->setQuery($query)->loadResult();
+
+			if (empty($id))
+			{
+				return null;
+			}
+
+			return \JFactory::getUser($id);
+		}
+		catch (\Exception $e)
+		{
+			return null;
+		}
 	}
 }

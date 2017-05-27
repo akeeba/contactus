@@ -21,7 +21,6 @@
 			label="COM_CONTACTUS_CATEGORIES_FIELD_EMAIL"
 			description="COM_CONTACTUS_CATEGORIES_FIELD_EMAIL_DESC"
 			class="input-large"
-			required="true"
 		/>
 
 		<field name="access" type="AccessLevel"
@@ -50,6 +49,18 @@
     <fieldset name="auto_reply"
       label="COM_CONTACTUS_CATEGORIES_GROUP_AUTOREPLY"
     >
+
+        <field name="ticketcategory" type="Category"
+			   label="COM_CONTACTUS_CATEGORIES_FIELD_TICKETCATEGORY"
+			   description="COM_CONTACTUS_CATEGORIES_FIELD_TICKETCATEGORY_DESC"
+			   class="inputbox"
+			   default="O"
+			   extension="com_ats"
+			   published="1"
+			>
+			<option value="0">-&#45;&#45;</option>
+		</field>
+
         <field name="sendautoreply" type="List" label="COM_CONTACTUS_CATEGORIES_FIELD_AUTOREPLY"
                labelclass="todo-label"
                description="COM_CONTACTUS_CATEGORIES_FIELD_AUTOREPLY_DESC" class="inputbox"

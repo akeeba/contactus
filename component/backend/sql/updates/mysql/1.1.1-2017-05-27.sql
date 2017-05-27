@@ -1,0 +1,1 @@
+ALTER TABLE `#__contactus_categories` ADD COLUMN `ticketcategory` BIGINT(20) UNSIGNED NOT NULL DEFAULT '0' AFTER `sendautoreply`;
