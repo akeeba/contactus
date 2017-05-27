@@ -20,6 +20,17 @@ class Items extends DataModel
 	/** @var   bool  Did we save the record successfully? Used by the controller for conditional redirection to the Thank You page. */
 	public $saveSuccessful = false;
 
+	protected function onBeforeCheck()
+	{
+		$user = $this->container->platform->getUser();
+
+		if (!$user->guest)
+		{
+			$this->fromname = $user->name;
+			$this->fromemail = $user->email;
+		}
+	}
+
 	/**
 	 * This method is only called after a record is saved. We will hook on it
 	 * to send an email to the address specified in the category.
