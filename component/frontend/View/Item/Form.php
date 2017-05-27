@@ -7,6 +7,7 @@
 
 namespace Akeeba\ContactUs\Site\View\Item;
 
+use FOF30\Model\DataModel;
 use FOF30\View\DataView\Form as BaseView;
 
 class Form extends BaseView
@@ -27,6 +28,17 @@ class Form extends BaseView
 CSS;
 
 		$this->addCssInline($css);
+
+		/** @var DataModel $model */
+		$model           = $this->getModel();
+		$form            = $model->getForm();
+		$user            = $this->container->platform->getUser();
+
+		if (!$user->guest)
+		{
+			$form->removeField('fromname');
+			$form->removeField('fromemail');
+		}
 	}
 
 }
