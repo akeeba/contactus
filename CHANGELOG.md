@@ -4,6 +4,7 @@
 * Post as ATS ticket when possible (configurable per contact category)
 * Always use the Joomla user record's full name and email address for logged in users
 * Don't show the name / email fields to logged in users
+* Put a default subject / body text to help get the message across.
 
 # 1.0.0
 

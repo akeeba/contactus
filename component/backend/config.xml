@@ -19,5 +19,29 @@
 			filter="rules"
 			component="com_contactus"
 			section="component" />
-	</fieldset>	
+	</fieldset>
+	<fieldset
+		name="frontend"
+		label="COM_CONTACTUS_CONFIG_SECTION_FRONTEND_LABEL"
+		description="COM_CONTACTUS_CONFIG_SECTION_FRONTEND_DESC"
+		>
+
+		<field
+			name="default_subject"
+			type="text"
+			default=""
+			label="COM_CONTACTUS_CONFIG_DEFAULT_SUBJECT_LABEL"
+			description="COM_CONTACTUS_CONFIG_DEFAULT_SUBJECT_DESC"
+		/>
+
+		<field
+			name="default_body"
+			type="editor"
+			default=""
+			label="COM_CONTACTUS_CONFIG_DEFAULT_SUBJECT_LABEL"
+			description="COM_CONTACTUS_CONFIG_DEFAULT_SUBJECT_DESC"
+			filter="safehtml"
+		/>
+
+	</fieldset>
 </config>

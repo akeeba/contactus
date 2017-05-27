@@ -34,6 +34,11 @@ CSS;
 		$form            = $model->getForm();
 		$user            = $this->container->platform->getUser();
 
+		$form->bind([
+			'subject'   => $this->container->params->get('default_subject', ''),
+			'body'      => $this->container->params->get('default_body', ''),
+		]);
+
 		if (!$user->guest)
 		{
 			$form->removeField('fromname');
