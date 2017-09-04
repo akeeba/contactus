@@ -2,6 +2,7 @@
 
 * Workaround for Joomla! Backup 16147 (https://github.com/joomla/joomla-cms/issues/16147) - Cannot access component after installation when cache is enabled
 * gh-10 Pre-fill form using query string parameters
+* gh-11 Pre-fill user name and email address
 
 # 1.0.0
 

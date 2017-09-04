@@ -25,6 +25,8 @@ class Form extends BaseView
 		}
 
 		$this->form->bind([
+			'fromname' => $this->input->getString('fromname', $name),
+			'fromemail' => $this->input->getString('fromemail', $user->email),
 			'subject' => $this->input->getString('subject', ''),
 			'body' => $this->input->getString('body', ''),
 		]);
