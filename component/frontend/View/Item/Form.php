@@ -7,6 +7,7 @@
 
 namespace Akeeba\ContactUs\Site\View\Item;
 
+use Akeeba\ContactUs\Site\Model\Items;
 use FOF30\View\DataView\Form as BaseView;
 
 class Form extends BaseView
@@ -14,6 +15,19 @@ class Form extends BaseView
 	protected function onBeforeAdd()
 	{
 		parent::onBeforeAdd();
+
+		$user = $this->container->platform->getUser();
+		$name = '';
+
+		if (!$user->guest)
+		{
+			$name = $user->name . ' [' . $user->username . ']';
+		}
+
+		$this->form->bind([
+			'subject' => $this->input->getString('subject', ''),
+			'body' => $this->input->getString('body', ''),
+		]);
 
 		$css = <<< CSS
 #akeeba-renderjoomla input.input-xlarge {
