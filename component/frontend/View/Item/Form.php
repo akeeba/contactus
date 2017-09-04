@@ -40,7 +40,7 @@ class Form extends BaseView
 		];
 
 		$data['fromname'] = empty($data['fromname']) ? $name : $data['fromname'];
-		$data['fromemail'] = empty($data['fromemail']) ? $name : $data['fromemail'];
+		$data['fromemail'] = empty($data['fromemail']) ? $user->email : $data['fromemail'];
 
 		$this->form->bind($data);
 
