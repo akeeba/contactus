@@ -7,11 +7,19 @@
 
 namespace Akeeba\ContactUs\Site\View\Item;
 
-use Akeeba\ContactUs\Site\Model\Items;
 use FOF30\View\DataView\Form as BaseView;
 
 class Form extends BaseView
 {
+	/**
+	 * Form data saved in the session. Set by the Controller.
+	 *
+	 * @var   array
+	 *
+	 * @since 1.0.1
+	 */
+	public $sessionData = [];
+
 	protected function onBeforeAdd()
 	{
 		parent::onBeforeAdd();
@@ -24,12 +32,17 @@ class Form extends BaseView
 			$name = $user->name . ' [' . $user->username . ']';
 		}
 
-		$this->form->bind([
-			'fromname' => $this->input->getString('fromname', $name),
-			'fromemail' => $this->input->getString('fromemail', $user->email),
-			'subject' => $this->input->getString('subject', ''),
-			'body' => $this->input->getString('body', ''),
-		]);
+		$data = [
+			'fromname'  => $this->input->getString('fromname', $this->sessionData['fromname']),
+			'fromemail' => $this->input->getString('fromemail', $this->sessionData['fromemail']),
+			'subject'   => $this->input->getString('subject', $this->sessionData['subject']),
+			'body'      => $this->input->getString('body', $this->sessionData['body']),
+		];
+
+		$data['fromname'] = empty($data['fromname']) ? $name : $data['fromname'];
+		$data['fromemail'] = empty($data['fromemail']) ? $name : $data['fromemail'];
+
+		$this->form->bind($data);
 
 		$css = <<< CSS
 #akeeba-renderjoomla input.input-xlarge {
