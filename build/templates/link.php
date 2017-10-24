@@ -6,4 +6,5 @@ $symlink_files = array(
 );
 
 $symlink_folders = array(
+	'../translations/contact-us' => 'translations',
 );
