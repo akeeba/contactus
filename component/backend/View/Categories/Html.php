@@ -7,11 +7,11 @@
 
 namespace Akeeba\ContactUs\Admin\View\Categories;
 
-use FOF30\View\DataView\Form as BaseView;
+use FOF30\View\DataView\Html as BaseView;
 
 defined('_JEXEC') or die();
 
-class Form extends BaseView
+class Html extends BaseView
 {
 
 }

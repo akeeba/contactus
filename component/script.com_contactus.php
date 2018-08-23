@@ -79,10 +79,10 @@ class Com_ContactusInstallerScript extends \FOF30\Utils\InstallScript
 			'components/com_contactus/View/ThankYou/tmpl',
 			// Obsolete backend view folders
 			'administrator/components/com_contactus/View/Category',
-			'administrator/components/com_contactus/View/Item',
 			// Obsolete backend view template folders
 			'administrator/components/com_contactus/View/Categories/tmpl',
 			'administrator/components/com_contactus/View/Items/tmpl',
+			'administrator/components/com_contactus/View/Item/tmpl',
 		)
 	);
 
