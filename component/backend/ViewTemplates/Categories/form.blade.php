@@ -83,7 +83,7 @@ $item = $this->item;
                 @fieldtitle('autoreply')
             </label>
             <div class="akeeba-nofef">
-                @jhtml('FEFHelper.edit.editor', 'body', $item->autoreply)
+                @jhtml('FEFHelper.edit.editor', 'autoreply', $item->autoreply)
             </div>
         </div>
 

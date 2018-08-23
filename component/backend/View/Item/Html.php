@@ -5,13 +5,13 @@
  * @license        GNU General Public License version 3 or later
  */
 
-namespace Akeeba\ContactUs\Admin\View\Items;
+namespace Akeeba\ContactUs\Admin\View\Item;
 
-use FOF30\View\DataView\Form as BaseView;
+use FOF30\View\DataView\Html as BaseView;
 
 defined('_JEXEC') or die();
 
-class Form extends BaseView
+class Html extends BaseView
 {
 
 }
