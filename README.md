@@ -32,7 +32,7 @@ You will also need the following path structure inside a folder on your system
 * **contactus** This repository
 * **buildfiles** [Akeeba Build Tools](https://github.com/akeeba/buildfiles)
 * **fof3** [Framework on Framework 3.x](https://github.com/akeeba/fof)
-* **translations** [Akeeba Translations](https://github.com/akeeba/translations)
+* **fef** [Akeeba FEF](https://github.com/akeeba/fef) (optional, use -Dversion=0.0.0 when building to pull thelatest published version)
 
 You will need to use the exact folder names specified here.
 
