@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-	@package	contactus
-	@copyright Copyright (c)2013-2018 Nicholas K. Dionysopoulos / Akeeba Ltd
-	@license	GNU General Public License version 2 or later
+ * @package		contactus
+ * @copyright   Copyright (c)2013-2018 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @license		GNU General Public License version 2 or later
 
-This file is necessray to instruct Joomla! never to create a menu item linking to
+This file is necessary to instruct Joomla! never to create a menu item linking to
 this view. When is sees the hidden="true" attribute it will skip it when building
 the list of menu item types.
 -->
