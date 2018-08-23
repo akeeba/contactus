@@ -9,7 +9,7 @@
 	<common>
 		<container>
 			<option name="componentNamespace">Akeeba\ContactUs</option>
-			<option name="factoryClass">FOF30\Factory\MagicFactory</option>
+			<option name="factoryClass">FOF30\Factory\BasicFactory</option>
 			<option name="scaffolding">0</option>
 		</container>
 	</common>
@@ -20,10 +20,6 @@
 		<dispatcher>
 			<option name="defaultView">Items</option>
 		</dispatcher>
-		<!-- Common Model options -->
-		<model name="*">
-			<behaviors merge="1">Filters</behaviors>
-		</model>
 	</backend>
 	
 	<!-- Component front-end options -->

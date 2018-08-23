@@ -18,6 +18,7 @@ class Items extends DataModel
 	{
 		parent::__construct($container, $config);
 
+		$this->addBehaviour('Filters');
 		$this->belongsTo('category', 'Categories');
 	}
 

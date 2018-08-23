@@ -9,8 +9,16 @@ namespace Akeeba\ContactUs\Admin\Model;
 
 defined('_JEXEC') or die();
 
+use FOF30\Container\Container;
 use FOF30\Model\DataModel;
 
 class Categories extends DataModel
 {
+	public function __construct(Container $container, array $config = array())
+	{
+		parent::__construct($container, $config);
+
+		$this->addBehaviour('Filters');
+	}
+
 }
