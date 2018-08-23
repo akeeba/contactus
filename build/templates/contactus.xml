@@ -21,6 +21,33 @@
 		<folder>views</folder>
 	</files>
 
+	<!-- Administrator back-end section -->
+	<administration>
+		<!-- Administration menu -->
+		<menu view="items"
+			  img="../media/com_contactus/images/contactus-16.png">COM_CONTACTUS</menu>
+
+		<!-- Back-end files -->
+		<files folder="backend">
+			<folder>sql</folder>
+			<folder>Model</folder>
+			<folder>View</folder>
+			<folder>ViewTemplates</folder>
+
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>contactus.php</filename>
+			<filename>fof.xml</filename>
+		</files>
+
+		<!-- Back-end translation files -->
+		<languages folder="language/backend">
+			<language tag="en-GB">en-GB/en-GB.com_contactus.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_contactus.sys.ini</language>
+		</languages>
+
+	</administration>
+
 	<!-- Front end translation files -->
 	<languages folder="language/frontend">
 		<language tag="en-GB">en-GB/en-GB.com_contactus.ini</language>
@@ -59,32 +86,6 @@
 	<media destination="com_contactus" folder="media">
 		<folder>images</folder>
 	</media>
-
-	<!-- Administrator back-end section -->
-	<administration>
-		<!-- Administration menu -->
-		<menu view="items"
-			  img="../media/com_contactus/images/contactus-16.png">COM_CONTACTUS</menu>
-
-		<!-- Back-end files -->
-		<files folder="backend">
-			<folder>sql</folder>
-			<folder>View</folder>
-			<folder>ViewTemplates</folder>
-
-			<filename>access.xml</filename>
-			<filename>config.xml</filename>
-			<filename>contactus.php</filename>
-			<filename>fof.xml</filename>
-		</files>
-
-		<!-- Back-end translation files -->
-		<languages folder="language/backend">
-			<language tag="en-GB">en-GB/en-GB.com_contactus.ini</language>
-			<language tag="en-GB">en-GB/en-GB.com_contactus.sys.ini</language>
-		</languages>
-
-	</administration>
 
 	<scriptfile>script.com_contactus.php</scriptfile>
 </extension>
