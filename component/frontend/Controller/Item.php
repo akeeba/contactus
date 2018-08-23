@@ -1,15 +1,15 @@
 <?php
 /**
- * @package		contactus
- * @copyright   Copyright (c)2013-2018 Nicholas K. Dionysopoulos / Akeeba Ltd
- * @license		GNU General Public License version 3 or later
+ * @package        contactus
+ * @copyright      Copyright (c)2013-2018 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @license        GNU General Public License version 3 or later
  */
 
 namespace Akeeba\ContactUs\Site\Controller;
 
 use Akeeba\ContactUs\Site\Controller\Mixin\PredefinedTaskList;
 use Akeeba\ContactUs\Site\Model\Items;
-use Akeeba\ContactUs\Site\View\Item\Form;
+use Akeeba\ContactUs\Site\View\Item\Html;
 use FOF30\Container\Container;
 use FOF30\Controller\DataController;
 
@@ -20,7 +20,7 @@ class Item extends DataController
 	use PredefinedTaskList;
 
 	static public $savedFields = [
-		'fromname', 'fromemail', 'subject', 'body'
+		'fromname', 'fromemail', 'subject', 'body',
 	];
 
 	public function __construct(Container $container, array $config)
@@ -29,7 +29,7 @@ class Item extends DataController
 
 		$this->predefinedTaskList = [
 			'add',
-		    'save'
+			'save',
 		];
 	}
 
@@ -50,8 +50,7 @@ class Item extends DataController
 			$data[$fieldName] = $this->container->platform->getSessionVar('form.' . $fieldName, '', 'com_contactus');
 		}
 
-		/** @var Form $view */
-		$this->hasForm = true;
+		/** @var Html $view */
 		$view              = $this->getView();
 		$view->sessionData = $data;
 

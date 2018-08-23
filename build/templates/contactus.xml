@@ -15,10 +15,11 @@
 		<filename>contactus.php</filename>
 
 		<folder>Controller</folder>
+		<folder>Dispatcher</folder>
 		<folder>Model</folder>
 		<folder>View</folder>
-		<folder>ViewTemplates</folder>
-		<folder>views</folder>
+        <folder>views</folder>
+        <folder>ViewTemplates</folder>
 	</files>
 
 	<!-- Administrator back-end section -->

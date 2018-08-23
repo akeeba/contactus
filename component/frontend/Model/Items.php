@@ -1,8 +1,8 @@
 <?php
 /**
- * @package		contactus
- * @copyright   Copyright (c)2013-2018 Nicholas K. Dionysopoulos / Akeeba Ltd
- * @license		GNU General Public License version 3 or later
+ * @package        contactus
+ * @copyright      Copyright (c)2013-2018 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @license        GNU General Public License version 3 or later
  */
 
 namespace Akeeba\ContactUs\Site\Model;
@@ -10,23 +10,115 @@ namespace Akeeba\ContactUs\Site\Model;
 defined('_JEXEC') or die();
 
 use FOF30\Model\DataModel;
+use FOF30\Model\Mixin\Assertions;
+use Joomla\CMS\Application\SiteApplication;
+use Joomla\CMS\Captcha\Captcha;
+use Joomla\CMS\Factory;
 
+/**
+ * Model Akeeba\ContactUs\Admin\Model\Items
+ *
+ * Fields:
+ *
+ * @property  int     $contactus_item_id
+ * @property  int     $contactus_category_id
+ * @property  string  $fromname
+ * @property  string  $fromemail
+ * @property  string  $subject
+ * @property  string  $body
+ * @property  string  $token
+ *
+ * Filters:
+ *
+ * @method  $this  contactus_item_id()      contactus_item_id(int $v)
+ * @method  $this  contactus_category_id()  contactus_category_id(int $v)
+ * @method  $this  fromname()               fromname(string $v)
+ * @method  $this  fromemail()              fromemail(string $v)
+ * @method  $this  subject()                subject(string $v)
+ * @method  $this  body()                   body(string $v)
+ * @method  $this  enabled()                enabled(bool $v)
+ * @method  $this  token()                  token(string $v)
+ * @method  $this  created_on()             created_on(string $v)
+ * @method  $this  created_by()             created_by(int $v)
+ * @method  $this  modified_on()            modified_on(string $v)
+ * @method  $this  modified_by()            modified_by(int $v)
+ * @method  $this  locked_on()              locked_on(string $v)
+ * @method  $this  locked_by()              locked_by(int $v)
+ *
+ * Relations:
+ *
+ * @property  Categories  $category
+ *
+ **/
 class Items extends DataModel
 {
+	use Assertions;
+
 	/** @var   bool  Did we save the record successfully? Used by the controller for conditional redirection to the Thank You page. */
 	public $saveSuccessful = false;
+
+	/**
+	 * Get the Joomla! CAPTCHA object
+	 *
+	 * @param   string  $namespace
+	 *
+	 * @return  Captcha|null
+	 */
+	public function getCaptchaObject($namespace = 'contactus')
+	{
+		try
+		{
+			/** @var SiteApplication $app */
+			$app = Factory::getApplication();
+		}
+		catch (\Exception $e)
+		{
+			return null;
+		}
+
+		$plugin = $app->getParams()->get('captcha', $app->get('captcha'));
+
+		if ($plugin === 0 || $plugin === '0' || $plugin === '' || $plugin === null)
+		{
+			return null;
+		}
+
+		return Captcha::getInstance($plugin, array('namespace' => $namespace));
+	}
+
 
 	/**
 	 * This method is only called after a record is saved. We will hook on it
 	 * to send an email to the address specified in the category.
 	 *
-	 * @return  bool
+	 * @return  void
 	 */
 	protected function onAfterSave()
 	{
 		$this->saveSuccessful = true;
 		$this->_sendEmailToAdministrators();
 		$this->_sendEmailToUser();
+	}
+
+	/**
+	 * Perform the form validation checks
+	 */
+	protected function onBeforeCheck()
+	{
+		$this->assertNotEmpty($this->contactus_category_id, 'COM_CONTACTUS_ITEM_ERR_CATEGORY_EMPTY');
+		$this->assertNotEmpty($this->fromname, 'COM_CONTACTUS_ITEM_ERR_FROMNAME_EMPTY');
+		$this->assertNotEmpty($this->fromemail, 'COM_CONTACTUS_ITEM_ERR_FROMEMAIL_EMPTY');
+		$this->assertNotEmpty($this->subject, 'COM_CONTACTUS_ITEM_ERR_SUBJECT_EMPTY');
+		$this->assertNotEmpty($this->body, 'COM_CONTACTUS_ITEM_ERR_BODY_EMPTY');
+
+		$captcha = $this->getCaptchaObject();
+
+		if (is_null($captcha))
+		{
+			return;
+		}
+
+		$this->assert($captcha->checkAnswer($this->input->get('captcha', '', 'raw')), 'COM_CONTACTUS_ITEM_ERR_CAPTCHA');
 	}
 
 	/**
@@ -39,7 +131,7 @@ class Items extends DataModel
 
 		// Set up the sender
 		$fromemail = \JFactory::getConfig()->get('mailfrom');
-		$fromname = \JFactory::getConfig()->get('fromname');
+		$fromname  = \JFactory::getConfig()->get('fromname');
 		$mailer->setFrom($fromemail, $fromname);
 
 		// Set up the reply to address
@@ -100,7 +192,7 @@ class Items extends DataModel
 
 		// Set up the sender
 		$fromemail = \JFactory::getConfig()->get('mailfrom');
-		$fromname = \JFactory::getConfig()->get('fromname');
+		$fromname  = \JFactory::getConfig()->get('fromname');
 		$mailer->setFrom($fromemail, $fromname);
 
 		$mailer->addRecipient($this->fromemail);
@@ -120,16 +212,16 @@ class Items extends DataModel
 	/**
 	 * Pre-processes the text of the automatic reply, replacing variables in it.
 	 *
-	 * @param   string     $text      The original text
-	 * @param   DataModel  $category  The contact category of the received contact message
+	 * @param   string    $text     The original text
+	 * @param   DataModel $category The contact category of the received contact message
 	 *
 	 * @return  string  The processed message
 	 */
 	private function _preProcessAutoreply($text, DataModel $category)
 	{
 		$replacements = array(
-			'[SITENAME]'		=> \JFactory::getConfig()->get('sitename'),
-			'[CATEGORY]'		=> $category->title,
+			'[SITENAME]' => \JFactory::getConfig()->get('sitename'),
+			'[CATEGORY]' => $category->title,
 		);
 
 		$rawData = $this->getData();

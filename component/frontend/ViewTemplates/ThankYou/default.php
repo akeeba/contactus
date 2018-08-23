@@ -7,11 +7,14 @@
 
 defined('_JEXEC') or die();
 ?>
-<div class="jumbotron">
-	<h1>
-		<?php echo JText::_('COM_CONTACTUS_THANKYOU_MSG_HEADER') ?>
-	</h1>
-	<p>
+
+<div class="akeeba-panel--green">
+    <header class="akeeba-block-header">
+        <h1>
+		    <?php echo JText::_('COM_CONTACTUS_THANKYOU_MSG_HEADER') ?>
+        </h1>
+    </header>
+    <p>
 		<?php echo JText::_('COM_CONTACTUS_THANKYOU_MSG_BODY') ?>
-	</p>
+    </p>
 </div>
