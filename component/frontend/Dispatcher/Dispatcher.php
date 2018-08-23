@@ -5,7 +5,7 @@
  * @license        GNU General Public License version 3 or later
  */
 
-namespace Akeeba\ContactUs\Admin\Dispatcher;
+namespace Akeeba\ContactUs\Site\Dispatcher;
 
 defined('_JEXEC') or die();
 
@@ -33,12 +33,9 @@ class Dispatcher extends BaseDispatcher
 
 		// FEF Renderer options. Used to load the common CSS file.
 		$this->container->renderer->setOptions([
-			// Classic linkbar for drop-down menu display
-			'linkbar_style' => 'classic',
-			// Load custom CSS file, comma separated list
-			'custom_css'    => 'media://com_contactus/css/backend.css',
-			'load_fef'      => in_array( $useFEF, [ 2, 3 ] ),
-			'fef_reset'     => in_array( $fefReset, [ 2, 3 ] )
+			'load_fef'      => in_array( $useFEF, [ 1, 3 ] ),
+			'fef_reset'     => in_array( $fefReset, [ 1, 3 ] )
+			//'custom_css' => 'admin://components/com_datacompliance/media/css/frontend.min.css'
 		]);
 	}
 

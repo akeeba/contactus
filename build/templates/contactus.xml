@@ -24,8 +24,7 @@
 	<!-- Administrator back-end section -->
 	<administration>
 		<!-- Administration menu -->
-		<menu view="items"
-			  img="../media/com_contactus/images/contactus-16.png">COM_CONTACTUS</menu>
+		<menu view="Items">COM_CONTACTUS</menu>
 
 		<!-- Back-end files -->
 		<files folder="backend">
@@ -86,6 +85,7 @@
 
 	<!-- Media files -->
 	<media destination="com_contactus" folder="media">
+		<folder>css</folder>
 		<folder>images</folder>
 	</media>
 
