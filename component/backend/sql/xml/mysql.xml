@@ -1,3 +1,19 @@
+<schema>
+    <!-- Metadata -->
+    <meta>
+        <!-- Supported driver types -->
+        <drivers>
+            <driver>mysql</driver>
+            <driver>mysqli</driver>
+            <driver>pdomysql</driver>
+        </drivers>
+    </meta>
+
+    <!-- SQL commands to run on installation and update -->
+    <sql>
+        <action table="#__contactus_categories" canfail="0">
+            <condition type="missing" value="" />
+            <query><![CDATA[
 CREATE TABLE IF NOT EXISTS `#__contactus_categories` (
   `contactus_category_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL DEFAULT '',
@@ -15,8 +31,13 @@ CREATE TABLE IF NOT EXISTS `#__contactus_categories` (
   `locked_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `locked_by` bigint(20) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`contactus_category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT COLLATE=utf8_general_ci;
+            ]]></query>
+        </action>
 
+        <action table="#__contactus_items" canfail="0">
+            <condition type="missing" value="" />
+            <query><![CDATA[
 CREATE TABLE IF NOT EXISTS `#__contactus_items` (
   `contactus_item_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `contactus_category_id` bigint(20) NOT NULL,
@@ -33,4 +54,8 @@ CREATE TABLE IF NOT EXISTS `#__contactus_items` (
   `locked_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `locked_by` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`contactus_item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT COLLATE=utf8_general_ci;
+            ]]></query>
+        </action>
+    </sql>
+</schema>

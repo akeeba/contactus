@@ -9,6 +9,7 @@ namespace Akeeba\ContactUs\Admin\Dispatcher;
 
 defined('_JEXEC') or die();
 
+use FOF30\Database\Installer;
 use FOF30\Dispatcher\Dispatcher as BaseDispatcher;
 use FOF30\Dispatcher\Mixin\ViewAliases;
 
@@ -21,6 +22,7 @@ class Dispatcher extends BaseDispatcher
 	public function onBeforeDispatch()
 	{
 		$this->onBeforeDispatchViewAliases();
+		// $this->checkAndFixDatabase();
 
 		// Load the FOF language
 		$lang = $this->container->platform->getLanguage();
@@ -40,6 +42,27 @@ class Dispatcher extends BaseDispatcher
 			'load_fef'      => in_array( $useFEF, [ 2, 3 ] ),
 			'fef_reset'     => in_array( $fefReset, [ 2, 3 ] )
 		]);
+	}
+
+	/**
+	 * Checks the database for missing / outdated tables using the $dbChecks
+	 * data and runs the appropriate SQL scripts if necessary.
+	 *
+	 * @return  void
+	 */
+	private function checkAndFixDatabase()
+	{
+		$db = $this->container->platform->getDbo();
+
+		$dbInstaller = new Installer($db, JPATH_ADMINISTRATOR . '/components/com_contactus/sql/xml');
+
+		try
+		{
+			$dbInstaller->updateSchema();
+		}
+		catch (\Exception $e)
+		{
+		}
 	}
 
 }
