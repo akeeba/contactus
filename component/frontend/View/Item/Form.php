@@ -7,6 +7,8 @@
 
 namespace Akeeba\ContactUs\Site\View\Item;
 
+defined('_JEXEC') or die();
+
 use FOF30\View\DataView\Form as BaseView;
 
 class Form extends BaseView

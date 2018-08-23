@@ -7,6 +7,8 @@
 
 namespace Akeeba\ContactUs\Admin\Model;
 
+defined('_JEXEC') or die();
+
 use FOF30\Container\Container;
 use FOF30\Model\DataModel;
 
