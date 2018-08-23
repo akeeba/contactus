@@ -17,6 +17,7 @@
 		<folder>Controller</folder>
 		<folder>Model</folder>
 		<folder>View</folder>
+		<folder>ViewTemplates</folder>
 		<folder>views</folder>
 	</files>
 
@@ -69,6 +70,7 @@
 		<files folder="backend">
 			<folder>sql</folder>
 			<folder>View</folder>
+			<folder>ViewTemplates</folder>
 
 			<filename>access.xml</filename>
 			<filename>config.xml</filename>
@@ -83,4 +85,6 @@
 		</languages>
 
 	</administration>
+
+	<scriptfile>script.com_contactus.php</scriptfile>
 </extension>
