@@ -2,7 +2,7 @@
 <!--
  * @package		contactus
  * @copyright   Copyright (c)2013-2018 Nicholas K. Dionysopoulos / Akeeba Ltd
- * @license		GNU General Public License version 2 or later
+ * @license		GNU General Public License version 3 or later
 
 This file is necessary to instruct Joomla! never to create a menu item linking to
 this view. When is sees the hidden="true" attribute it will skip it when building
