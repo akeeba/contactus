@@ -33,6 +33,7 @@
 			<folder>Controller</folder>
 			<folder>Dispatcher</folder>
 			<folder>Model</folder>
+			<folder>vendor</folder>
 			<folder>View</folder>
 			<folder>ViewTemplates</folder>
 

@@ -25,6 +25,37 @@
 		</field>
 	</fieldset>
 
+	<fieldset name="gpg" label="COM_CONTACTUS_CONFIG_GPG_TITLE">
+		<field name="public_keys"
+			   type="repeatable"
+			   icon="list"
+			   label="COM_CONTACTUS_CONFIG_GPG_PUBLICKEYS_LABEL"
+			   description="COM_CONTACTUS_CONFIG_GPG_PUBLICKEYS_DESC"
+			   default="">
+
+			<field name="email"
+				   label="COM_CONTACTUS_CONFIG_GPG_PUBLICKEYS_EMAIL_LABEL"
+				   description="COM_CONTACTUS_CONFIG_GPG_PUBLICKEYS_EMAIL_DESC"
+				   size="30"
+				   type="text" />
+
+			<field name="key"
+				   label="COM_CONTACTUS_CONFIG_GPG_PUBLICKEYS_KEY_LABEL"
+				   description="COM_CONTACTUS_CONFIG_GPG_PUBLICKEYS_KEY_DESC"
+				   size="30"
+				   type="text" />
+
+		</field>
+
+		<field name="signingkey"
+			   type="text"
+			   size="30"
+			   label="COM_CONTACTUS_CONFIG_GPG_SIGNINGKEY_LABEL"
+			   description="COM_CONTACTUS_CONFIG_GPG_SIGNINGKEY_DESC"
+			   default=""
+			   />
+	</fieldset>
+
 	<fieldset
 		name="permissions"
 		label="JCONFIG_PERMISSIONS_LABEL"

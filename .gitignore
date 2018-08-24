@@ -8,6 +8,7 @@
 /build/override.properties
 
 /component/*.xml
+/component/backend/vendor
 
 /release
 

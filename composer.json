@@ -1,0 +1,18 @@
+{
+  "name": "akeeba/contactus",
+  "description": "A simple contact form component for Joomla!",
+  "license": "gpl3+",
+  "authors": [
+    {
+      "name": "Nicholas K. Dionysopoulos",
+      "email": "nicholasNOSPAM@akeebabackup.com"
+    }
+  ],
+  "config": {
+    "vendor-dir": "component/backend/vendor"
+  },
+  "require": {
+    "php": "^5.6 || ^7.0",
+    "singpolyma/openpgp-php": "dev-master"
+  }
+}
