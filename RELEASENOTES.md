@@ -10,3 +10,5 @@ Akeeba Contact Us should be compatible with:
 
 ## Changelog
 
+* License change to GPLv3 or later.
+* Converted interface to use Akeeba Frontend Framework (FEF).
