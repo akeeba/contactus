@@ -5,9 +5,8 @@ We are developing, testing and using Akeeba Contact Us using the latest version 
 * PHP 7.0
 
 Akeeba Contact Us should be compatible with:
-* Joomla! 3.4, 3.5, 3.6, 3.7
-* PHP 5.4, 5.5, 5.6, 7.0, 7.1.
+* Joomla! 3.4, 3.5, 3.6, 3.7, 3.8
+* PHP 5.4, 5.5, 5.6, 7.0, 7.1, 7.2
 
 ## Changelog
 
-First release with a version number.

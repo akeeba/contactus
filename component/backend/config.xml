@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-	@package	contactus
-	@copyright	Copyright (c)2013-2017 Nicholas K. Dionysopoulos / AkeebaBackup.com
-	@license	GNU General Public License version 2 or later
+ * @package		contactus
+ * @copyright   Copyright (c)2013-2018 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @license		GNU General Public License version 3 or later
 -->
 <config>
+	<fieldset name="layout" label="COM_CONTACTUS_CONFIG_LAYOUT_TITLE">
+		<field name="load_fef" type="list" default="3"
+			   label="COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF"
+			   description="COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF_DESC">
+			<option value="0">COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF_NEVER</option>
+			<option value="1">COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF_FRONTEND</option>
+			<option value="2">COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF_BACKEND</option>
+			<option value="3">COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF_BOTH</option>
+		</field>
+
+		<field name="fef_reset" type="list" default="3"
+			   label="COM_CONTACTUS_CONFIG_LAYOUT_FEF_RESET"
+			   description="COM_CONTACTUS_CONFIG_LAYOUT_FEF_RESET_DESC">
+			<option value="0">COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF_NEVER</option>
+			<option value="1">COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF_FRONTEND</option>
+			<option value="2">COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF_BACKEND</option>
+			<option value="3">COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF_BOTH</option>
+		</field>
+	</fieldset>
+
 	<fieldset
 		name="permissions"
 		label="JCONFIG_PERMISSIONS_LABEL"
@@ -19,29 +39,5 @@
 			filter="rules"
 			component="com_contactus"
 			section="component" />
-	</fieldset>
-	<fieldset
-		name="frontend"
-		label="COM_CONTACTUS_CONFIG_SECTION_FRONTEND_LABEL"
-		description="COM_CONTACTUS_CONFIG_SECTION_FRONTEND_DESC"
-		>
-
-		<field
-			name="default_subject"
-			type="text"
-			default=""
-			label="COM_CONTACTUS_CONFIG_DEFAULT_SUBJECT_LABEL"
-			description="COM_CONTACTUS_CONFIG_DEFAULT_SUBJECT_DESC"
-		/>
-
-		<field
-			name="default_body"
-			type="editor"
-			default=""
-			label="COM_CONTACTUS_CONFIG_DEFAULT_SUBJECT_LABEL"
-			description="COM_CONTACTUS_CONFIG_DEFAULT_SUBJECT_DESC"
-			filter="safehtml"
-		/>
-
-	</fieldset>
+	</fieldset>	
 </config>

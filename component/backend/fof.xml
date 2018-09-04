@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-	@package	contactus
-	@copyright	Copyright (c)2013-2017 Nicholas K. Dionysopoulos / AkeebaBackup.com
-	@license	GNU General Public License version 2 or later
+ * @package		contactus
+ * @copyright   Copyright (c)2013-2018 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @license		GNU General Public License version 3 or later
 -->
 <fof>
 	<!-- Common settings -->
 	<common>
 		<container>
 			<option name="componentNamespace">Akeeba\ContactUs</option>
-			<option name="factoryClass">FOF30\Factory\MagicFactory</option>
+			<option name="factoryClass">FOF30\Factory\BasicFactory</option>
 			<option name="scaffolding">0</option>
+			<option name="rendererClass">FOF30\Render\FEF</option>
 		</container>
-		<model name="Items">
-			<relation type="belongsTo" name="category"
-					  foreignModelClass="Categories" />
-		</model>
 	</common>
 
 	<!-- Component back-end options -->
@@ -24,19 +21,10 @@
 		<dispatcher>
 			<option name="defaultView">Items</option>
 		</dispatcher>
-		<!-- Common Model options -->
-		<model name="*">
-			<behaviors merge="1">Filters</behaviors>
-		</model>
 	</backend>
 	
 	<!-- Component front-end options -->
 	<frontend>
-        <container>
-            <option name="factoryClass">FOF30\Factory\BasicFactory</option>
-        </container>
-
-
         <!-- Dispatcher options -->
 		<dispatcher>
 			<option name="defaultView">Item</option>

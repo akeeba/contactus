@@ -10,6 +10,8 @@ It lets you add a very simple contact form on your site. Each contact category c
 
 Pre-built packages of Akeeba Release System are made available through [our GitHub repository's Releases page](https://github.com/akeeba/contactus/releases).
 
+Akeeba Contact Us comes with English (Great Britain) language built-in. Installation packages for other languages are available [on our language download page](https://cdn.akeebabackup.com/language/contact-us/index.html).
+
 ## No support - For developers only
 
 This software is provided **WITHOUT ANY KIND OF SUPPORT WHATSOEVER**. It's also too simple to even have any kind of documentation whatsoever.
@@ -30,6 +32,7 @@ You will also need the following path structure inside a folder on your system
 * **contactus** This repository
 * **buildfiles** [Akeeba Build Tools](https://github.com/akeeba/buildfiles)
 * **fof3** [Framework on Framework 3.x](https://github.com/akeeba/fof)
+* **fef** [Akeeba FEF](https://github.com/akeeba/fef) (optional, use -Dversion=0.0.0 when building to pull thelatest published version)
 
 You will need to use the exact folder names specified here.
 

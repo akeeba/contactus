@@ -1,11 +1,13 @@
 <?php
 /**
  * @package		contactus
- * @copyright	Copyright (c)2013-2017 Nicholas K. Dionysopoulos / AkeebaBackup.com
- * @license		GNU General Public License version 2 or later
+ * @copyright   Copyright (c)2013-2018 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @license		GNU General Public License version 3 or later
  */
 
 namespace Akeeba\ContactUs\Site\View\ThankYou;
+
+defined('_JEXEC') or die();
 
 use FOF30\View\DataView\Html as BaseView;
 

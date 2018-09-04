@@ -1,10 +1,14 @@
-# 1.1.1
+# 2.0.0
 
-* Version is 1.1.1 instead of 1.1.0 because of unfortunate SQL file naming back in 2013
-* Post as ATS ticket when possible (configurable per contact category)
-* Always use the Joomla user record's full name and email address for logged in users
-* Don't show the name / email fields to logged in users
-* Put a default subject / body text to help get the message across.
+* License change to GPLv3 or later.
+* Converted interface to use Akeeba Frontend Framework (FEF).
+
+# 1.0.1
+
+* Workaround for Joomla! Backup 16147 (https://github.com/joomla/joomla-cms/issues/16147) - Cannot access component after installation when cache is enabled
+* gh-10 Pre-fill form using query string parameters
+* gh-11 Pre-fill user name and email address
+* gh-12 Remember the contact form data if an error occurs
 
 # 1.0.0
 

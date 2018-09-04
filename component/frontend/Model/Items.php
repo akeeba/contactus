@@ -1,65 +1,124 @@
 <?php
 /**
- * @package		contactus
- * @copyright	Copyright (c)2013-2017 Nicholas K. Dionysopoulos / AkeebaBackup.com
- * @license		GNU General Public License version 2 or later
+ * @package        contactus
+ * @copyright      Copyright (c)2013-2018 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @license        GNU General Public License version 3 or later
  */
 
 namespace Akeeba\ContactUs\Site\Model;
 
-use Akeeba\TicketSystem\Admin\Helper\Permissions;
-use Akeeba\TicketSystem\Site\Model\Posts;
-use Akeeba\TicketSystem\Site\Model\Tickets;
-use FOF30\Container\Container;
-use FOF30\Model\DataModel;
-use JUser;
-use RuntimeException;
+defined('_JEXEC') or die();
 
+use FOF30\Model\DataModel;
+use FOF30\Model\Mixin\Assertions;
+use Joomla\CMS\Application\SiteApplication;
+use Joomla\CMS\Captcha\Captcha;
+use Joomla\CMS\Factory;
+
+/**
+ * Model Akeeba\ContactUs\Admin\Model\Items
+ *
+ * Fields:
+ *
+ * @property  int     $contactus_item_id
+ * @property  int     $contactus_category_id
+ * @property  string  $fromname
+ * @property  string  $fromemail
+ * @property  string  $subject
+ * @property  string  $body
+ * @property  string  $token
+ *
+ * Filters:
+ *
+ * @method  $this  contactus_item_id()      contactus_item_id(int $v)
+ * @method  $this  contactus_category_id()  contactus_category_id(int $v)
+ * @method  $this  fromname()               fromname(string $v)
+ * @method  $this  fromemail()              fromemail(string $v)
+ * @method  $this  subject()                subject(string $v)
+ * @method  $this  body()                   body(string $v)
+ * @method  $this  enabled()                enabled(bool $v)
+ * @method  $this  token()                  token(string $v)
+ * @method  $this  created_on()             created_on(string $v)
+ * @method  $this  created_by()             created_by(int $v)
+ * @method  $this  modified_on()            modified_on(string $v)
+ * @method  $this  modified_by()            modified_by(int $v)
+ * @method  $this  locked_on()              locked_on(string $v)
+ * @method  $this  locked_by()              locked_by(int $v)
+ *
+ * Relations:
+ *
+ * @property  Categories  $category
+ *
+ **/
 class Items extends DataModel
 {
+	use Assertions;
+
 	/** @var   bool  Did we save the record successfully? Used by the controller for conditional redirection to the Thank You page. */
 	public $saveSuccessful = false;
 
-	protected function onBeforeCheck()
+	/**
+	 * Get the Joomla! CAPTCHA object
+	 *
+	 * @param   string  $namespace
+	 *
+	 * @return  Captcha|null
+	 */
+	public function getCaptchaObject($namespace = 'contactus')
 	{
-		$user = $this->container->platform->getUser();
-
-		if (!$user->guest)
+		try
 		{
-			$this->fromname = $user->name;
-			$this->fromemail = $user->email;
+			/** @var SiteApplication $app */
+			$app = Factory::getApplication();
 		}
+		catch (\Exception $e)
+		{
+			return null;
+		}
+
+		$plugin = $app->getParams()->get('captcha', $app->get('captcha'));
+
+		if ($plugin === 0 || $plugin === '0' || $plugin === '' || $plugin === null)
+		{
+			return null;
+		}
+
+		return Captcha::getInstance($plugin, array('namespace' => $namespace));
 	}
+
 
 	/**
 	 * This method is only called after a record is saved. We will hook on it
 	 * to send an email to the address specified in the category.
 	 *
-	 * @return  bool
+	 * @return  void
 	 */
 	protected function onAfterSave()
 	{
 		$this->saveSuccessful = true;
+		$this->_sendEmailToAdministrators();
+		$this->_sendEmailToUser();
+	}
 
-		// Load the category and get the ATS ticket category
-		/** @var DataModel $category */
-		$category = $this->container->factory->model('Categories')->tmpInstance();
-		$category->findOrFail($this->contactus_category_id);
-		$atsCategoryID = $category->ticketcategory;
+	/**
+	 * Perform the form validation checks
+	 */
+	protected function onBeforeCheck()
+	{
+		$this->assertNotEmpty($this->contactus_category_id, 'COM_CONTACTUS_ITEM_ERR_CATEGORY_EMPTY');
+		$this->assertNotEmpty($this->fromname, 'COM_CONTACTUS_ITEM_ERR_FROMNAME_EMPTY');
+		$this->assertNotEmpty($this->fromemail, 'COM_CONTACTUS_ITEM_ERR_FROMEMAIL_EMPTY');
+		$this->assertNotEmpty($this->subject, 'COM_CONTACTUS_ITEM_ERR_SUBJECT_EMPTY');
+		$this->assertNotEmpty($this->body, 'COM_CONTACTUS_ITEM_ERR_BODY_EMPTY');
 
-		try
+		$captcha = $this->getCaptchaObject();
+
+		if (is_null($captcha))
 		{
-			// Try to file a ticket instead of sending emails
-			$this->createTicket($atsCategoryID, $this->subject, $this->body, $this->fromemail);
-		}
-		catch (\Exception $e)
-		{
-			// If I couldn't file a ticket, send emails
-			$this->_sendEmailToAdministrators();
-			$this->_sendEmailToUser();
+			return;
 		}
 
-		return true;
+		$this->assert($captcha->checkAnswer($this->input->get('captcha', '', 'raw')), 'COM_CONTACTUS_ITEM_ERR_CAPTCHA');
 	}
 
 	/**
@@ -72,7 +131,7 @@ class Items extends DataModel
 
 		// Set up the sender
 		$fromemail = \JFactory::getConfig()->get('mailfrom');
-		$fromname = \JFactory::getConfig()->get('fromname');
+		$fromname  = \JFactory::getConfig()->get('fromname');
 		$mailer->setFrom($fromemail, $fromname);
 
 		// Set up the reply to address
@@ -133,7 +192,7 @@ class Items extends DataModel
 
 		// Set up the sender
 		$fromemail = \JFactory::getConfig()->get('mailfrom');
-		$fromname = \JFactory::getConfig()->get('fromname');
+		$fromname  = \JFactory::getConfig()->get('fromname');
 		$mailer->setFrom($fromemail, $fromname);
 
 		$mailer->addRecipient($this->fromemail);
@@ -153,16 +212,16 @@ class Items extends DataModel
 	/**
 	 * Pre-processes the text of the automatic reply, replacing variables in it.
 	 *
-	 * @param   string     $text      The original text
-	 * @param   DataModel  $category  The contact category of the received contact message
+	 * @param   string    $text     The original text
+	 * @param   DataModel $category The contact category of the received contact message
 	 *
 	 * @return  string  The processed message
 	 */
 	private function _preProcessAutoreply($text, DataModel $category)
 	{
 		$replacements = array(
-			'[SITENAME]'		=> \JFactory::getConfig()->get('sitename'),
-			'[CATEGORY]'		=> $category->title,
+			'[SITENAME]' => \JFactory::getConfig()->get('sitename'),
+			'[CATEGORY]' => $category->title,
 		);
 
 		$rawData = $this->getData();
@@ -178,106 +237,5 @@ class Items extends DataModel
 		}
 
 		return $text;
-	}
-
-	/**
-	 * Try to create an ATS ticket from the contact form. Throws an exception if that fails or there is no user with
-	 * this email address registered on our site.
-	 *
-	 * @param $atsCategoryID
-	 * @param $subject
-	 * @param $body
-	 * @param $email
-	 */
-	private function createTicket($atsCategoryID, $subject, $body, $email)
-	{
-		if (empty($atsCategoryID))
-		{
-			throw new RuntimeException("No ATS category specified");
-		}
-
-		// Find a user by this email address
-		$user = $this->getUserByEmail($email);
-
-		if (empty($user) || !is_object($user) || !($user instanceof JUser))
-		{
-			throw new RuntimeException("Cannot find a user for email address $email");
-		}
-
-		// Get the ATS container
-		$atsContainer = Container::getInstance('com_ats');
-
-		// Does the category exist?
-		/** @var \Akeeba\TicketSystem\Site\Model\Categories $category */
-		$category = $atsContainer->factory->model('Categories')->tmpInstance();
-		$category->findOrFail($atsCategoryID);
-
-		// Get ACL permissions
-		$perms = Permissions::getAclPrivileges($atsCategoryID, $user->id);
-
-		// Can I post to the category?
-		if (!$perms['core.create'])
-		{
-			throw new RuntimeException("User {$user->username} cannot post to category {$category->title}");
-		}
-
-		$ticketData = [
-			'title'      => $subject . " [Contact form]",
-			'status'     => 'O',
-			'origin'     => 'web',
-			'priority'   => 5,
-			'public'     => 0,
-			'created_by' => $user->id,
-			'catid'      => $atsCategoryID,
-		];
-
-		$postData = [
-			'content'      => '',
-			'content_html' => $body,
-			'origin'       => 'web',
-			'enabled'      => 1,
-			'created_by'   => $user->id,
-		];
-
-		// --- Create the ticket
-		/** @var Tickets $ticketModel */
-		$ticketModel = $atsContainer->factory->model('Tickets')->tmpInstance();
-		/** @var Posts $postModel */
-		$postModel = $atsContainer->factory->model('Posts')->tmpInstance();
-
-		$ticketModel->save($ticketData);
-
-		$ats_ticket_id             = $ticketModel->getId();
-		$postData['ats_ticket_id'] = $ats_ticket_id;
-		$postModel->save($postData);
-	}
-
-	private function getUserByEmail($email)
-	{
-		try
-		{
-			// Force load the JUser class
-			class_exists('JUser', true);
-
-			$email = trim($email);
-			$db    = $this->container->db;
-			$query = $db->getQuery(true)
-				->select($db->qn('id'))
-				->from($db->qn('#__users'))
-				->where($db->qn('email') . ' = ' . $db->q($email));
-
-			$id = $db->setQuery($query)->loadResult();
-
-			if (empty($id))
-			{
-				return null;
-			}
-
-			return \JFactory::getUser($id);
-		}
-		catch (\Exception $e)
-		{
-			return null;
-		}
 	}
 }
