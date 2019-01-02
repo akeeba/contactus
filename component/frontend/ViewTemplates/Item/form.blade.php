@@ -1,8 +1,8 @@
 <?php
 /**
- * @package        contactus
- * @copyright      Copyright (c)2013-2018 Nicholas K. Dionysopoulos / Akeeba Ltd
- * @license        GNU General Public License version 3 or later
+ * @package    contactus
+ * @copyright  Copyright (c)2013-2019 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @license    GNU General Public License version 3 or later
  */
 
 use FOF30\Utils\FEFHelper\BrowseView;

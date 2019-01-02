@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
- * @package		contactus
- * @copyright   Copyright (c)2013-2018 Nicholas K. Dionysopoulos / Akeeba Ltd
- * @license		GNU General Public License version 3 or later
+  ~ @package    contactus
+  ~ @copyright  Copyright (c)2013-2019 Nicholas K. Dionysopoulos / Akeeba Ltd
+  ~ @license    GNU General Public License version 3 or later
+  -->
 
-This file is necessary to help Joomla! understand how to create menu items to our
-view. The <default> element tells Joomla! to create a menu item for this component
-(com_contactus) and view (items), without any other parameters.
-
+<!--
 The name attribute contains the language string of the menu item type title, displayed
 in the Joomla! back-end when creating a menu item. The msg attribute contains the
 language string of the menu item type description, displayed on the same page as the
 title. Both language strings are located in the back-end .sys.ini translation file.
 -->
+
 <metadata>
     <view>
         <options>
