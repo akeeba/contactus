@@ -93,12 +93,12 @@ $model = $this->getModel();
                 @jhtml('FEFHelper.browse.id', ++$i, $row->getId())
             </td>
             <td>
-                <a href="@route(BrowseView::parseFieldTags('index.php?option=com_contactus&view=Item&task=edit&id=[ITEM:ID]', $row))">
+                <a href="@route(BrowseView::parseFieldTags('index.php?option=com_contactus&view=Items&task=edit&id=[ITEM:ID]', $row))">
                     {{{ $row->fromname }}}
                 </a>
             </td>
             <td>
-                <a href="@route(BrowseView::parseFieldTags('index.php?option=com_contactus&view=Item&task=edit&id=[ITEM:ID]', $row))">
+                <a href="@route(BrowseView::parseFieldTags('index.php?option=com_contactus&view=Items&task=edit&id=[ITEM:ID]', $row))">
                     {{{ $row->fromemail }}}
                 </a>
             </td>
@@ -109,7 +109,7 @@ $model = $this->getModel();
                 {{{  BrowseView::modelOptionName($row->contactus_category_id, 'Categories') }}}
             </td>
             <td>
-                <a href="@route(BrowseView::parseFieldTags('index.php?option=com_contactus&view=Item&task=edit&id=[ITEM:ID]', $row))">
+                <a href="@route(BrowseView::parseFieldTags('index.php?option=com_contactus&view=Items&task=edit&id=[ITEM:ID]', $row))">
                     {{{ $row->subject }}}
                 </a>
             </td>
