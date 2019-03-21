@@ -9,8 +9,16 @@ namespace Akeeba\ContactUs\Site\Model;
 
 defined('_JEXEC') or die();
 
-use FOF30\Model\DataModel;
+use Akeeba\ContactUs\Admin\Model\Categories as AdminCategories;
+use FOF30\Container\Container;
 
-class Categories extends DataModel
+class Categories extends AdminCategories
 {
+	public function __construct(Container $container, array $config = [])
+	{
+		parent::__construct($container, $config);
+
+		$this->addBehaviour('language');
+	}
+
 }
