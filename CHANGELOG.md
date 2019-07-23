@@ -1,3 +1,15 @@
+# 2.0.1
+
+**New features**
+
+* Protection of all component and plugin folders against direct web access
+* Support language filtering in the frontend
+
+**Bug fixes**
+
+* Backend category controller was missing
+* FEF was not included in the package
+
 # 2.0.0
 
 * License change to GPLv3 or later.
