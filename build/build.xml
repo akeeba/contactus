@@ -20,6 +20,7 @@
 		<include name="media/**" />
 
 		<include name="LICENSE.txt" />
+		<include name="script.com_contactus.php" />
 		<include name="*.xml" />
 	</fileset>
 
