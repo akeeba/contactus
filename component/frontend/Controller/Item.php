@@ -90,7 +90,14 @@ class Item extends DataController
 
 		if ($model->saveSuccessful)
 		{
-			$this->setRedirect(\JRoute::_('index.php?option=com_contactus&view=ThankYou'));
+			$url = 'index.php?option=com_contactus&view=ThankYou';
+
+			if ($model->isSpam)
+			{
+				$url .= '&layout=spammer';
+			}
+
+			$this->setRedirect(\JRoute::_($url));
 
 			// Unset data from the session
 			foreach (self::$savedFields as $fieldName)

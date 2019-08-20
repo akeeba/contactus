@@ -9,6 +9,7 @@ namespace Akeeba\ContactUs\Site\Model;
 
 defined('_JEXEC') or die();
 
+use Akeeba\ContactUs\Site\Helper\Akismet;
 use FOF30\Model\DataModel;
 use FOF30\Model\Mixin\Assertions;
 use Joomla\CMS\Application\SiteApplication;
@@ -58,6 +59,13 @@ class Items extends DataModel
 	public $saveSuccessful = false;
 
 	/**
+	 * Was the message believed to be spam when saving it?
+	 *
+	 * @var bool
+	 */
+	public $isSpam = false;
+
+	/**
 	 * Get the Joomla! CAPTCHA object
 	 *
 	 * @param   string  $namespace
@@ -95,8 +103,17 @@ class Items extends DataModel
 	 */
 	protected function onAfterSave()
 	{
+		$apiKey = $this->container->params->get('akismet_api_key', '');
+
 		$this->saveSuccessful = true;
-		$this->_sendEmailToAdministrators();
+		$this->isSpam = Akismet::isSpamContent($apiKey, $this->fromname, $this->fromemail, $this->body);
+
+		// Don't email the admins if it's spam.
+		if (!$this->isSpam)
+		{
+			$this->_sendEmailToAdministrators();
+		}
+
 		$this->_sendEmailToUser();
 	}
 

@@ -23,6 +23,12 @@
 			<option value="2">COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF_BACKEND</option>
 			<option value="3">COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF_BOTH</option>
 		</field>
+
+		<field name="akismet_api_key" type="text" default="" size="50"
+			   label="COM_CONTACTUS_CONFIG_AKISMET_API_KEY_LABEL"
+			   description="COM_CONTACTUS_CONFIG_AKISMET_API_KEY_DESC"
+			   class="input-xxlarge"/>
+
 	</fieldset>
 
 	<fieldset

@@ -1,3 +1,9 @@
+# 2.1.0
+
+**New features**
+
+* gh-15 Akismet support 
+
 # 2.0.1
 
 **New features**
