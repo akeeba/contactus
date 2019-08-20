@@ -3,6 +3,7 @@
 **New features**
 
 * gh-15 Akismet support 
+* Set default backend Items ordering to ID descending (new messages first)
 
 # 2.0.1
 

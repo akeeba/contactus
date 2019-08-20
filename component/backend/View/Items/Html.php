@@ -8,6 +8,7 @@
 namespace Akeeba\ContactUs\Admin\View\Items;
 
 use FOF30\Date\Date;
+use FOF30\Model\DataModel;
 use FOF30\View\DataView\Html as BaseView;
 use Joomla\CMS\Factory;
 
@@ -15,6 +16,18 @@ defined('_JEXEC') or die();
 
 class Html extends BaseView
 {
+	protected function onBeforeBrowse()
+	{
+		parent::onBeforeBrowse();
+
+		/** @var DataModel $model */
+		$model = $this->getModel();
+
+		$this->lists->order = $model->getState('filter_order', $model->getIdFieldName(), 'cmd');
+		$this->lists->order_Dir = $model->getState('filter_order_Dir', 'DESC', 'cmd');
+	}
+
+
 	/**
 	 * Format a date for display.
 	 *
