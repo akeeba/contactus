@@ -7,6 +7,18 @@
 
 defined('_JEXEC') or die();
 
+define('AKEEBA_COMMON_WRONGPHP', 1);
+$minPHPVersion         = '5.4.0';
+$recommendedPHPVersion = '7.3';
+$softwareName          = 'Contact Us';
+
+if (!require_once(JPATH_COMPONENT_ADMINISTRATOR . '/ViewTemplates/Common/wrongphp.php'))
+{
+	echo 'Your PHP version is too old for this component.';
+
+	return;
+}
+
 // Load FOF 3
 if (!defined('FOF30_INCLUDED') && !@include_once(JPATH_LIBRARIES . '/fof30/include.php'))
 {
