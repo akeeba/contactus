@@ -4,6 +4,7 @@
 
 * gh-15 Akismet support 
 * Set default backend Items ordering to ID descending (new messages first)
+* Common PHP version warning scripts
 
 # 2.0.1
 

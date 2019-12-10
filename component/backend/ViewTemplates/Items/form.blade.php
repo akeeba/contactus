@@ -21,6 +21,11 @@ defined('_JEXEC') or die();
 $item = $this->item;
 
 ?>
+@include('admin:com_contactus/Common/phpversion_warning', [
+	'softwareName'  => 'Contact Us!',
+	'minPHPVersion' => '5.4.0',
+])
+
 @extends('admin:com_contactus/Common/edit')
 
 @section('edit-form-body')

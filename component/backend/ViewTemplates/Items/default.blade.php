@@ -21,6 +21,10 @@ defined('_JEXEC') or die();
 $model = $this->getModel();
 
 ?>
+@include('admin:com_contactus/Common/phpversion_warning', [
+	'softwareName'  => 'Contact Us!',
+	'minPHPVersion' => '5.4.0',
+])
 
 @extends('admin:com_contactus/Common/browse')
 
