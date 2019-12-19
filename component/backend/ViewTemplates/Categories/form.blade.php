@@ -55,7 +55,7 @@ $item = $this->item;
             <label for="language">
                 @fieldtitle('language')
             </label>
-            {{ BrowseView::genericSelect('language', \FOF30\Utils\SelectOptions::getOptions('languages', ['none' => 'COM_AKEEBASUBS_EMAILTEMPLATES_FIELD_LANGUAGE_ALL']), $item->language, ['fof.autosubmit' => false, 'translate' => false]) }}
+            {{ BrowseView::genericSelect('language', \FOF30\Utils\SelectOptions::getOptions('languages', ['none' => 'COM_CONTACTUS_CATEGORIES_FIELD_LANGUAGE_NONE']), $item->language, ['fof.autosubmit' => false, 'translate' => false]) }}
         </div>
 
         <div class="akeeba-form-group">

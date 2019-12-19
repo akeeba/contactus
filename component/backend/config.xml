@@ -15,13 +15,40 @@
 			<option value="3">COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF_BOTH</option>
 		</field>
 
+		<field name="load_fef" type="list" default="3"
+			   label="COM_CONTACTUS_CONFIG_BACKEND_LOAD_FEF"
+			   description="COM_CONTACTUS_CONFIG_BACKEND_LOAD_FEF_DESC">
+			<option value="0">COM_CONTACTUS_CONFIG_BACKEND_LOAD_FEF_NEVER</option>
+			<option value="1">COM_CONTACTUS_CONFIG_BACKEND_LOAD_FEF_FRONTEND</option>
+			<option value="2">COM_CONTACTUS_CONFIG_BACKEND_LOAD_FEF_BACKEND</option>
+			<option value="3">COM_CONTACTUS_CONFIG_BACKEND_LOAD_FEF_BOTH</option>
+		</field>
+
 		<field name="fef_reset" type="list" default="3"
-			   label="COM_CONTACTUS_CONFIG_LAYOUT_FEF_RESET"
-			   description="COM_CONTACTUS_CONFIG_LAYOUT_FEF_RESET_DESC">
-			<option value="0">COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF_NEVER</option>
-			<option value="1">COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF_FRONTEND</option>
-			<option value="2">COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF_BACKEND</option>
-			<option value="3">COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF_BOTH</option>
+			   label="COM_CONTACTUS_CONFIG_BACKEND_FEF_RESET"
+			   description="COM_CONTACTUS_CONFIG_BACKEND_FEF_RESET_DESC">
+			<option value="0">COM_CONTACTUS_CONFIG_BACKEND_LOAD_FEF_NEVER</option>
+			<option value="1">COM_CONTACTUS_CONFIG_BACKEND_LOAD_FEF_FRONTEND</option>
+			<option value="2">COM_CONTACTUS_CONFIG_BACKEND_LOAD_FEF_BACKEND</option>
+			<option value="3">COM_CONTACTUS_CONFIG_BACKEND_LOAD_FEF_BOTH</option>
+		</field>
+
+		<field name="dark_mode_backend" type="radio" default="-1"
+			   label="COM_CONTACTUS_CONFIG_BACKEND_DARKMODE_BACKEND_LABEL"
+			   description="COM_CONTACTUS_CONFIG_BACKEND_DARKMODE_BACKEND_DESC"
+			   class="switcher btn-group">
+			<option value="-1">COM_CONTACTUS_CONFIG_BACKEND_DARKMODE_AUTO</option>
+			<option value="0">COM_CONTACTUS_CONFIG_BACKEND_DARKMODE_NEVER</option>
+			<option value="1">COM_CONTACTUS_CONFIG_BACKEND_DARKMODE_ALWAYS</option>
+		</field>
+
+		<field name="dark_mode_frontend" type="radio" default="-1"
+			   label="COM_CONTACTUS_CONFIG_BACKEND_DARKMODE_FRONTEND_LABEL"
+			   description="COM_CONTACTUS_CONFIG_BACKEND_DARKMODE_FRONTEND_DESC"
+			   class="switcher btn-group">
+			<option value="-1">COM_CONTACTUS_CONFIG_BACKEND_DARKMODE_AUTO</option>
+			<option value="0">COM_CONTACTUS_CONFIG_BACKEND_DARKMODE_NEVER</option>
+			<option value="1">COM_CONTACTUS_CONFIG_BACKEND_DARKMODE_ALWAYS</option>
 		</field>
 
 		<field name="akismet_api_key" type="text" default="" size="50"
