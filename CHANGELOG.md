@@ -7,6 +7,10 @@
 * Common PHP version warning scripts
 * Dark Mode
 
+**Bug fixes**
+
+* Unpublished contact categories were displayed in the frontend
+
 # 2.0.1
 
 **New features**

@@ -34,6 +34,7 @@ $captcha = $this->getCaptchaField();
                 'filter_order_Dir' => 'asc',
                 'limit' => 100,
                 'limitstart' => 0,
+                'enabled' => 1,
             ]) }}
         </div>
 
