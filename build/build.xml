@@ -1,5 +1,11 @@
 <?xml version="1.0"?>
 <!--
+  ~ @package    contactus
+  ~ @copyright  Copyright (c)2013-2020 Nicholas K. Dionysopoulos / Akeeba Ltd
+  ~ @license    GNU General Public License version 3 or later
+  -->
+
+<!--
 	ContactUs build file for Phing
 	written by Nicholas K. Dionysopoulos
 	

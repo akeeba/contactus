@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ @package    contactus
+  ~ @copyright  Copyright (c)2013-2020 Nicholas K. Dionysopoulos / Akeeba Ltd
+  ~ @license    GNU General Public License version 3 or later
+  -->
+
 <extension version="2.5" type="component" method="upgrade">
 	<name>Contactus</name>
 	<creationDate>##DATE##</creationDate>
