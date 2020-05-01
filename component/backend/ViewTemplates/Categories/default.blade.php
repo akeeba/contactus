@@ -22,7 +22,7 @@ $model = $this->getModel();
 
 ?>
 
-@extends('admin:com_contactus/Common/browse')
+@extends('any:lib_fof30/Common/browse')
 
 @section('browse-filters')
     <div class="akeeba-filter-element akeeba-form-group">

@@ -6,6 +6,7 @@
 * Set default backend Items ordering to ID descending (new messages first)
 * Common PHP version warning scripts
 * Dark Mode
+* Joomla 4 compatible
 
 **Bug fixes**
 

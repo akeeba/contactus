@@ -22,7 +22,7 @@ class Dispatcher extends BaseDispatcher
 	public function onBeforeDispatch()
 	{
 		$this->onBeforeDispatchViewAliases();
-		// $this->checkAndFixDatabase();
+		$this->checkAndFixDatabase();
 
 		// Load the FOF language
 		$lang = $this->container->platform->getLanguage();

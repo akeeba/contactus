@@ -26,7 +26,7 @@ $model = $this->getModel();
 	'minPHPVersion' => '5.4.0',
 ])
 
-@extends('admin:com_contactus/Common/browse')
+@extends('any:lib_fof30/Common/browse')
 
 @section('browse-filters')
     <div class="akeeba-filter-element akeeba-form-group">

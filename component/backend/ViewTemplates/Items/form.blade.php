@@ -26,7 +26,7 @@ $item = $this->item;
 	'minPHPVersion' => '5.4.0',
 ])
 
-@extends('admin:com_contactus/Common/edit')
+@extends('any:lib_fof30/Common/edit')
 
 @section('edit-form-body')
 

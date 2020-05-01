@@ -21,7 +21,7 @@ defined('_JEXEC') or die();
 $item = $this->item;
 
 ?>
-@extends('admin:com_contactus/Common/edit')
+@extends('any:lib_fof30/Common/edit')
 
 @section('edit-form-body')
 

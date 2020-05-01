@@ -70,6 +70,10 @@ class Com_ContactusInstallerScript extends \FOF30\Utils\InstallScript
 			'administrator/components/com_contactus/View/Categories/tmpl',
 			'administrator/components/com_contactus/View/Items/tmpl',
 			'administrator/components/com_contactus/View/Item/tmpl',
+
+			'administrator/components/com_contactus/ViewTemplates/Common/browse.blade.php',
+			'administrator/components/com_contactus/ViewTemplates/Common/edit.blade.php',
+
 		)
 	);
 
