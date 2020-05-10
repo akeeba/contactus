@@ -2,7 +2,8 @@
 
 **New features**
 
-* gh-15 Akismet support 
+* Optional GPG encryption of outgoing emails
+* gh-15 Akismet support  
 * Set default backend Items ordering to ID descending (new messages first)
 * Common PHP version warning scripts
 * Dark Mode

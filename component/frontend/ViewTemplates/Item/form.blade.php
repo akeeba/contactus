@@ -16,7 +16,11 @@ defined('_JEXEC') or die();
 
 $item    = $this->getItem();
 $captcha = $this->getCaptchaField();
+
+$this->container->platform->addScriptOptions('com_contactus.encryptedCategories', $this->getModel()->getEncryptedCategories());
 ?>
+
+@js('media://com_contactus/js/frontend.js')
 
 @section('edit-form-body')
     <div class="akeeba-panel--info">
@@ -28,7 +32,8 @@ $captcha = $this->getCaptchaField();
                 'fof.autosubmit' => false,
                 'translate' => false,
                 'apply_access' => true,
-                'value_field' => 'title'
+                'value_field' => 'title',
+                'id' => 'contactus_category_id'
             ], [
                 'filter_order' => 'ordering',
                 'filter_order_Dir' => 'asc',
@@ -54,6 +59,16 @@ $captcha = $this->getCaptchaField();
     </div>
 
     <div class="akeeba-panel--info">
+        <div class="akeeba-block--success" id="comContactUsMessageEncrypted" style="display: none">
+            <h3>@lang('COM_CONTACTUS_ITEM_ENCRYPTION_HEAD_ENCRYPTED')</h3>
+            <p>@lang('COM_CONTACTUS_ITEM_ENCRYPTION_MSG_ENCRYPTED')</p>
+        </div>
+
+        <div class="akeeba-block--warning" id="comContactUsMessageUnencrypted" style="display: none">
+            <h3>@lang('COM_CONTACTUS_ITEM_ENCRYPTION_HEAD_UNENCRYPTED')</h3>
+            <p>@lang('COM_CONTACTUS_ITEM_ENCRYPTION_MSG_UNENCRYPTED')</p>
+        </div>
+
         <div class="akeeba-form-group">
             <label for="subject">
                 @fieldtitle('subject')
@@ -109,3 +124,4 @@ $captcha = $this->getCaptchaField();
         @yield('edit-hidden-fields')
     </div>
 </form>
+

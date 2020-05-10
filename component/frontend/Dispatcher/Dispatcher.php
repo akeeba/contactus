@@ -45,6 +45,8 @@ class Dispatcher extends BaseDispatcher
 			// Render submenus as drop-down navigation bars powered by Bootstrap
 			'linkbar_style' => 'classic',
 		]);
+
+		require $this->container->backEndPath . '/vendor/autoload.php';
 	}
 
 }

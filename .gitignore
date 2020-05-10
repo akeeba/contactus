@@ -9,6 +9,11 @@
 
 /component/*.xml
 
+/component/backend/vendor
+
+/test_encrypt/pubkey.asc
+/test_encrypt/message.html
+
 /release
 
 /*/.DS_Store
