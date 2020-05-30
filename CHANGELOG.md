@@ -12,6 +12,7 @@
 **Bug fixes**
 
 * Unpublished contact categories were displayed in the frontend
+* Joomla 4 throws an exception when mail is disabled and you try to send an email
 
 # 2.0.1
 

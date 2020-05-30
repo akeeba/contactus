@@ -235,7 +235,14 @@ class Items extends DataModel
 			$mailer->msgHTML($this->body);
 
 			// Send the email
-			$mailer->Send();
+			try
+			{
+				$mailer->Send();
+			}
+			catch (Exception $e)
+			{
+				return;
+			}
 
 			return;
 		}
@@ -256,7 +263,14 @@ class Items extends DataModel
 				$thisMailer->msgHTML($this->body);
 			}
 
-			$thisMailer->Send();
+			try
+			{
+				$thisMailer->Send();
+			}
+			catch (Exception $e)
+			{
+				continue;
+			}
 		}
 	}
 
@@ -297,7 +311,16 @@ class Items extends DataModel
 		$mailer->msgHTML($autoReply);
 
 		// Send the email
-		$mailer->Send();
+		try
+		{
+			$mailer->Send();
+		}
+		catch (Exception $e)
+		{
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
