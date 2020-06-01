@@ -49,7 +49,7 @@ class Com_ContactusInstallerScript extends \FOF30\Utils\InstallScript
 	 *
 	 * @var   string
 	 */
-	protected $maximumJoomlaVersion = '3.9.999';
+	protected $maximumJoomlaVersion = '4.0.999';
 
 	/**
 	 * Obsolete files and folders to remove from both paid and free releases. This is used when you refactor code and
