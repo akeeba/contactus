@@ -11,7 +11,7 @@
 	<author>Nicholas K. Dionysopoulos</author>
 	<authorEmail>nicholas@akeebabackup.com</authorEmail>
 	<authorUrl>http://www.akeebabackup.com</authorUrl>
-	<copyright>Copyright (c)2013-2019 Nicholas K. Dionysopoulos / Akeeba Ltd</copyright>
+	<copyright>Copyright (c)2013-2020 Nicholas K. Dionysopoulos / Akeeba Ltd</copyright>
 	<license>GNU GPL v3 or later</license>
 	<version>##VERSION##</version>
 	<description>A simple contact form component used to demonstrate the FOF 3 framework</description>

@@ -1,6 +1,6 @@
 # Akeeba Contact Us
 
-A simple contact form component for FOF 3
+A simple contact form component for Joomla™
 
 ## What does it do?
 

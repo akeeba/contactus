@@ -23,7 +23,7 @@ $model = $this->getModel();
 ?>
 @include('admin:com_contactus/Common/phpversion_warning', [
 	'softwareName'  => 'Contact Us!',
-	'minPHPVersion' => '5.4.0',
+	'minPHPVersion' => '7.1.0',
 ])
 
 @extends('any:lib_fof30/Common/browse')
