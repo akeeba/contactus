@@ -35,6 +35,6 @@
 
     <!-- Update servers -->
     <updateservers>
-        <server type="extension" priority="1" name="Akeeba LoginGuard Updates">https://raw.githubusercontent.com/akeeba/contactus/main/update/pkg_contactus_updates.xml</server>
+        <server type="extension" priority="1" name="Akeeba LoginGuard Updates">https://cdn.akeebabackup.com/updates/pkgcontactus.xml</server>
     </updateservers>
 </extension>
