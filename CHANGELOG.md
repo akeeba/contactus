@@ -1,3 +1,9 @@
+# 2.1.1
+
+**New features**
+
+* Privacy policy consent checkbox (mandatory)
+
 # 2.1.0
 
 **New features**

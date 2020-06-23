@@ -6,6 +6,17 @@
   -->
 <config>
 	<fieldset name="layout" label="COM_CONTACTUS_CONFIG_LAYOUT_TITLE">
+		<field name="akismet_api_key" type="text" default="" size="50"
+			   label="COM_CONTACTUS_CONFIG_AKISMET_API_KEY_LABEL"
+			   description="COM_CONTACTUS_CONFIG_AKISMET_API_KEY_DESC"
+			   class="input-xxlarge"/>
+
+		<field name="privacypolicy"
+			   type="url"
+			   label="COM_CONTACTUS_CONFIG_PRIVACYPOLICY_LABEL"
+			   description="COM_CONTACTUS_CONFIG_PRIVACYPOLICY_DESC"
+			   class="input-xxlarge" />
+
 		<field name="load_fef" type="list" default="3"
 			   label="COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF"
 			   description="COM_CONTACTUS_CONFIG_LAYOUT_LOAD_FEF_DESC">
@@ -50,12 +61,6 @@
 			<option value="0">COM_CONTACTUS_CONFIG_BACKEND_DARKMODE_NEVER</option>
 			<option value="1">COM_CONTACTUS_CONFIG_BACKEND_DARKMODE_ALWAYS</option>
 		</field>
-
-		<field name="akismet_api_key" type="text" default="" size="50"
-			   label="COM_CONTACTUS_CONFIG_AKISMET_API_KEY_LABEL"
-			   description="COM_CONTACTUS_CONFIG_AKISMET_API_KEY_DESC"
-			   class="input-xxlarge"/>
-
 	</fieldset>
 
 	<fieldset

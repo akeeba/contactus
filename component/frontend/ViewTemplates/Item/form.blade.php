@@ -5,8 +5,6 @@
  * @license    GNU General Public License version 3 or later
  */
 
-use FOF30\Utils\FEFHelper\BrowseView;
-
 defined('_JEXEC') or die();
 
 /**
@@ -14,8 +12,9 @@ defined('_JEXEC') or die();
  * @var \Akeeba\ContactUs\Site\Model\Items    $item
  */
 
-$item    = $this->getItem();
-$captcha = $this->getCaptchaField();
+$item              = $this->getItem();
+$captcha           = $this->getCaptchaField();
+$privacyPolicyPage = $this->container->params->get('privacypolicy', '/privacy.html');
 
 $this->container->platform->addScriptOptions('com_contactus.encryptedCategories', $this->getModel()->getEncryptedCategories());
 ?>
@@ -28,7 +27,7 @@ $this->container->platform->addScriptOptions('com_contactus.encryptedCategories'
             <label for="contactus_category_id">
                 @fieldtitle('contactus_category_id')
             </label>
-            {{ BrowseView::modelSelect('contactus_category_id', 'Categories', $item->contactus_category_id, [
+            {{ \FOF30\Utils\FEFHelper\BrowseView::modelSelect('contactus_category_id', 'Categories', $item->contactus_category_id, [
                 'fof.autosubmit' => false,
                 'translate' => false,
                 'apply_access' => true,
@@ -93,6 +92,16 @@ $this->container->platform->addScriptOptions('com_contactus.encryptedCategories'
                 {{ $captcha }}
             </div>
         @endif
+
+        <div class="akeeba-form-group--checkbox--pull-right">
+            <label>
+                <input type="checkbox" name="consent">
+                @lang('COM_CONTACTUS_ITEMS_FIELD_CONSENT_LABEL')
+            </label>
+            <div class="akeeba-help-text">
+                @sprintf('COM_CONTACTUS_ITEMS_FIELD_CONSENT_HELP', $privacyPolicyPage)
+            </div>
+        </div>
 
         <div class="akeeba-form-group--actions">
             <button type="submit" class="akeeba-btn--green--big" name="btnSubmit">

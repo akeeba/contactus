@@ -173,6 +173,8 @@ class Items extends DataModel
 		$this->assertNotEmpty($this->subject, 'COM_CONTACTUS_ITEM_ERR_SUBJECT_EMPTY');
 		$this->assertNotEmpty($this->body, 'COM_CONTACTUS_ITEM_ERR_BODY_EMPTY');
 
+		$this->assertNotEmpty($this->consent, 'COM_CONTACTUS_ITEM_ERR_CONSENT');
+
 		$captcha = $this->getCaptchaObject();
 
 		if (is_null($captcha))
