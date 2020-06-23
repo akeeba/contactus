@@ -8,7 +8,7 @@ It lets you add a very simple contact form on your site. Each contact category c
 
 ## Download
 
-Pre-built packages of Akeeba Release System are made available through [our GitHub repository's Releases page](https://github.com/akeeba/contactus/releases).
+Pre-built packages of Akeeba Release System are made available through [our site's Download page](https://www.akeebabackup.com/download/official/contactus.html).
 
 Akeeba Contact Us comes with English (Great Britain) language built-in. Installation packages for other languages are available [on our language download page](https://cdn.akeebabackup.com/language/contact-us/index.html).
 
