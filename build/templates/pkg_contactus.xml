@@ -35,6 +35,6 @@
 
     <!-- Update servers -->
     <updateservers>
-        <server type="extension" priority="1" name="Akeeba ContactUs Updates">https://cdn.akeebabackup.com/updates/pkgcontactus.xml</server>
+        <server type="extension" priority="1" name="Akeeba ContactUs Updates">https://cdn.akeeba.com/updates/pkgcontactus.xml</server>
     </updateservers>
 </extension>
