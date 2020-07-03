@@ -3,6 +3,7 @@
 **New features**
 
 * Privacy policy consent checkbox (mandatory)
+* Default to sorting items by ID descending in the backend
 
 # 2.1.0
 

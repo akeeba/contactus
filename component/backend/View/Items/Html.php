@@ -18,13 +18,16 @@ class Html extends BaseView
 {
 	protected function onBeforeBrowse()
 	{
-		parent::onBeforeBrowse();
-
 		/** @var DataModel $model */
 		$model = $this->getModel();
 
-		$this->lists->order = $model->getState('filter_order', $model->getIdFieldName(), 'cmd');
-		$this->lists->order_Dir = $model->getState('filter_order_Dir', 'DESC', 'cmd');
+		$order = $model->getState('filter_order', $model->getIdFieldName(), 'cmd');
+		$dir   = $model->getState('filter_order_Dir', 'DESC', 'cmd');
+
+		$model->setState('filter_order', $order);
+		$model->setState('filter_order_Dir', $dir);
+
+		parent::onBeforeBrowse();
 	}
 
 
