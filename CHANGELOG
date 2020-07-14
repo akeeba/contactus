@@ -1,0 +1,39 @@
+<?php die() ?>
+Contact Us 2.1.1
+================================================================================
++ Privacy policy consent checkbox (mandatory)
++ Default to sorting items by ID descending in the backend
+
+Contact Us 2.1.0
+================================================================================
++ Optional GPG encryption of outgoing emails
++ gh-15 Akismet support
++ Set default backend Items ordering to ID descending (new messages first)
++ Common PHP version warning scripts
++ Dark Mode
++ Joomla 4 compatible
+# [HIGH] Unpublished contact categories were displayed in the frontend
+# [LOW] Joomla 4 throws an exception when mail is disabled and you try to send an email
+
+Contact Us 2.0.1
+================================================================================
++ Protection of all component and plugin folders against direct web access
++ Support language filtering in the frontend
+# [HIGH] Backend category controller was missing
+# [HIGH] FEF was not included in the package
+
+Contact Us 2.0.0
+================================================================================
+~ License change to GPLv3 or later.
+~ Converted interface to use Akeeba Frontend Framework (FEF).
+
+Contact Us 1.0.1
+================================================================================
++ gh-10 Pre-fill form using query string parameters
++ gh-11 Pre-fill user name and email address
++ gh-12 Remember the contact form data if an error occurs
+# [LOW] Workaround for Joomla! Backup 16147 (https://github.com/joomla/joomla-cms/issues/16147) - Cannot access component after installation when cache is enabled
+
+Contact Us 1.0.0
+================================================================================
+! First release with a version number.
