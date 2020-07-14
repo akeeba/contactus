@@ -13,14 +13,5 @@ Akeeba Contact Us should be compatible with:
 
 **New features**
 
-* Optional GPG encryption of outgoing emails
-* gh-15 Akismet support  
-* Set default backend Items ordering to ID descending (new messages first)
-* Common PHP version warning scripts
-* Dark Mode
-* Joomla 4 compatible
-
-**Bug fixes**
-
-* Unpublished contact categories were displayed in the frontend
-* Joomla 4 throws an exception when mail is disabled and you try to send an email
+* Privacy policy consent checkbox (mandatory)
+* Default to sorting items by ID descending in the backend
