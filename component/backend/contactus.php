@@ -17,11 +17,32 @@ if (!require_once(__DIR__ . '/ViewTemplates/Common/wrongphp.php'))
 	return;
 }
 
-// Load FOF 3
-if (!defined('FOF30_INCLUDED') && !@include_once(JPATH_LIBRARIES . '/fof30/include.php'))
+// So, FEF is not installed?
+if (!@file_exists(JPATH_SITE . '/media/fef/fef.php'))
 {
-	throw new RuntimeException('FOF 3.0 is not installed', 500);
+	(include_once __DIR__ . '/ViewTemplates/Common/fef.php') or die('You need to have the Akeeba Frontend Framework (FEF) package installed on your site to display this component. Please visit https://www.akeeba.com/download/official/fef.html to download it and install it on your site.');
+
+	return;
 }
 
-// Execute the component
-FOF30\Container\Container::getInstance('com_contactus')->dispatcher->dispatch();
+try
+{
+	// Load FOF 3
+	if (!defined('FOF30_INCLUDED') && !@include_once(JPATH_LIBRARIES . '/fof30/include.php'))
+	{
+		throw new RuntimeException('FOF 3.0 is not installed', 500);
+	}
+
+	// Execute the component
+	FOF30\Container\Container::getInstance('com_contactus')->dispatcher->dispatch();
+}
+catch (Throwable $e)
+{
+	$title = 'Akeeba ContactUs';
+	$isPro = false;
+
+	if (!(include_once JPATH_COMPONENT_ADMINISTRATOR . '/ViewTemplates/Common/errorhandler.php'))
+	{
+		throw $e;
+	}
+}

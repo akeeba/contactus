@@ -1,4 +1,9 @@
 <?php die() ?>
+Contact Us 2.1.2
+================================================================================
++ Custom error pages for missing FEF and unhandled PHP exceptions
+~ PHP version warning can now handle "too new" versions.
+
 Contact Us 2.1.1
 ================================================================================
 + Privacy policy consent checkbox (mandatory)
