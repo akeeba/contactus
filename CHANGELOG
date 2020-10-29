@@ -2,6 +2,7 @@
 Contact Us 2.1.2
 ================================================================================
 + Custom error pages for missing FEF and unhandled PHP exceptions
+~ Replace zero datetime with nullable datetime (gh-17)
 ~ PHP version warning can now handle "too new" versions.
 
 Contact Us 2.1.1
