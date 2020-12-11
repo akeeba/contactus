@@ -23,7 +23,7 @@ $item = $this->item;
 ?>
 @include('admin:com_contactus/Common/phpversion_warning', [
 	'softwareName'  => 'Contact Us!',
-	'minPHPVersion' => '7.1.0',
+	'minPHPVersion' => '7.2.0',
 ])
 
 @extends('any:lib_fof30/Common/edit')

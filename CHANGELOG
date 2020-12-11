@@ -1,6 +1,7 @@
 <?php die() ?>
 Contact Us 2.1.2
 ================================================================================
+- Dropped support for PHP 7.1.0
 + Custom error pages for missing FEF and unhandled PHP exceptions
 ~ Replace zero datetime with nullable datetime (gh-17)
 ~ PHP version warning can now handle "too new" versions.
