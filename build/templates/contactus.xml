@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ @package    contactus
-  ~ @copyright  Copyright (c)2013-2020 Nicholas K. Dionysopoulos / Akeeba Ltd
+  ~ @copyright  Copyright (c)2013-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
   ~ @license    GNU General Public License version 3 or later
   -->
 
@@ -11,7 +11,7 @@
 	<author>Nicholas K. Dionysopoulos</author>
 	<authorEmail>nicholas@akeeba.com</authorEmail>
 	<authorUrl>https://www.akeeba.com</authorUrl>
-	<copyright>Copyright (c)2013-2020 Nicholas K. Dionysopoulos / Akeeba Ltd</copyright>
+	<copyright>Copyright (c)2013-2021 Nicholas K. Dionysopoulos / Akeeba Ltd</copyright>
 	<license>GNU GPL v3 or later</license>
 	<version>##VERSION##</version>
 	<description>A simple contact form component used to demonstrate the FOF 3 framework</description>
