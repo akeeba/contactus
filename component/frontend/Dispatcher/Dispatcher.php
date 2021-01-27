@@ -9,8 +9,8 @@ namespace Akeeba\ContactUs\Site\Dispatcher;
 
 defined('_JEXEC') or die();
 
-use FOF30\Dispatcher\Dispatcher as BaseDispatcher;
-use FOF30\Dispatcher\Mixin\ViewAliases;
+use FOF40\Dispatcher\Dispatcher as BaseDispatcher;
+use FOF40\Dispatcher\Mixin\ViewAliases;
 
 class Dispatcher extends BaseDispatcher
 {
@@ -24,8 +24,8 @@ class Dispatcher extends BaseDispatcher
 
 		// Load the FOF language
 		$lang = $this->container->platform->getLanguage();
-		$lang->load('lib_fof30', JPATH_ADMINISTRATOR, 'en-GB', true, true);
-		$lang->load('lib_fof30', JPATH_ADMINISTRATOR, null, true, false);
+		$lang->load('lib_fof40', JPATH_ADMINISTRATOR, 'en-GB', true, true);
+		$lang->load('lib_fof40', JPATH_ADMINISTRATOR, null, true, false);
 
 		// Renderer options (0=none, 1=frontend, 2=backend, 3=both)
 		$useFEF   = in_array($this->container->params->get('load_fef', 3), [1, 3]);
@@ -33,7 +33,7 @@ class Dispatcher extends BaseDispatcher
 
 		if (!$useFEF)
 		{
-			$this->container->rendererClass = '\\FOF30\\Render\\Joomla3';
+			$this->container->rendererClass = '\\FOF40\\Render\\Joomla3';
 		}
 
 		$darkMode = $this->container->params->get('dark_mode_frontend', -1);

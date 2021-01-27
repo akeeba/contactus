@@ -10,8 +10,8 @@ namespace Akeeba\ContactUs\Site\Controller;
 use Akeeba\ContactUs\Site\Controller\Mixin\PredefinedTaskList;
 use Akeeba\ContactUs\Site\Model\Items;
 use Akeeba\ContactUs\Site\View\Item\Html;
-use FOF30\Container\Container;
-use FOF30\Controller\DataController;
+use FOF40\Container\Container;
+use FOF40\Controller\DataController;
 
 defined('_JEXEC') or die();
 

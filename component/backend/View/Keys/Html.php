@@ -7,7 +7,7 @@
 
 namespace Akeeba\ContactUs\Admin\View\Keys;
 
-class Html extends \FOF30\View\DataView\Html
+class Html extends \FOF40\View\DataView\Html
 {
 
 }

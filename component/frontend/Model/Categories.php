@@ -10,7 +10,7 @@ namespace Akeeba\ContactUs\Site\Model;
 defined('_JEXEC') or die();
 
 use Akeeba\ContactUs\Admin\Model\Categories as AdminCategories;
-use FOF30\Container\Container;
+use FOF40\Container\Container;
 
 class Categories extends AdminCategories
 {

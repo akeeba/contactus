@@ -9,7 +9,7 @@ namespace Akeeba\ContactUs\Admin\Model;
 
 defined('_JEXEC') or die;
 
-use FOF30\Model\DataModel;
+use FOF40\Model\DataModel;
 
 /**
  * Model Akeeba\ContactUs\Admin\Model\Categories

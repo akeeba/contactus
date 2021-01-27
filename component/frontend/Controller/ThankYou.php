@@ -9,7 +9,7 @@ namespace Akeeba\ContactUs\Site\Controller;
 
 defined('_JEXEC') or die();
 
-use FOF30\Controller\Controller;
+use FOF40\Controller\Controller;
 
 class ThankYou extends Controller
 {

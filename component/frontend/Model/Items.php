@@ -11,9 +11,8 @@ defined('_JEXEC') or die();
 
 use Akeeba\ContactUs\Site\Helper\Akismet;
 use Exception;
-use FOF30\Model\DataModel;
-use FOF30\Model\Mixin\Assertions;
-use gnupg;
+use FOF40\Model\DataModel;
+use FOF40\Model\Mixin\Assertions;
 use Joomla\CMS\Application\SiteApplication;
 use Joomla\CMS\Captcha\Captcha;
 use Joomla\CMS\Factory;

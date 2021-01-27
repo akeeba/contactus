@@ -7,7 +7,7 @@
 
 namespace Akeeba\ContactUs\Admin\Controller;
 
-use FOF30\Controller\DataController;
+use FOF40\Controller\DataController;
 
 defined('_JEXEC') or die();
 

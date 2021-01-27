@@ -5,9 +5,8 @@
  * @license    GNU General Public License version 3 or later
  */
 
-use FOF30\Utils\FEFHelper\Html as FEFHtml;
-use FOF30\Utils\FEFHelper\BrowseView;
-use FOF30\Utils\SelectOptions;
+use FOF40\Html\FEFHelper\BrowseView;
+use FOF40\Html\SelectOptions;
 use Akeeba\ContactUs\Admin\Model\Categories;
 use Akeeba\ContactUs\Admin\View\Category\Html;
 
@@ -21,7 +20,7 @@ defined('_JEXEC') or die();
 $item = $this->item;
 
 ?>
-@extends('any:lib_fof30/Common/edit')
+@extends('any:lib_fof40/Common/edit')
 
 @section('edit-form-body')
 
@@ -41,7 +40,7 @@ $item = $this->item;
             <label for="enabled">
                 @lang('JPUBLISHED')
             </label>
-            @jhtml('FEFHelper.select.booleanswitch', 'enabled', $item->enabled)
+            @jhtml('FEFHelp.select.booleanswitch', 'enabled', $item->enabled)
         </div>
 
         <div class="akeeba-form-group">

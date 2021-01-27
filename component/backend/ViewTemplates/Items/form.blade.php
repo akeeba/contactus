@@ -6,9 +6,8 @@
  */
 
 use Akeeba\ContactUs\Admin\Model\Items;
-use FOF30\Utils\FEFHelper\Html as FEFHtml;
-use FOF30\Utils\FEFHelper\BrowseView;
-use FOF30\Utils\SelectOptions;
+use FOF40\Html\FEFHelper\BrowseView;
+use FOF40\Html\SelectOptions;
 use Akeeba\ContactUs\Admin\View\Category\Html;
 
 defined('_JEXEC') or die();
@@ -26,7 +25,7 @@ $item = $this->item;
 	'minPHPVersion' => '7.2.0',
 ])
 
-@extends('any:lib_fof30/Common/edit')
+@extends('any:lib_fof40/Common/edit')
 
 @section('edit-form-body')
 
@@ -74,7 +73,7 @@ $item = $this->item;
                 @fieldtitle('body')
             </label>
             <div class="akeeba-nofef">
-                @jhtml('FEFHelper.edit.editor', 'body', $item->body)
+                @jhtml('FEFHelp.edit.editor', 'body', $item->body)
             </div>
         </div>
 

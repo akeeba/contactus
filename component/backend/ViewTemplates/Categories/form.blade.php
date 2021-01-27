@@ -5,9 +5,8 @@
  * @license    GNU General Public License version 3 or later
  */
 
-use FOF30\Utils\FEFHelper\Html as FEFHtml;
-use FOF30\Utils\FEFHelper\BrowseView;
-use FOF30\Utils\SelectOptions;
+use FOF40\Html\FEFHelper\BrowseView;
+use FOF40\Html\SelectOptions;
 use Akeeba\ContactUs\Admin\Model\Categories;
 use Akeeba\ContactUs\Admin\View\Category\Html;
 
@@ -21,7 +20,7 @@ defined('_JEXEC') or die();
 $item = $this->item;
 
 ?>
-@extends('any:lib_fof30/Common/edit')
+@extends('any:lib_fof40/Common/edit')
 
 @section('edit-form-body')
 
@@ -48,21 +47,21 @@ $item = $this->item;
             <label for="access">
                 @lang('JFIELD_ACCESS_LABEL')
             </label>
-            @jhtml('FEFHelper.select.genericlist', \FOF30\Utils\SelectOptions::getOptions('access'), 'access', ['list.select' => $item->access])
+            @jhtml('FEFHelp.select.genericlist', \FOF40\Html\SelectOptions::getOptions('access'), 'access', ['list.select' => $item->access])
         </div>
 
         <div class="akeeba-form-group">
             <label for="language">
                 @fieldtitle('language')
             </label>
-            {{ BrowseView::genericSelect('language', \FOF30\Utils\SelectOptions::getOptions('languages', ['none' => 'COM_CONTACTUS_CATEGORIES_FIELD_LANGUAGE_NONE']), $item->language, ['fof.autosubmit' => false, 'translate' => false]) }}
+            {{ BrowseView::genericSelect('language', \FOF40\Html\SelectOptions::getOptions('languages', ['none' => 'COM_CONTACTUS_CATEGORIES_FIELD_LANGUAGE_NONE']), $item->language, ['fof.autosubmit' => false, 'translate' => false]) }}
         </div>
 
         <div class="akeeba-form-group">
             <label for="enabled">
                 @lang('JPUBLISHED')
             </label>
-            @jhtml('FEFHelper.select.booleanswitch', 'enabled', $item->enabled)
+            @jhtml('FEFHelp.select.booleanswitch', 'enabled', $item->enabled)
         </div>
     </div>
 
@@ -75,7 +74,7 @@ $item = $this->item;
             <label for="sendautoreply">
                 @fieldtitle('sendautoreply')
             </label>
-            @jhtml('FEFHelper.select.booleanswitch', 'sendautoreply', $item->sendautoreply)
+            @jhtml('FEFHelp.select.booleanswitch', 'sendautoreply', $item->sendautoreply)
         </div>
 
         <div class="akeeba-form-group">
@@ -83,7 +82,7 @@ $item = $this->item;
                 @fieldtitle('autoreply')
             </label>
             <div class="akeeba-nofef">
-                @jhtml('FEFHelper.edit.editor', 'autoreply', $item->autoreply)
+                @jhtml('FEFHelp.edit.editor', 'autoreply', $item->autoreply)
             </div>
         </div>
 

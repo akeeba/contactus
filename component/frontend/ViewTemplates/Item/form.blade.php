@@ -27,7 +27,7 @@ $this->container->platform->addScriptOptions('com_contactus.encryptedCategories'
             <label for="contactus_category_id">
                 @fieldtitle('contactus_category_id')
             </label>
-            {{ \FOF30\Utils\FEFHelper\BrowseView::modelSelect('contactus_category_id', 'Categories', $item->contactus_category_id, [
+            {{ \FOF40\Html\FEFHelper\BrowseView::modelSelect('contactus_category_id', 'Categories', $item->contactus_category_id, [
                 'fof.autosubmit' => false,
                 'translate' => false,
                 'apply_access' => true,
@@ -80,7 +80,7 @@ $this->container->platform->addScriptOptions('com_contactus.encryptedCategories'
                 @fieldtitle('body')
             </label>
             <div class="akeeba-nofef">
-                @jhtml('FEFHelper.edit.editor', 'body', $item->body)
+                @jhtml('FEFHelp.edit.editor', 'body', $item->body)
             </div>
         </div>
     </div>

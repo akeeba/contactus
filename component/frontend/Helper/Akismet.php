@@ -7,7 +7,7 @@
 
 namespace Akeeba\ContactUs\Site\Helper;
 
-use FOF30\Utils\Ip;
+use FOF40\IP\IPHelper as Ip;
 use Joomla\CMS\Environment\Browser;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Http\HttpFactory;

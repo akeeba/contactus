@@ -10,7 +10,7 @@ namespace Akeeba\ContactUs\Site\View\Item;
 defined('_JEXEC') or die();
 
 use Akeeba\ContactUs\Site\Model\Items;
-use FOF30\View\DataView\Html as BaseView;
+use FOF40\View\DataView\Html as BaseView;
 use Joomla\CMS\Application\SiteApplication;
 use Joomla\CMS\Captcha\Captcha;
 use Joomla\CMS\Factory;

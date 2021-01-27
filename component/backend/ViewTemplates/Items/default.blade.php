@@ -7,8 +7,8 @@
 
 use Akeeba\ContactUs\Admin\Model\Items;
 use Akeeba\ContactUs\Admin\View\Items\Html;
-use FOF30\Utils\FEFHelper\BrowseView;
-use FOF30\Utils\SelectOptions;
+use FOF40\Html\FEFHelper\BrowseView;
+use FOF40\Html\SelectOptions;
 
 defined('_JEXEC') or die();
 
@@ -26,7 +26,7 @@ $model = $this->getModel();
 	'minPHPVersion' => '7.2.0',
 ])
 
-@extends('any:lib_fof30/Common/browse')
+@extends('any:lib_fof40/Common/browse')
 
 @section('browse-filters')
     <div class="akeeba-filter-element akeeba-form-group">
@@ -56,11 +56,11 @@ $model = $this->getModel();
     <tr>
         {{-- Drag'n'drop reordering --}}
         <th width="20">
-            @jhtml('FEFHelper.browse.orderfield', 'ordering')
+            @jhtml('FEFHelp.browse.orderfield', 'ordering')
         </th>
         {{-- Row select --}}
         <th width="20">
-            @jhtml('FEFHelper.browse.checkall')
+            @jhtml('FEFHelp.browse.checkall')
         </th>
         {{-- fromname --}}
         <th>
@@ -91,10 +91,10 @@ $model = $this->getModel();
     @foreach($this->items as $row)
         <tr>
             <td>
-                @jhtml('FEFHelper.browse.order', 'ordering', $row->ordering)
+                @jhtml('FEFHelp.browse.order', 'ordering', $row->ordering)
             </td>
             <td>
-                @jhtml('FEFHelper.browse.id', ++$i, $row->getId())
+                @jhtml('FEFHelp.browse.id', ++$i, $row->getId())
             </td>
             <td>
                 <a href="@route(BrowseView::parseFieldTags('index.php?option=com_contactus&view=Item&task=edit&id=[ITEM:ID]', $row))">

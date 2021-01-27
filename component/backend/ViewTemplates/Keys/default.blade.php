@@ -7,8 +7,8 @@
 
 use Akeeba\ContactUs\Admin\Model\Keys;
 use Akeeba\ContactUs\Admin\View\Keys\Html;
-use FOF30\Utils\FEFHelper\BrowseView;
-use FOF30\Utils\SelectOptions;
+use FOF40\Html\FEFHelper\BrowseView;
+use FOF40\Html\SelectOptions;
 
 defined('_JEXEC') or die();
 
@@ -22,7 +22,7 @@ $model = $this->getModel();
 
 ?>
 
-@extends('any:lib_fof30/Common/browse')
+@extends('any:lib_fof40/Common/browse')
 
 @section('browse-filters')
     <div class="akeeba-filter-element akeeba-form-group">
@@ -39,7 +39,7 @@ $model = $this->getModel();
     <tr>
         {{-- Row select --}}
         <th width="20">
-            @jhtml('FEFHelper.browse.checkall')
+            @jhtml('FEFHelp.browse.checkall')
         </th>
         {{-- Email --}}
         <th>
@@ -59,7 +59,7 @@ $model = $this->getModel();
         <tr>
             {{-- Row select --}}
             <td>
-                @jhtml('FEFHelper.browse.id', ++$i, $row->getId())
+                @jhtml('FEFHelp.browse.id', ++$i, $row->getId())
             </td>
             {{-- Email --}}
             <td>
@@ -69,7 +69,7 @@ $model = $this->getModel();
             </td>
             {{-- Enabled --}}
             <td>
-                @jhtml('FEFHelper.browse.published', $row->enabled, $i)
+                @jhtml('FEFHelp.browse.published', $row->enabled, $i)
             </td>
         </tr>
     @endforeach

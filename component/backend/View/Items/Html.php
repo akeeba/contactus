@@ -7,9 +7,9 @@
 
 namespace Akeeba\ContactUs\Admin\View\Items;
 
-use FOF30\Date\Date;
-use FOF30\Model\DataModel;
-use FOF30\View\DataView\Html as BaseView;
+use FOF40\Date\Date;
+use FOF40\Model\DataModel;
+use FOF40\View\DataView\Html as BaseView;
 use Joomla\CMS\Factory;
 
 defined('_JEXEC') or die();

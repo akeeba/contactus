@@ -9,7 +9,7 @@ namespace Akeeba\ContactUs\Site\Model;
 
 defined('_JEXEC') or die();
 
-use FOF30\Model\Model;
+use FOF40\Model\Model;
 
 class ThankYou extends Model
 {

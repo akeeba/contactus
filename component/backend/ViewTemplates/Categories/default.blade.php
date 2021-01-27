@@ -7,8 +7,8 @@
 
 use Akeeba\ContactUs\Admin\Model\Categories;
 use Akeeba\ContactUs\Admin\View\Categories\Html;
-use FOF30\Utils\FEFHelper\BrowseView;
-use FOF30\Utils\SelectOptions;
+use FOF40\Html\FEFHelper\BrowseView;
+use FOF40\Html\SelectOptions;
 
 defined('_JEXEC') or die();
 
@@ -22,7 +22,7 @@ $model = $this->getModel();
 
 ?>
 
-@extends('any:lib_fof30/Common/browse')
+@extends('any:lib_fof40/Common/browse')
 
 @section('browse-filters')
     <div class="akeeba-filter-element akeeba-form-group">
@@ -52,11 +52,11 @@ $model = $this->getModel();
     <tr>
         {{-- Drag'n'drop reordering --}}
         <th width="20">
-            @jhtml('FEFHelper.browse.orderfield', 'ordering')
+            @jhtml('FEFHelp.browse.orderfield', 'ordering')
         </th>
         {{-- Row select --}}
         <th width="20">
-            @jhtml('FEFHelper.browse.checkall')
+            @jhtml('FEFHelp.browse.checkall')
         </th>
         {{-- Title --}}
         <th>
@@ -88,11 +88,11 @@ $model = $this->getModel();
         <tr>
             {{-- Drag'n'drop reordering --}}
             <td>
-                @jhtml('FEFHelper.browse.order', 'ordering', $row->ordering)
+                @jhtml('FEFHelp.browse.order', 'ordering', $row->ordering)
             </td>
             {{-- Row select --}}
             <td>
-                @jhtml('FEFHelper.browse.id', ++$i, $row->getId())
+                @jhtml('FEFHelp.browse.id', ++$i, $row->getId())
             </td>
             {{-- Title --}}
             <td>
@@ -112,11 +112,11 @@ $model = $this->getModel();
             </td>
             {{-- Enabled --}}
             <td>
-                @jhtml('FEFHelper.browse.published', $row->enabled, $i)
+                @jhtml('FEFHelp.browse.published', $row->enabled, $i)
             </td>
             {{-- TODO Language --}}
             <td>
-                {{{ BrowseView::getOptionName($row->language, \FOF30\Utils\SelectOptions::getOptions('languages', ['none' => 'COM_CONTACTUS_CATEGORIES_FIELD_LANGUAGE_NONE'])) }}}
+                {{{ BrowseView::getOptionName($row->language, \FOF40\Html\SelectOptions::getOptions('languages', ['none' => 'COM_CONTACTUS_CATEGORIES_FIELD_LANGUAGE_NONE'])) }}}
             </td>
         </tr>
     @endforeach
