@@ -21,7 +21,11 @@ if (typeof akeeba.ContactUs.Frontend == "undefined")
 
 akeeba.ContactUs.onCategoryChange = function (event)
 {
-    var elSelect   = document.getElementById('contactus_category_id');
+    console.log("meow");
+
+    event.preventDefault();
+
+    var elSelect   = document.getElementById("contactus_category_id");
     var categoryId = elSelect.value;
 
     var elEncrypted   = document.getElementById("comContactUsMessageEncrypted");
@@ -41,10 +45,11 @@ akeeba.ContactUs.onCategoryChange = function (event)
     {
         elUnencrypted.style.display = "block";
     }
+
+    return false;
 }
 
-window.jQuery(document).ready(function ()
+akeeba.Loader.add(["akeeba.System"], function ()
 {
-    window.jQuery("#contactus_category_id").on('change', akeeba.ContactUs.onCategoryChange);
-    window.jQuery("#contactus_category_id").trigger('change');
+    akeeba.System.addEventListener("contactus_category_id", "change", akeeba.ContactUs.onCategoryChange);
 });
