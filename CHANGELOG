@@ -1,4 +1,14 @@
 <?php die() ?>
+Contact Us 2.1.3
+================================================================================
+~ Releasing the previous version without changes, due to server and CDN issues which resulted in inconsistent updates
+- Dropped support for PHP 7.1.0
++ Custom error pages for missing FEF and unhandled PHP exceptions
+~ Replace zero datetime with nullable datetime (gh-17)
+~ PHP version warning can now handle "too new" versions.
+~ Add PHP 8.0 in the list of known PHP versions, recommend PHP 7.4 or later
+# [HIGH] Joomla 4 beta 6 changed how sessions work, breaking everything
+
 Contact Us 2.1.2
 ================================================================================
 - Dropped support for PHP 7.1.0
