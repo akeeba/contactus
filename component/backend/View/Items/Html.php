@@ -1,13 +1,14 @@
 <?php
 /**
  * @package    contactus
- * @copyright  Copyright (c)2013-2019 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright  Copyright (c)2013-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license    GNU General Public License version 3 or later
  */
 
 namespace Akeeba\ContactUs\Admin\View\Items;
 
 use FOF30\Date\Date;
+use FOF30\Model\DataModel;
 use FOF30\View\DataView\Html as BaseView;
 use Joomla\CMS\Factory;
 
@@ -15,6 +16,21 @@ defined('_JEXEC') or die();
 
 class Html extends BaseView
 {
+	protected function onBeforeBrowse()
+	{
+		/** @var DataModel $model */
+		$model = $this->getModel();
+
+		$order = $model->getState('filter_order', $model->getIdFieldName(), 'cmd');
+		$dir   = $model->getState('filter_order_Dir', 'DESC', 'cmd');
+
+		$model->setState('filter_order', $order);
+		$model->setState('filter_order_Dir', $dir);
+
+		parent::onBeforeBrowse();
+	}
+
+
 	/**
 	 * Format a date for display.
 	 *

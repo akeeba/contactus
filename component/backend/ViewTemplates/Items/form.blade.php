@@ -1,8 +1,8 @@
 <?php
 /**
- * @package        contactus
- * @copyright      Copyright (c)2013-2018 Nicholas K. Dionysopoulos / Akeeba Ltd
- * @license        GNU General Public License version 3 or later
+ * @package    contactus
+ * @copyright  Copyright (c)2013-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @license    GNU General Public License version 3 or later
  */
 
 use Akeeba\ContactUs\Admin\Model\Items;
@@ -21,7 +21,12 @@ defined('_JEXEC') or die();
 $item = $this->item;
 
 ?>
-@extends('admin:com_contactus/Common/edit')
+@include('admin:com_contactus/Common/phpversion_warning', [
+	'softwareName'  => 'Contact Us!',
+	'minPHPVersion' => '7.2.0',
+])
+
+@extends('any:lib_fof30/Common/edit')
 
 @section('edit-form-body')
 

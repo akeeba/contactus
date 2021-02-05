@@ -1,11 +1,17 @@
 <?php
-$hardlink_files = array(
-);
+/**
+ * @package    contactus
+ * @copyright  Copyright (c)2013-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @license    GNU General Public License version 3 or later
+ */
 
-$symlink_files = array(
+$hardlink_files = [
+];
+
+$symlink_files = [
 	// Force phpStorm to auto-complete CSS classes
-	'../fef/packages/joomla/fef/css/style.min.css' => 'fef.min.css',
-);
+	'../fef/out/css/fef-joomla.min.css' => 'fef.min.css',
+];
 
-$symlink_folders = array(
-);
+$symlink_folders = [
+];

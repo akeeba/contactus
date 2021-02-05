@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ @package    contactus
+  ~ @copyright  Copyright (c)2013-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+  ~ @license    GNU General Public License version 3 or later
+  -->
+
 <extension version="2.5" type="component" method="upgrade">
 	<name>Contactus</name>
 	<creationDate>##DATE##</creationDate>
 	<author>Nicholas K. Dionysopoulos</author>
-	<authorEmail>nicholas@akeebabackup.com</authorEmail>
-	<authorUrl>http://www.akeebabackup.com</authorUrl>
-	<copyright>Copyright (c)2013-2019 Nicholas K. Dionysopoulos / Akeeba Ltd</copyright>
+	<authorEmail>nicholas@akeeba.com</authorEmail>
+	<authorUrl>https://www.akeeba.com</authorUrl>
+	<copyright>Copyright (c)2013-2021 Nicholas K. Dionysopoulos / Akeeba Ltd</copyright>
 	<license>GNU GPL v3 or later</license>
 	<version>##VERSION##</version>
 	<description>A simple contact form component used to demonstrate the FOF 3 framework</description>
@@ -16,6 +22,7 @@
 
 		<folder>Controller</folder>
 		<folder>Dispatcher</folder>
+		<folder>Helper</folder>
 		<folder>Model</folder>
 		<folder>View</folder>
         <folder>views</folder>

@@ -1,7 +1,7 @@
 <?php
 /**
  * @package    contactus
- * @copyright  Copyright (c)2013-2019 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright  Copyright (c)2013-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license    GNU General Public License version 3 or later
  */
 
@@ -22,7 +22,7 @@ class Dispatcher extends BaseDispatcher
 	public function onBeforeDispatch()
 	{
 		$this->onBeforeDispatchViewAliases();
-		// $this->checkAndFixDatabase();
+		$this->checkAndFixDatabase();
 
 		// Load the FOF language
 		$lang = $this->container->platform->getLanguage();
@@ -30,18 +30,33 @@ class Dispatcher extends BaseDispatcher
 		$lang->load('lib_fof30', JPATH_ADMINISTRATOR, null, true, false);
 
 		// Renderer options (0=none, 1=frontend, 2=backend, 3=both)
-		$useFEF   = $this->container->params->get('load_fef', 3);
-		$fefReset = $this->container->params->get('fef_reset', 3);
+		$useFEF   = in_array($this->container->params->get('load_fef', 3), [2, 3]);
+		$fefReset = $useFEF && in_array($this->container->params->get('fef_reset', 3), [2, 3]);
 
-		// FEF Renderer options. Used to load the common CSS file.
+		if (!$useFEF)
+		{
+			$this->container->rendererClass = '\\FOF30\\Render\\Joomla3';
+		}
+
+		$darkMode = $this->container->params->get('dark_mode_backend', -1);
+
+		$customCss = 'media://com_contactus/css/backend.css';
+
+		if ($darkMode != 0)
+		{
+			$customCss .= ', media://com_contactus/css/backend_dark.css';
+		}
+
 		$this->container->renderer->setOptions([
-			// Classic linkbar for drop-down menu display
+			'load_fef'      => $useFEF,
+			'fef_reset'     => $fefReset,
+			'fef_dark'      => $useFEF ? $darkMode : 0,
+			'custom_css'    => $customCss,
+			// Render submenus as drop-down navigation bars powered by Bootstrap
 			'linkbar_style' => 'classic',
-			// Load custom CSS file, comma separated list
-			'custom_css'    => 'media://com_contactus/css/backend.css',
-			'load_fef'      => in_array( $useFEF, [ 2, 3 ] ),
-			'fef_reset'     => in_array( $fefReset, [ 2, 3 ] )
 		]);
+
+		require $this->container->backEndPath . '/vendor/autoload.php';
 	}
 
 	/**

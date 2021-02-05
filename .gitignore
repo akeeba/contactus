@@ -9,14 +9,14 @@
 
 /component/*.xml
 
+/component/backend/vendor
+
+/test_encrypt/pubkey.asc
+/test_encrypt/message.html
+
 /release
 
 /*/.DS_Store
-
-# Internal language symlinks
-/component/language/*/en-GB
-/modules/*/*/language/en-GB
-/plugins/*/*/language/en-GB
 
 # Symlink to FEF to let phpStorm auto-complete the CSS class names
 /fef.min.css

@@ -1,11 +1,9 @@
 <?php
 /**
  * @package    contactus
- * @copyright  Copyright (c)2013-2019 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright  Copyright (c)2013-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license    GNU General Public License version 3 or later
  */
-
-use FOF30\Utils\FEFHelper\BrowseView;
 
 defined('_JEXEC') or die();
 
@@ -14,9 +12,14 @@ defined('_JEXEC') or die();
  * @var \Akeeba\ContactUs\Site\Model\Items    $item
  */
 
-$item    = $this->getItem();
-$captcha = $this->getCaptchaField();
+$item              = $this->getItem();
+$captcha           = $this->getCaptchaField();
+$privacyPolicyPage = $this->container->params->get('privacypolicy', '/privacy.html');
+
+$this->container->platform->addScriptOptions('com_contactus.encryptedCategories', $this->getModel()->getEncryptedCategories());
 ?>
+
+@js('media://com_contactus/js/frontend.js')
 
 @section('edit-form-body')
     <div class="akeeba-panel--info">
@@ -24,16 +27,18 @@ $captcha = $this->getCaptchaField();
             <label for="contactus_category_id">
                 @fieldtitle('contactus_category_id')
             </label>
-            {{ BrowseView::modelSelect('contactus_category_id', 'Categories', $item->contactus_category_id, [
+            {{ \FOF30\Utils\FEFHelper\BrowseView::modelSelect('contactus_category_id', 'Categories', $item->contactus_category_id, [
                 'fof.autosubmit' => false,
                 'translate' => false,
                 'apply_access' => true,
-                'value_field' => 'title'
+                'value_field' => 'title',
+                'id' => 'contactus_category_id'
             ], [
                 'filter_order' => 'ordering',
                 'filter_order_Dir' => 'asc',
                 'limit' => 100,
                 'limitstart' => 0,
+                'enabled' => 1,
             ]) }}
         </div>
 
@@ -53,6 +58,16 @@ $captcha = $this->getCaptchaField();
     </div>
 
     <div class="akeeba-panel--info">
+        <div class="akeeba-block--success" id="comContactUsMessageEncrypted" style="display: none">
+            <h3>@lang('COM_CONTACTUS_ITEM_ENCRYPTION_HEAD_ENCRYPTED')</h3>
+            <p>@lang('COM_CONTACTUS_ITEM_ENCRYPTION_MSG_ENCRYPTED')</p>
+        </div>
+
+        <div class="akeeba-block--warning" id="comContactUsMessageUnencrypted" style="display: none">
+            <h3>@lang('COM_CONTACTUS_ITEM_ENCRYPTION_HEAD_UNENCRYPTED')</h3>
+            <p>@lang('COM_CONTACTUS_ITEM_ENCRYPTION_MSG_UNENCRYPTED')</p>
+        </div>
+
         <div class="akeeba-form-group">
             <label for="subject">
                 @fieldtitle('subject')
@@ -77,6 +92,16 @@ $captcha = $this->getCaptchaField();
                 {{ $captcha }}
             </div>
         @endif
+
+        <div class="akeeba-form-group--checkbox--pull-right">
+            <label>
+                <input type="checkbox" name="consent">
+                @lang('COM_CONTACTUS_ITEMS_FIELD_CONSENT_LABEL')
+            </label>
+            <div class="akeeba-help-text">
+                @sprintf('COM_CONTACTUS_ITEMS_FIELD_CONSENT_HELP', $privacyPolicyPage)
+            </div>
+        </div>
 
         <div class="akeeba-form-group--actions">
             <button type="submit" class="akeeba-btn--green--big" name="btnSubmit">
@@ -108,3 +133,4 @@ $captcha = $this->getCaptchaField();
         @yield('edit-hidden-fields')
     </div>
 </form>
+

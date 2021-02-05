@@ -1,0 +1,34 @@
+<h3>What's new?</h3>
+
+<p>
+	<strong>Joomla 4 improvements</strong>.
+	We applied necessary changes in our code to support Joomla 4 beta 7. Along with that came a few unexpected but welcome improvements. Labels in the tabbed interface elements are more legible. Custom selects are now rendered as native selects. Checkboxes are rendered as native chackboxes. Long lists and multiselect lists are back into using Chosen for easier item selection.
+</p>
+<p>
+	<strong>Darker Dark Mode</strong>.
+	Our Dark Mode was intentionally designed to be somewhat bright. This had two side-effects. On one hand it was brighter than the dark templates most people would use. Moreover, the contrast between the background and the text was inadequate for people with vision-related disabilities. Considering that Dark Mode is (also) an accessibility feature we addressed this concern.
+</p>
+<p>
+	<strong>Dropped PHP 7.1 support</strong>. PHP 7.1 became End of Life on December 1st, 2019. Over the last year we saw its relative use among our clients drop from 11% of all sites in January 2020 to just under 3.8% in November 2020. According to our experience this is a good point in time to remove support for it. This allows us to introduce PHP 7.2 features in our code which will improve the type consistency of internal data. This will let us catch type consistency bugs in development, a class of bugs that has caused weird issues that were very hard to debug in the past.
+</p>
+<p>
+	<strong>PHP 8.0 support</strong>. PHP 8 was released just in December 2020 but we had already started working on supporting it months ago, since it was still in development. Now that Joomla itself supports PHP 8 we can finally validate our work, fix the remaining issues and confirm that PHP 8 can be officially supported. Please bear in mind that PHP 8 brings major changes to the PHP language and not all third party extensions support it yet. Before venturing into it please do make sure that <strong>all</strong> of your third party extensions, <em>including your templates</em>, are up to the task.
+</p>
+<p>
+    <strong>Custom error pages for missing FEF and unhandled PHP exceptions</strong>.
+    We ported the standardized error pages for unhandled errors and warnings about a missing installation of FEF from our other software for consistency.
+</p>
+<p>
+    <strong>Replace zero datetime with nullable datetime</strong>.
+    Joomla 3 used the special MySQL zero date (0000-00-00 00:00:00) to denote no date selection in date and time database fields. This feature is deprecated in MySQL and causes problems with third party database manipulation tools. Furthermore, it's deprecated in Joomla 4 itself. We now moved to null dates which resolves this issue.
+</p>
+<p>
+	<strong>Joomla 4 beta 6 (pre-release) changes how the session works, breaking everything.</strong>. This is apparently a bug introduced after the Joomla 4 beta 5, breaking the way the Joomla session works. We had not reported it because it appeared to be an intentional, but undocumented, change. The Joomla 3 release lead noticed our workaround and had the Joomla 4 team address the underlying bug since it breaks the stated backwards compatibility goal with the upcoming Joomla 3.10. However, given the severity of this issue and the fact that it <em>did</em> appear to be an intentional change (the code commit was unambiguous about the underlying change that triggered this issue being intentional) we decided to keep our workaround in case the Joomla project changes its mind or makes another change which accidentally breaks the way sessions work. Better be safe than sorry.
+</p>
+
+<h3>Joomla and PHP versions supported</h3>
+<p>
+	Please consult our <a href="https://www.akeeba.com/compatibility.html">Compatibility page</a> to see which
+	PHP and CMS versions are supported by each version of our software. This page is generated from the metadata
+	attached to each version as it is released on our site.
+</p>

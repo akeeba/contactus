@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.3.0" type="package" method="upgrade">
+<!--
+  ~ @package    contactus
+  ~ @copyright  Copyright (c)2013-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+  ~ @license    GNU General Public License version 3 or later
+  -->
+
+<extension version="3.9.0" type="package" method="upgrade">
     <name>Contact Us package</name>
     <author>Nicholas K. Dionysopoulos</author>
     <creationDate>##DATE##</creationDate>
     <packagename>contactus</packagename>
     <version>##VERSION##</version>
-    <url>https://www.akeebabackup.com</url>
+    <url>https://www.akeeba.com</url>
     <packager>Akeeba Ltd</packager>
-    <packagerurl>https://www.akeebabackup.com</packagerurl>
-    <copyright>Copyright (c)2013-2019 Akeeba Ltd / Nicholas K. Dionysopoulos</copyright>
+    <packagerurl>https://www.akeeba.com</packagerurl>
+    <copyright>Copyright (c)2013-2021 Akeeba Ltd / Nicholas K. Dionysopoulos</copyright>
     <license>GNU GPL v3 or later</license>
     <description>Contact Us installation package v.##VERSION##</description>
 
@@ -26,4 +32,9 @@
 
     <!-- Installation script -->
     <scriptfile>script.contactus.php</scriptfile>
+
+    <!-- Update servers -->
+    <updateservers>
+        <server type="extension" priority="1" name="Akeeba ContactUs Updates">https://cdn.akeeba.com/updates/pkgcontactus.xml</server>
+    </updateservers>
 </extension>

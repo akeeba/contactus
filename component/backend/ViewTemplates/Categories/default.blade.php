@@ -1,8 +1,8 @@
 <?php
 /**
- * @package        contactus
- * @copyright      Copyright (c)2013-2018 Nicholas K. Dionysopoulos / Akeeba Ltd
- * @license        GNU General Public License version 3 or later
+ * @package    contactus
+ * @copyright  Copyright (c)2013-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @license    GNU General Public License version 3 or later
  */
 
 use Akeeba\ContactUs\Admin\Model\Categories;
@@ -22,7 +22,7 @@ $model = $this->getModel();
 
 ?>
 
-@extends('admin:com_contactus/Common/browse')
+@extends('any:lib_fof30/Common/browse')
 
 @section('browse-filters')
     <div class="akeeba-filter-element akeeba-form-group">

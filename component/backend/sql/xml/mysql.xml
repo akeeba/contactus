@@ -1,6 +1,6 @@
 <!--
   ~ @package    contactus
-  ~ @copyright  Copyright (c)2013-2019 Nicholas K. Dionysopoulos / Akeeba Ltd
+  ~ @copyright  Copyright (c)2013-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
   ~ @license    GNU General Public License version 3 or later
   -->
 
@@ -18,7 +18,7 @@
     <!-- SQL commands to run on installation and update -->
     <sql>
         <action table="#__contactus_categories" canfail="0">
-            <condition type="missing" value="" />
+            <condition type="missing" value=""/>
             <query><![CDATA[
 CREATE TABLE IF NOT EXISTS `#__contactus_categories` (
   `contactus_category_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -31,11 +31,11 @@ CREATE TABLE IF NOT EXISTS `#__contactus_categories` (
   `language` varchar(50) NOT NULL DEFAULT '*',
   `ordering` int(10) NOT NULL DEFAULT '0',
   `enabled` tinyint(3) NOT NULL DEFAULT '0',
-  `created_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_on` datetime NULL DEFAULT NULL,
   `created_by` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `modified_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_on` datetime NULL DEFAULT NULL,
   `modified_by` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `locked_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `locked_on` datetime NULL DEFAULT NULL,
   `locked_by` bigint(20) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`contactus_category_id`)
 ) ENGINE=InnoDB DEFAULT COLLATE=utf8_general_ci;
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `#__contactus_categories` (
         </action>
 
         <action table="#__contactus_items" canfail="0">
-            <condition type="missing" value="" />
+            <condition type="missing" value=""/>
             <query><![CDATA[
 CREATE TABLE IF NOT EXISTS `#__contactus_items` (
   `contactus_item_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -54,15 +54,126 @@ CREATE TABLE IF NOT EXISTS `#__contactus_items` (
   `body` mediumtext NOT NULL,
   `enabled` tinyint(3) NOT NULL DEFAULT 1,
   `token` char(32) DEFAULT NULL,
-  `created_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_on` datetime NULL DEFAULT NULL,
   `created_by` bigint(20) NOT NULL DEFAULT '0',
-  `modified_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_on` datetime NULL DEFAULT NULL,
   `modified_by` bigint(20) NOT NULL DEFAULT '0',
-  `locked_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `locked_on` datetime NULL DEFAULT NULL,
   `locked_by` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`contactus_item_id`)
 ) ENGINE=InnoDB DEFAULT COLLATE=utf8_general_ci;
             ]]></query>
         </action>
+
+        <action table="#__contactus_keys" canfail="0">
+            <condition type="missing" value=""/>
+            <query><![CDATA[
+CREATE TABLE IF NOT EXISTS `#__contactus_keys` (
+  `contactus_key_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `pubkey` MEDIUMTEXT NOT NULL,
+  `enabled` tinyint(3) NOT NULL DEFAULT 1,
+  `created_on` datetime NULL DEFAULT NULL,
+  `created_by` bigint(20) NOT NULL DEFAULT '0',
+  `modified_on` datetime NULL DEFAULT NULL,
+  `modified_by` bigint(20) NOT NULL DEFAULT '0',
+  `locked_on` datetime NULL DEFAULT NULL,
+  `locked_by` bigint(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`contactus_key_id`)
+) ENGINE=InnoDB DEFAULT COLLATE=utf8_general_ci;
+            ]]></query>
+        </action>
+
+        <!-- Replace zero datetime with nullable datetime -->
+        <action table="#__contactus_categories" canfail="1">
+            <condition type="nullable" value="created_on" operator="not"/>
+            <query><![CDATA[
+      ALTER TABLE `#__contactus_categories` MODIFY `created_on` DATETIME NULL DEFAULT NULL;
+      ]]></query>
+            <query><![CDATA[
+      UPDATE `#__contactus_categories` SET `created_on` = NULL WHERE `created_on` = '0000-00-00 00:00:00';
+      ]]></query>
+        </action>
+
+        <action table="#__contactus_categories" canfail="1">
+            <condition type="nullable" value="modified_on" operator="not"/>
+            <query><![CDATA[
+      ALTER TABLE `#__contactus_categories` MODIFY `modified_on` DATETIME NULL DEFAULT NULL;
+      ]]></query>
+            <query><![CDATA[
+      UPDATE `#__contactus_categories` SET `modified_on` = NULL WHERE `modified_on` = '0000-00-00 00:00:00';
+      ]]></query>
+        </action>
+
+        <action table="#__contactus_categories" canfail="1">
+            <condition type="nullable" value="locked_on" operator="not"/>
+            <query><![CDATA[
+      ALTER TABLE `#__contactus_categories` MODIFY `locked_on` DATETIME NULL DEFAULT NULL;
+      ]]></query>
+            <query><![CDATA[
+      UPDATE `#__contactus_categories` SET `locked_on` = NULL WHERE `locked_on` = '0000-00-00 00:00:00';
+      ]]></query>
+        </action>
+
+        <action table="#__contactus_items" canfail="1">
+            <condition type="nullable" value="created_on" operator="not"/>
+            <query><![CDATA[
+      ALTER TABLE `#__contactus_items` MODIFY `created_on` DATETIME NULL DEFAULT NULL;
+      ]]></query>
+            <query><![CDATA[
+      UPDATE `#__contactus_items` SET `created_on` = NULL WHERE `created_on` = '0000-00-00 00:00:00';
+      ]]></query>
+        </action>
+
+        <action table="#__contactus_items" canfail="1">
+            <condition type="nullable" value="modified_on" operator="not"/>
+            <query><![CDATA[
+      ALTER TABLE `#__contactus_items` MODIFY `modified_on` DATETIME NULL DEFAULT NULL;
+      ]]></query>
+            <query><![CDATA[
+      UPDATE `#__contactus_items` SET `modified_on` = NULL WHERE `modified_on` = '0000-00-00 00:00:00';
+      ]]></query>
+        </action>
+
+        <action table="#__contactus_items" canfail="1">
+            <condition type="nullable" value="locked_on" operator="not"/>
+            <query><![CDATA[
+      ALTER TABLE `#__contactus_items` MODIFY `locked_on` DATETIME NULL DEFAULT NULL;
+      ]]></query>
+            <query><![CDATA[
+      UPDATE `#__contactus_items` SET `locked_on` = NULL WHERE `locked_on` = '0000-00-00 00:00:00';
+      ]]></query>
+        </action>
+
+        <action table="#__contactus_keys" canfail="1">
+            <condition type="nullable" value="created_on" operator="not"/>
+            <query><![CDATA[
+      ALTER TABLE `#__contactus_keys` MODIFY `created_on` DATETIME NULL DEFAULT NULL;
+      ]]></query>
+            <query><![CDATA[
+      UPDATE `#__contactus_keys` SET `created_on` = NULL WHERE `created_on` = '0000-00-00 00:00:00';
+      ]]></query>
+        </action>
+
+        <action table="#__contactus_keys" canfail="1">
+            <condition type="nullable" value="modified_on" operator="not"/>
+            <query><![CDATA[
+      ALTER TABLE `#__contactus_keys` MODIFY `modified_on` DATETIME NULL DEFAULT NULL;
+      ]]></query>
+            <query><![CDATA[
+      UPDATE `#__contactus_keys` SET `modified_on` = NULL WHERE `modified_on` = '0000-00-00 00:00:00';
+      ]]></query>
+        </action>
+
+        <action table="#__contactus_keys" canfail="1">
+            <condition type="nullable" value="locked_on" operator="not"/>
+            <query><![CDATA[
+      ALTER TABLE `#__contactus_keys` MODIFY `locked_on` DATETIME NULL DEFAULT NULL;
+      ]]></query>
+            <query><![CDATA[
+      UPDATE `#__contactus_keys` SET `locked_on` = NULL WHERE `locked_on` = '0000-00-00 00:00:00';
+      ]]></query>
+        </action>
+
     </sql>
 </schema>

@@ -1,7 +1,7 @@
 <?php
 /**
  * @package    contactus
- * @copyright  Copyright (c)2013-2019 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright  Copyright (c)2013-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license    GNU General Public License version 3 or later
  */
 
@@ -35,21 +35,21 @@ class Com_ContactusInstallerScript extends \FOF30\Utils\InstallScript
 	 *
 	 * @var   string
 	 */
-	protected $minimumPHPVersion = '5.4.0';
+	protected $minimumPHPVersion = '7.2.0';
 
 	/**
 	 * The minimum Joomla! version required to install this extension
 	 *
 	 * @var   string
 	 */
-	protected $minimumJoomlaVersion = '3.3.0';
+	protected $minimumJoomlaVersion = '3.9.0';
 
 	/**
 	 * The maximum Joomla! version this extension can be installed on
 	 *
 	 * @var   string
 	 */
-	protected $maximumJoomlaVersion = '3.9.999';
+	protected $maximumJoomlaVersion = '4.0.999';
 
 	/**
 	 * Obsolete files and folders to remove from both paid and free releases. This is used when you refactor code and
@@ -70,6 +70,10 @@ class Com_ContactusInstallerScript extends \FOF30\Utils\InstallScript
 			'administrator/components/com_contactus/View/Categories/tmpl',
 			'administrator/components/com_contactus/View/Items/tmpl',
 			'administrator/components/com_contactus/View/Item/tmpl',
+
+			'administrator/components/com_contactus/ViewTemplates/Common/browse.blade.php',
+			'administrator/components/com_contactus/ViewTemplates/Common/edit.blade.php',
+
 		)
 	);
 
