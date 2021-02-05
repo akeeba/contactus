@@ -58,7 +58,7 @@ updates:
   -
     title: 'Contact Us updates'
     connection: s3
-    directory: '/updates'
+    directory: 'updates'
     stream: 43
     base_name: 'pkgcontactus'
     formats:
