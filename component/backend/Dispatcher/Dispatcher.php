@@ -12,6 +12,7 @@ defined('_JEXEC') or die();
 use FOF40\Database\Installer;
 use FOF40\Dispatcher\Dispatcher as BaseDispatcher;
 use FOF40\Dispatcher\Mixin\ViewAliases;
+use FOF40\Utils\ViewManifestMigration;
 
 class Dispatcher extends BaseDispatcher
 {
@@ -23,6 +24,9 @@ class Dispatcher extends BaseDispatcher
 	{
 		$this->onBeforeDispatchViewAliases();
 		$this->checkAndFixDatabase();
+
+		ViewManifestMigration::migrateJoomla4MenuXMLFiles($this->container);
+		ViewManifestMigration::removeJoomla3LegacyViews($this->container);
 
 		// Load the FOF language
 		$lang = $this->container->platform->getLanguage();

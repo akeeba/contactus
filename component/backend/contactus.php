@@ -12,7 +12,7 @@ $minPHPVersion         = '7.2.0';
 $recommendedPHPVersion = '7.4';
 $softwareName          = 'Contact Us';
 
-if (!require_once(__DIR__ . '/ViewTemplates/Common/wrongphp.php'))
+if (!require_once(__DIR__ . '/tmpl/Common/wrongphp.php'))
 {
 	return;
 }
@@ -20,7 +20,7 @@ if (!require_once(__DIR__ . '/ViewTemplates/Common/wrongphp.php'))
 // So, FEF is not installed?
 if (!@file_exists(JPATH_SITE . '/media/fef/fef.php'))
 {
-	(include_once __DIR__ . '/ViewTemplates/Common/fef.php') or die('You need to have the Akeeba Frontend Framework (FEF) package installed on your site to display this component. Please visit https://www.akeeba.com/download/official/fef.html to download it and install it on your site.');
+	(include_once __DIR__ . '/tmpl/Common/fef.php') or die('You need to have the Akeeba Frontend Framework (FEF) package installed on your site to display this component. Please visit https://www.akeeba.com/download/official/fef.html to download it and install it on your site.');
 
 	return;
 }
@@ -41,7 +41,7 @@ catch (Throwable $e)
 	$title = 'Akeeba ContactUs';
 	$isPro = false;
 
-	if (!(include_once JPATH_COMPONENT_ADMINISTRATOR . '/ViewTemplates/Common/errorhandler.php'))
+	if (!(include_once JPATH_COMPONENT_ADMINISTRATOR . '/tmpl/Common/errorhandler.php'))
 	{
 		throw $e;
 	}

@@ -12,7 +12,7 @@ $minPHPVersion         = '7.2.0';
 $recommendedPHPVersion = '7.4';
 $softwareName          = 'Contact Us';
 
-if (!require_once(JPATH_COMPONENT_ADMINISTRATOR . '/ViewTemplates/Common/wrongphp.php'))
+if (!require_once(JPATH_COMPONENT_ADMINISTRATOR . '/tmpl/Common/wrongphp.php'))
 {
 	echo 'Your PHP version is too old for this component.';
 
@@ -35,7 +35,7 @@ catch (Throwable $e)
 	$title = 'Akeeba ContactUs';
 	$isPro = false;
 
-	if (!(include_once JPATH_COMPONENT_ADMINISTRATOR . '/ViewTemplates/Common/errorhandler.php'))
+	if (!(include_once JPATH_COMPONENT_ADMINISTRATOR . '/tmpl/Common/errorhandler.php'))
 	{
 		throw $e;
 	}

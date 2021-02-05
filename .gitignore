@@ -10,6 +10,9 @@
 /component/*.xml
 
 /component/backend/vendor
+/component/backend/views
+
+/component/frontend/views
 
 /test_encrypt/pubkey.asc
 /test_encrypt/message.html

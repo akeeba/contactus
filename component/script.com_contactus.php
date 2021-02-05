@@ -73,8 +73,9 @@ class Com_ContactusInstallerScript extends \FOF40\InstallScript\Component
 			'administrator/components/com_contactus/View/Items/tmpl',
 			'administrator/components/com_contactus/View/Item/tmpl',
 
-			'administrator/components/com_contactus/ViewTemplates/Common/browse.blade.php',
-			'administrator/components/com_contactus/ViewTemplates/Common/edit.blade.php',
+			// Moving to FOF 4
+			'administrator/components/com_contactus/ViewTemplates',
+			'components/com_contactus/ViewTemplates',
 
 		)
 	);

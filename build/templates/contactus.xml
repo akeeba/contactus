@@ -24,9 +24,8 @@
 		<folder>Dispatcher</folder>
 		<folder>Helper</folder>
 		<folder>Model</folder>
+        <folder>tmpl</folder>
 		<folder>View</folder>
-        <folder>views</folder>
-        <folder>ViewTemplates</folder>
 	</files>
 
 	<!-- Administrator back-end section -->
@@ -40,8 +39,8 @@
 			<folder>Controller</folder>
 			<folder>Dispatcher</folder>
 			<folder>Model</folder>
+			<folder>tmpl</folder>
 			<folder>View</folder>
-			<folder>ViewTemplates</folder>
 
 			<filename>access.xml</filename>
 			<filename>config.xml</filename>
