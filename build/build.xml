@@ -25,8 +25,8 @@
 		<include name="language/**" />
 		<include name="media/**" />
 
-		<include name="backend/views/**" />
-		<include name="frontend/views/**" />
+		<exclude name="backend/views/**" />
+		<exclude name="frontend/views/**" />
 
 		<include name="LICENSE.txt" />
 		<include name="script.com_contactus.php" />
