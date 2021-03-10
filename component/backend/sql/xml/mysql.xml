@@ -174,5 +174,33 @@ CREATE TABLE IF NOT EXISTS `#__contactus_keys` (
       ]]></query>
         </action>
 
+        <!-- Convert tables to InnoDB -->
+        <action table="#__contactus_categories" canfail="1">
+            <condition type="equals" operator="not" value="1"><![CDATA[
+SELECT COUNT(*) FROM `INFORMATION_SCHEMA`.`TABLES` WHERE (`TABLE_NAME` = '#__contactus_categories') AND (`TABLE_SCHEMA` = DATABASE()) AND (`ENGINE` = 'InnoDB');
+            ]]></condition>
+            <query><![CDATA[
+ALTER TABLE `#__contactus_categories` ENGINE InnoDB;
+            ]]></query>
+        </action>
+
+        <action table="#__contactus_items" canfail="1">
+            <condition type="equals" operator="not" value="1"><![CDATA[
+SELECT COUNT(*) FROM `INFORMATION_SCHEMA`.`TABLES` WHERE (`TABLE_NAME` = '#__contactus_items') AND (`TABLE_SCHEMA` = DATABASE()) AND (`ENGINE` = 'InnoDB');
+            ]]></condition>
+            <query><![CDATA[
+ALTER TABLE `#__contactus_items` ENGINE InnoDB;
+            ]]></query>
+        </action>
+
+        <action table="#__contactus_keys" canfail="1">
+            <condition type="equals" operator="not" value="1"><![CDATA[
+SELECT COUNT(*) FROM `INFORMATION_SCHEMA`.`TABLES` WHERE (`TABLE_NAME` = '#__contactus_keys') AND (`TABLE_SCHEMA` = DATABASE()) AND (`ENGINE` = 'InnoDB');
+            ]]></condition>
+            <query><![CDATA[
+ALTER TABLE `#__contactus_keys` ENGINE InnoDB;
+            ]]></query>
+        </action>
+
     </sql>
 </schema>
