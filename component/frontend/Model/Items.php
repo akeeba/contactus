@@ -101,45 +101,6 @@ class Items extends DataModel
 	}
 
 	/**
-	 * Returns the IDs of categories with encrypted keys support
-	 *
-	 * @param   bool  $strict  True to only return categories where ALL recipients support encrypted emails.
-	 *
-	 * @return  array
-	 */
-	public function getEncryptedCategories(bool $strict = true): array
-	{
-		/** @var Keys $keysModel */
-		$keysModel      = $this->container->factory->model('Keys')->tmpInstance();
-		$emailsWithKeys = $keysModel->enabled(1)->get(true)->fetch('email')->toArray();
-
-		if (empty($emailsWithKeys))
-		{
-			return [];
-		}
-
-		/** @var Categories $catModel */
-		$catModel      = $this->container->factory->model('Categories')->tmpInstance();
-		$allCategories = $catModel->enabled(1)
-			->get(true)->filter(function (Categories $cat) use ($emailsWithKeys, $strict) {
-				$emails = explode(',', $cat->email);
-				$emails = array_map('trim', $emails);
-
-				$commonEmails = array_intersect($emails, $emailsWithKeys);
-
-				if ($strict)
-				{
-					return count($commonEmails) === count($emails);
-				}
-
-				return count($commonEmails) > 0;
-			});
-
-		return $allCategories->fetch($catModel->getKeyName())->toArray();
-	}
-
-
-	/**
 	 * This method is only called after a record is saved. We will hook on it
 	 * to send an email to the address specified in the category.
 	 *
@@ -222,57 +183,25 @@ class Items extends DataModel
 
 		$mailer->setSubject($subject);
 
-		// On fully unencrypted categories we simply send out emails with a CC to all recipients
-		$encryptedCats = $this->getEncryptedCategories(false);
-
-		if (!in_array($category->getId(), $encryptedCats))
+		foreach ($emails as $email)
 		{
-			foreach ($emails as $email)
-			{
-				$mailer->addRecipient($email);
-			}
+			$mailer->addRecipient($email);
+		}
 
-			// Set the body
-			$mailer->msgHTML($this->body);
+		// Set the body
+		$mailer->msgHTML($this->body);
 
-			// Send the email
-			try
-			{
-				$mailer->Send();
-			}
-			catch (Exception $e)
-			{
-				return;
-			}
-
+		// Send the email
+		try
+		{
+			$mailer->Send();
+		}
+		catch (Exception $e)
+		{
 			return;
 		}
 
-		foreach ($emails as $email)
-		{
-			$thisMailer = clone $mailer;
-			$thisMailer->addRecipient($email);
-
-			try
-			{
-				$encrypted = $this->encryptBody($this->body, $email);
-				$thisMailer->setBody('This is a PGP encrypted message');
-				$thisMailer->addStringAttachment($encrypted, 'encrypted.asc', '8bit', 'application/pgp-encrypted', 'attachment');
-			}
-			catch (Exception $e)
-			{
-				$thisMailer->msgHTML($this->body);
-			}
-
-			try
-			{
-				$thisMailer->Send();
-			}
-			catch (Exception $e)
-			{
-				continue;
-			}
-		}
+		return;
 	}
 
 	/**
@@ -352,37 +281,5 @@ class Items extends DataModel
 		}
 
 		return $text;
-	}
-
-	/**
-	 * Encrypts the message body with the GunPG key
-	 *
-	 * @param   string  $body   The string to encrypt.
-	 * @param   string  $email  The email recipient. They must have a corresponding Key entry.
-	 *
-	 * @return  string  The encrypted message.
-	 *
-	 * @throws  Exception  Thrown if encryption is not possible.
-	 */
-	private function encryptBody(string $body, string $email): string
-	{
-		/** @var Keys $keysModel */
-		$keysModel = $this->container->factory->model('Keys')->tmpInstance();
-		$keyRecord = $keysModel->enabled(1)->email($email)->firstOrFail();
-
-		// Key unarmor and parsing
-		preg_match('/-----BEGIN ([A-Za-z ]+)-----/', $keyRecord->pubkey, $matches);
-		$marker     = (empty($matches[1])) ? 'MESSAGE' : $matches[1];
-		$key        = OpenPGP::unarmor($keyRecord->pubkey, $marker);
-		$openpgpKey = OpenPGP_Message::parse($key);
-
-		// Encrypt into a PGP message
-		$plain_data = new OpenPGP_LiteralDataPacket($body, [
-			'format' => 'u', 'filename' => tempnam(sys_get_temp_dir(), 'cspgp'),
-		]);
-
-		$encrypted = OpenPGP_Crypt_Symmetric::encrypt($openpgpKey, new OpenPGP_Message([$plain_data]));
-
-		return OpenPGP::enarmor($encrypted->to_bytes(), 'PGP MESSAGE', []);
 	}
 }

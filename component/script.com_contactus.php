@@ -61,6 +61,10 @@ class Com_ContactusInstallerScript extends \FOF40\InstallScript\Component
 	 */
 	protected $removeFilesAllVersions = array(
 		'files'   => array(
+			// Removing PGP support (incompatible with PHP 8)
+			'administrator/components/com_contactus/Controller/Key.php',
+			'administrator/components/com_contactus/Model/Keys.php',
+			'components/com_contactus/Model/Keys.php',
 		),
 		'folders' => array(
 			// Obsolete frontend view template folders
@@ -77,6 +81,10 @@ class Com_ContactusInstallerScript extends \FOF40\InstallScript\Component
 			'administrator/components/com_contactus/ViewTemplates',
 			'components/com_contactus/ViewTemplates',
 
+			// Removing PGP support (incompatible with PHP 8)
+			'administrator/components/com_contactus/tmpl/Keys',
+			'administrator/components/com_contactus/View/Keys',
+			'administrator/components/com_contactus/vendor',
 		)
 	);
 
