@@ -29,8 +29,6 @@ You will also need the following path structure inside a folder on your system
 
 * **contactus** This repository
 * **buildfiles** [Akeeba Build Tools](https://github.com/akeeba/buildfiles)
-* **fof3** [Framework on Framework 3.x](https://github.com/akeeba/fof)
-* **fef** [Akeeba FEF](https://github.com/akeeba/fef) (optional, use -Dversion=0.0.0 when building to pull thelatest published version)
 
 You will need to use the exact folder names specified here.
 
@@ -49,5 +47,3 @@ MAIN/release directory.
     $ phing git
     > phing git
     
-**WARNING** Do not distribute the dev releases to your clients. Dev releases, unlike regular releases, also use a
-dev version of FOF 3.

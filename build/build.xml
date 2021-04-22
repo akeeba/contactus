@@ -25,8 +25,7 @@
 		<include name="language/**" />
 		<include name="media/**" />
 
-		<exclude name="backend/views/**" />
-		<exclude name="frontend/views/**" />
+		<exclude name="backend/contactus.xml" />
 
 		<include name="LICENSE.txt" />
 		<include name="script.com_contactus.php" />
@@ -36,13 +35,13 @@
 	<fileset dir="${dirs.release}" id="package">
 		<include name="com_*.zip" />
 		<include name="file_fef*.zip" />
-		<!--<include name="file_*.zip" />-->
-		<!--<include name="mod_*.zip" />-->
-		<!--<include name="plg_*.zip" />-->
+		<include name="file_*.zip" />
+		<include name="mod_*.zip" />
+		<include name="plg_*.zip" />
 		<include name="lib_*.zip" />
 		<include name="pkg_*.xml" />
 		<include name="*.txt" />
-		<include name="script.*.php" />
+		<include name="script.contactus.php" />
 	</fileset>
 
 

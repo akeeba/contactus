@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ @package    contactus
-  ~ @copyright  Copyright (c)2013-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
-  ~ @license    GNU General Public License version 3 or later
-  -->
 
-<extension version="2.5" type="component" method="upgrade">
+<extension version="4.0" type="component" method="upgrade">
 	<name>Contactus</name>
 	<creationDate>##DATE##</creationDate>
 	<author>Nicholas K. Dionysopoulos</author>
@@ -15,58 +10,77 @@
 	<license>GNU GPL v3 or later</license>
 	<version>##VERSION##</version>
 	<description>A simple contact form component used to demonstrate the FOF 3 framework</description>
+	<namespace path="src">Akeeba\Component\ContactUs</namespace>
 
 	<!-- Public front end files -->
 	<files folder="frontend">
-		<filename>contactus.php</filename>
+		<folder>language</folder>
+		<folder>src</folder>
+		<folder>tmpl</folder>
 
-		<folder>Controller</folder>
-		<folder>Dispatcher</folder>
-		<folder>Helper</folder>
-		<folder>Model</folder>
-        <folder>tmpl</folder>
-		<folder>View</folder>
+		<filename>.htaccess</filename>
+		<filename>web.config</filename>
 	</files>
 
 	<!-- Administrator back-end section -->
 	<administration>
 		<!-- Administration menu -->
-		<menu view="Items">COM_CONTACTUS</menu>
+		<menu view="items">COM_CONTACTUS</menu>
 
 		<!-- Back-end files -->
 		<files folder="backend">
+			<folder>forms</folder>
+			<folder>language</folder>
+			<folder>services</folder>
 			<folder>sql</folder>
-			<folder>Controller</folder>
-			<folder>Dispatcher</folder>
-			<folder>fields</folder>
-			<folder>Model</folder>
+			<folder>src</folder>
 			<folder>tmpl</folder>
-			<folder>View</folder>
 
+			<filename>.htaccess</filename>
 			<filename>access.xml</filename>
 			<filename>config.xml</filename>
-			<filename>contactus.php</filename>
-			<filename>fof.xml</filename>
+			<filename>web.config</filename>
 		</files>
 
 		<!-- Back-end translation files -->
 		<languages folder="language/backend">
-			<language tag="en-GB">en-GB/en-GB.com_contactus.ini</language>
-			<language tag="en-GB">en-GB/en-GB.com_contactus.sys.ini</language>
+			<language tag="en-GB">en-GB/com_contactus.ini</language>
+			<language tag="en-GB">en-GB/com_contactus.sys.ini</language>
 		</languages>
 
 	</administration>
 
 	<!-- Front end translation files -->
 	<languages folder="language/frontend">
-		<language tag="en-GB">en-GB/en-GB.com_contactus.ini</language>
+		<language tag="en-GB">en-GB/com_contactus.ini</language>
 	</languages>
 
 	<!-- Media files -->
 	<media destination="com_contactus" folder="media">
 		<folder>css</folder>
 		<folder>images</folder>
+		<folder>js</folder>
+
+		<filename>joomla.asset.json</filename>
 	</media>
 
 	<scriptfile>script.com_contactus.php</scriptfile>
+
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
 </extension>

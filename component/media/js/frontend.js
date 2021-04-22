@@ -21,8 +21,6 @@ if (typeof akeeba.ContactUs.Frontend == "undefined")
 
 akeeba.ContactUs.onCategoryChange = function (event)
 {
-    console.log("meow");
-
     event.preventDefault();
 
     var elSelect   = document.getElementById("contactus_category_id");
@@ -49,7 +47,8 @@ akeeba.ContactUs.onCategoryChange = function (event)
     return false;
 }
 
-akeeba.Loader.add(["akeeba.System"], function ()
-{
-    akeeba.System.addEventListener("contactus_category_id", "change", akeeba.ContactUs.onCategoryChange);
+
+window.addEventListener('DOMContentLoaded', function (event) {
+    document.getElementById('contactus_category_id')
+        .addEventListener("change", akeeba.ContactUs.onCategoryChange);
 });

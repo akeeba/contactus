@@ -1,0 +1,21 @@
+{
+	"$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+	"name": "com_contactus",
+	"version": "4.0.0",
+	"description": "Akeeba ContactUs",
+	"license": "GPL-3.0-or-later",
+	"assets": [
+		{
+			"name": "com_contactus.frontend",
+			"description": "Frontend JavaScript",
+			"type": "script",
+			"uri": "com_contactus/frontend.min.js",
+			"dependencies": [
+				"core"
+			],
+			"attributes": {
+				"defer": true
+			}
+		}
+	]
+}

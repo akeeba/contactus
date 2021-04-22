@@ -5,11 +5,13 @@
  * @license    GNU General Public License version 3 or later
  */
 
-$hardlink_files = [
-];
+namespace Akeeba\Component\ContactUs\Administrator\Model;
 
-$symlink_files = [
-];
+defined('_JEXEC') || die;
 
-$symlink_folders = [
-];
+use Joomla\CMS\MVC\Model\ListModel;
+
+class CategoriesModel extends ListModel
+{
+
+}

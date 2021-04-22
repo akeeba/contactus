@@ -1,25 +1,12 @@
 .idea/*
 
-/build/bin
-/build/buildlang
-/build/epub
-/build/phingext
-/build/tools
 /build/override.properties
 
 /component/*.xml
 
-/component/backend/vendor
-/component/backend/views
-
-/component/frontend/views
-
-/test_encrypt/pubkey.asc
-/test_encrypt/message.html
-
+/node_modules
 /release
+/vendor
 
 /*/.DS_Store
-
-# Symlink to FEF to let phpStorm auto-complete the CSS class names
-/fef.min.css
+/component/backend/contactus.xml

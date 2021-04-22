@@ -5,7 +5,7 @@
   ~ @license    GNU General Public License version 3 or later
   -->
 
-<extension version="3.9.0" type="package" method="upgrade">
+<extension version="4.0" type="package" method="upgrade">
     <name>Contact Us package</name>
     <author>Nicholas K. Dionysopoulos</author>
     <creationDate>##DATE##</creationDate>
