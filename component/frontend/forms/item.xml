@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ @package    contactus
+  ~ @copyright  Copyright (c)2013-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+  ~ @license    GNU General Public License version 3 or later
+  -->
+
+<form addfieldprefix="Akeeba\Component\ContactUs\Administrator\Field">
+    <fieldset name="basic"
+              label="COM_CONTACTUS_ITEMS_GROUP_BASIC"
+    >
+        <field
+                name="contactus_category_id"
+                type="ContactusCategories"
+                label="COM_CONTACTUS_ITEMS_FIELD_CONTACTUS_CATEGORY_ID"
+                required="true"
+        />
+
+        <field
+                name="fromname"
+                type="text"
+                label="COM_CONTACTUS_ITEMS_FIELD_FROMNAME"
+                required="true"
+        />
+
+        <field
+                name="fromemail"
+                type="email"
+                label="COM_CONTACTUS_ITEMS_FIELD_FROMEMAIL"
+                required="true"
+        />
+
+    </fieldset>
+
+    <fieldset name="message"
+              label="COM_CONTACTUS_ITEMS_GROUP_MESSAGE"
+    >
+
+        <field
+                name="subject"
+                type="text"
+                label="COM_CONTACTUS_ITEMS_FIELD_SUBJECT"
+                required="true"
+        />
+
+        <field
+                name="body"
+                type="editor"
+                label="COM_CONTACTUS_ITEMS_FIELD_BODY"
+                required="true"
+                filter="JComponentHelper::filterText"
+        />
+
+    </fieldset>
+
+    <fieldset name="consent"
+              label="COM_CONTACTUS_ITEMS_GROUP_CONSENT"
+    >
+
+        <field
+                name="captcha"
+                type="captcha"
+                label="COM_CONTACTUS_ITEMS_FIELD_CAPTCHA"
+                required="true"
+        />
+
+        <field
+                name="consent"
+                type="checkbox"
+                label="COM_CONTACTUS_ITEMS_FIELD_CONSENT_LABEL"
+                default="0"
+        />
+
+    </fieldset>
+</form>

@@ -14,6 +14,7 @@
 
 	<!-- Public front end files -->
 	<files folder="frontend">
+		<folder>forms</folder>
 		<folder>language</folder>
 		<folder>src</folder>
 		<folder>tmpl</folder>
