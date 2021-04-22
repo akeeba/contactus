@@ -31,6 +31,7 @@
         <field
                 name="enabled"
                 type="list"
+                layout="joomla.form.field.radio.switcher"
                 label="JENABLED"
                 description="JFIELD_ENABLED_DESC"
                 default="0"
@@ -72,6 +73,7 @@
                 type="editor"
                 label="COM_CONTACTUS_ITEMS_FIELD_BODY"
                 required="true"
+                filter="JComponentHelper::filterText"
         />
 
     </fieldset>

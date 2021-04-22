@@ -49,6 +49,17 @@ class ItemsModel extends ListModel
 		parent::populateState($ordering, $direction);
 	}
 
+	protected function getStoreId($id = '')
+	{
+		// Compile the store id.
+		$id .= ':' . $this->getState('filter.search');
+		$id .= ':' . $this->getState('filter.enabled');
+		$id .= ':' . $this->getState('filter.category_id');
+
+		return parent::getStoreId($id);
+	}
+
+
 	protected function getListQuery()
 	{
 		$db    = $this->getDbo();
@@ -64,7 +75,7 @@ class ItemsModel extends ListModel
 			if (stripos($search, 'id:') === 0)
 			{
 				$ids = (int) substr($search, 3);
-				$query->where($db->quoteName('id') . ' = :id')
+				$query->where($db->quoteName('contactus_item_id') . ' = :id')
 					->bind(':id', $ids, ParameterType::INTEGER);
 			}
 			elseif (stripos($search, 'from:') === 0)

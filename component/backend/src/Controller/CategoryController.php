@@ -15,4 +15,6 @@ use Joomla\CMS\MVC\Controller\FormController;
 class CategoryController extends FormController
 {
 	use ControllerEvents;
+
+	protected $text_prefix = 'COM_CONTACTUS_CATEGORY';
 }

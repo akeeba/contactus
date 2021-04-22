@@ -15,4 +15,12 @@ use Joomla\CMS\MVC\Controller\AdminController;
 class CategoriesController extends AdminController
 {
 	use ControllerEvents;
+
+	protected $text_prefix = 'COM_CONTACTUS_CATEGORIES';
+
+	public function getModel($name = 'Category', $prefix = 'Administrator', $config = ['ignore_request' => true])
+	{
+		return parent::getModel($name, $prefix, $config);
+	}
+
 }
