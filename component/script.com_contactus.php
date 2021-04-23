@@ -6,193 +6,107 @@
  */
 
 // Protect from unauthorized access
-use Joomla\CMS\Installer\Adapter\ComponentAdapter;
-
 defined('_JEXEC') or die();
 
-// Load FOF if not already loaded
-if (!defined('FOF40_INCLUDED') && !@include_once(JPATH_LIBRARIES . '/fof40/include.php'))
+use Joomla\CMS\Log\Log;
+
+class Com_ContactusInstallerScript
 {
-	throw new RuntimeException('FOF 4.0 is not installed');
-}
-
-class Com_ContactusInstallerScript extends \FOF40\InstallScript\Component
-{
-	/**
-	 * The component's name
-	 *
-	 * @var   string
-	 */
-	public $componentName = 'com_contactus';
-
-	/**
-	 * The title of the component (printed on installation and uninstallation messages)
-	 *
-	 * @var string
-	 */
-	protected $componentTitle = 'Contact Us!';
-
-	/**
-	 * The minimum PHP version required to install this extension
-	 *
-	 * @var   string
-	 */
 	protected $minimumPHPVersion = '7.2.0';
 
-	/**
-	 * The minimum Joomla! version required to install this extension
-	 *
-	 * @var   string
-	 */
-	protected $minimumJoomlaVersion = '3.9.0';
+	protected $minimumJoomlaVersion = '4.0.0.b1';
 
-	/**
-	 * The maximum Joomla! version this extension can be installed on
-	 *
-	 * @var   string
-	 */
 	protected $maximumJoomlaVersion = '4.0.999';
 
-	/**
-	 * Obsolete files and folders to remove from both paid and free releases. This is used when you refactor code and
-	 * some files inevitably become obsolete and need to be removed.
-	 *
-	 * @var   array
-	 */
-	protected $removeFilesAllVersions = array(
-		'files'   => array(
-			// Removing PGP support (incompatible with PHP 8)
-			'administrator/components/com_contactus/Controller/Key.php',
-			'administrator/components/com_contactus/Model/Keys.php',
-			'components/com_contactus/Model/Keys.php',
-		),
-		'folders' => array(
-			// Obsolete frontend view template folders
-			'components/com_contactus/View/Item/tmpl',
-			'components/com_contactus/View/ThankYou/tmpl',
-			// Obsolete backend view folders
-			'administrator/components/com_contactus/View/Category',
-			// Obsolete backend view template folders
-			'administrator/components/com_contactus/View/Categories/tmpl',
-			'administrator/components/com_contactus/View/Items/tmpl',
-			'administrator/components/com_contactus/View/Item/tmpl',
-
-			// Moving to FOF 4
-			'administrator/components/com_contactus/ViewTemplates',
-			'components/com_contactus/ViewTemplates',
-
-			// Removing PGP support (incompatible with PHP 8)
-			'administrator/components/com_contactus/tmpl/Keys',
-			'administrator/components/com_contactus/View/Keys',
-			'administrator/components/com_contactus/vendor',
-		)
-	);
+	protected $removeFiles = [
+		'files'   => [],
+		'folders' => [],
+	];
 
 	/**
-	 * Runs on installation
+	 * Joomla! pre-flight event. This runs before Joomla! installs or updates the component. This is our last chance to
+	 * tell Joomla! if it should abort the installation.
 	 *
-	 * @param   JInstallerAdapterComponent $parent The parent object
-	 *
-	 * @return  void
-	 */
-	public function install($parent)
-	{
-		if (!defined('DATACOMPLIANCE_THIS_IS_INSTALLATION_FROM_SCRATCH'))
-		{
-			define('DATACOMPLIANCE_THIS_IS_INSTALLATION_FROM_SCRATCH', 1);
-		}
-	}
-
-	/**
-	 * Runs after install, update or discover_update
-	 *
-	 * @param   string                      $type install, update or discover_update
-	 * @param   JInstallerAdapterComponent  $parent
+	 * @param   string                      $type    Installation type (install, update, discover_install)
+	 * @param   JInstallerAdapterComponent  $parent  Parent object
 	 *
 	 * @return  boolean  True to let the installation proceed, false to halt the installation
 	 */
-	public function postflight(string $type, ComponentAdapter $parent): void
+	public function preflight($type, $parent)
 	{
-		// Parent method
-		parent::postflight($type, $parent);
+		// Check the minimum PHP version
+		if (!version_compare(PHP_VERSION, $this->minimumPHPVersion, 'ge'))
+		{
+			$msg = "<p>You need PHP $this->minimumPHPVersion or later to install this component</p>";
 
-		// Add ourselves to the list of extensions depending on Akeeba FEF
-		$this->addDependency('file_fef', $this->componentName);
+			Log::add($msg, Log::WARNING, 'jerror');
+
+			return false;
+		}
+
+		// Check the minimum Joomla! version
+		if (!version_compare(JVERSION, $this->minimumJoomlaVersion, 'ge'))
+		{
+			$msg = "<p>You need Joomla! $this->minimumJoomlaVersion or later to install this component</p>";
+
+			Log::add($msg, Log::WARNING, 'jerror');
+
+			return false;
+		}
+
+		// Check the maximum Joomla! version
+		if (!version_compare(JVERSION, $this->maximumJoomlaVersion, 'le'))
+		{
+			$msg = "<p>You need Joomla! $this->maximumJoomlaVersion or earlier to install this component</p>";
+
+			Log::add($msg, Log::WARNING, 'jerror');
+
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
-	 * Renders the post-installation message
+	 * Runs after install, update or discover_update. In other words, it executes after Joomla! has finished installing
+	 * or updating your component. This is the last chance you've got to perform any additional installations, clean-up,
+	 * database updates and similar housekeeping functions.
+	 *
+	 * @param   string                      $type    install, update or discover_update
+	 * @param   JInstallerAdapterComponent  $parent  Parent object
 	 */
-	protected function renderPostInstallation(ComponentAdapter $parent): void
+	function postflight($type, $parent)
 	{
-		try
-		{
-			$this->warnAboutJSNPowerAdmin();
-		}
-		catch (Exception $e)
-		{
-			// Don't sweat if the site's db croaks while I'm checking for 3PD software that causes trouble
-		}
+		// Remove obsolete files and folders
+		$this->removeFilesAndFolders($this->removeFiles);
 
-		parent::renderPostInstallation($parent);
+		// Always reset the OPcache if it's enabled. Otherwise there's a good chance the server will not know we are
+		// replacing .php scripts. This is a major concern since PHP 5.5 included and enabled OPcache by default.
+		if (function_exists('opcache_reset'))
+		{
+			opcache_reset();
+		}
 	}
 
 	/**
-	 * The PowerAdmin extension makes menu items disappear. People assume it's our fault. JSN PowerAdmin authors don't
-	 * own up to their software's issue. I have no choice but to warn our users about the faulty third party software.
+	 * Removes obsolete files and folders
+	 *
+	 * @param   array  $removeList  The files and directories to remove
 	 */
-	private function warnAboutJSNPowerAdmin()
+	private function removeFilesAndFolders($removeList)
 	{
-		$db = JFactory::getDbo();
-
-		$query = $db->getQuery(true)
-		            ->select('COUNT(*)')
-		            ->from($db->qn('#__extensions'))
-		            ->where($db->qn('type') . ' = ' . $db->q('component'))
-		            ->where($db->qn('element') . ' = ' . $db->q('com_poweradmin'))
-		            ->where($db->qn('enabled') . ' = ' . $db->q('1'));
-		$hasPowerAdmin = $db->setQuery($query)->loadResult();
-
-		if (!$hasPowerAdmin)
+		foreach ($removeList['files'] ?? [] as $file)
 		{
-			return;
+			$f = JPATH_ROOT . '/' . $file;
+
+			@is_file($f) && File::delete($f);
 		}
 
-		$query = $db->getQuery(true)
-		            ->select('manifest_cache')
-		            ->from($db->qn('#__extensions'))
-		            ->where($db->qn('type') . ' = ' . $db->q('component'))
-		            ->where($db->qn('element') . ' = ' . $db->q('com_poweradmin'))
-		            ->where($db->qn('enabled') . ' = ' . $db->q('1'));
-		$paramsJson = $db->setQuery($query)->loadResult();
-
-		$className = class_exists('JRegistry') ? 'JRegistry' : '\Joomla\Registry\Registry';
-
-		/** @var \Joomla\Registry\Registry $jsnPAManifest */
-		$jsnPAManifest = new $className();
-		$jsnPAManifest->loadString($paramsJson, 'JSON');
-		$version = $jsnPAManifest->get('version', '0.0.0');
-
-		if (version_compare($version, '2.1.2', 'ge'))
+		foreach ($removeList['folders'] ?? [] as $folder)
 		{
-			return;
+			$f = JPATH_ROOT . '/' . $folder;
+
+			@is_dir($f) && Folder::delete($f);
 		}
-
-		echo <<< HTML
-<div class="well" style="margin: 2em 0;">
-<h1 style="font-size: 32pt; line-height: 120%; color: red; margin-bottom: 1em">WARNING: Menu items for {$this->componentName} might not be displayed on your site.</h1>
-<p style="font-size: 18pt; line-height: 150%; margin-bottom: 1.5em">
-	We have detected that you are using JSN PowerAdmin on your site. This software ignores Joomla! standards and
-	<b>hides</b> the Component menu items to {$this->componentName} in the administrator backend of your site. Unfortunately we
-	can't provide support for third party software. Please contact the developers of JSN PowerAdmin for support
-	regarding this issue.
-</p>
-<p style="font-size: 18pt; line-height: 120%; color: green;">
-	Tip: You can disable JSN PowerAdmin to see the menu items to {$this->componentName}.
-</p>
-</div>
-
-HTML;
-
 	}
 }

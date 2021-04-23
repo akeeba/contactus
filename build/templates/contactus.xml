@@ -44,7 +44,7 @@
 		</files>
 
 		<!-- Back-end translation files -->
-		<languages folder="language/backend">
+		<languages folder="backend/language">
 			<language tag="en-GB">en-GB/com_contactus.ini</language>
 			<language tag="en-GB">en-GB/com_contactus.sys.ini</language>
 		</languages>
@@ -52,7 +52,7 @@
 	</administration>
 
 	<!-- Front end translation files -->
-	<languages folder="language/frontend">
+	<languages folder="frontend/language">
 		<language tag="en-GB">en-GB/com_contactus.ini</language>
 	</languages>
 
