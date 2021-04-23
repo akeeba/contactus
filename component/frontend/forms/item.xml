@@ -56,14 +56,6 @@
     <fieldset name="consent"
               label="COM_CONTACTUS_ITEMS_GROUP_CONSENT"
     >
-
-        <field
-                name="captcha"
-                type="captcha"
-                label="COM_CONTACTUS_ITEMS_FIELD_CAPTCHA"
-                required="true"
-        />
-
         <field
                 name="consent"
                 type="checkbox"

@@ -8,6 +8,8 @@
 defined('_JEXEC') or die();
 
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Router\Route;
+
 ?>
 
 <div class="card border-danger">
@@ -20,5 +22,11 @@ use Joomla\CMS\Language\Text;
 		<p>
 			<?= Text::_('COM_CONTACTUS_THANKYOU_MSG_SPAM_BODY') ?>
 		</p>
+		<div>
+			<a href="<?= Route::_('index.php?option=com_contactus') ?>" class="btn btn-outline-primary">
+				<span class="icon icon-arrow-left"></span>
+				<?= Text::_('COM_CONTACTUS_THANKYOU_MSG_SPAM_BTN') ?>
+			</a>
+		</div>
 	</div>
 </div>

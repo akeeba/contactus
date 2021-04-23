@@ -21,8 +21,8 @@ $wa->useScript('keepalive')
 $privacyPolicyPage = ComponentHelper::getParams('com_contactus')->get('privacypolicy', '/privacy.html');
 $captcha           = $this->getCaptchaField();
 ?>
-<form action="<?php echo Route::_('index.php?option=com_contactus&task=Item.save'); ?>"
-	  aria-label="<?php echo Text::_('COM_CONTACTUS_TITLE_ITEMS_EDIT', true); ?>"
+<form action="<?= Route::_('index.php?option=com_contactus&task=Item.save'); ?>"
+	  aria-label="<?= Text::_('COM_CONTACTUS_TITLE_ITEMS_EDIT', true); ?>"
 	  class="form-validate" id="profile-form" method="post" name="adminForm">
 
 	<?php foreach ($this->form->getFieldsets() as $fieldset):
@@ -85,5 +85,5 @@ $captcha           = $this->getCaptchaField();
 		</div>
 	</div>
 
-	<?php echo HTMLHelper::_('form.token'); ?>
+	<?= HTMLHelper::_('form.token'); ?>
 </form>
