@@ -6,7 +6,7 @@
   -->
 
 <extension version="4.0" type="package" method="upgrade">
-    <name>Contact Us package</name>
+    <name>ContactUs package</name>
     <author>Nicholas K. Dionysopoulos</author>
     <creationDate>##DATE##</creationDate>
     <packagename>contactus</packagename>
@@ -16,7 +16,7 @@
     <packagerurl>https://www.akeeba.com</packagerurl>
     <copyright>Copyright (c)2013-2021 Akeeba Ltd / Nicholas K. Dionysopoulos</copyright>
     <license>GNU GPL v3 or later</license>
-    <description>Contact Us installation package v.##VERSION##</description>
+    <description>ContactUs installation package v.##VERSION##</description>
 
     <!-- List of extensions to install -->
     <files>

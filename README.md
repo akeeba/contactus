@@ -1,14 +1,14 @@
-# Akeeba Contact Us
+# Akeeba ContactUs
 
-A simple contact form component for Joomla™
+A simple contact form component for Joomla™ 4
 
 ## What does it do?
 
-It lets you add a very simple contact form on your site. Each contact category can have a different set of recipients. Also, each contact category can have an auto-responder. We built this for use on our site. 
+It lets you add a very simple contact form on your Joomla 4 site. Each contact category can have a different set of recipients. Also, each contact category can have an auto-responder. We built this for use on our site. 
 
 ## Download
 
-Pre-built packages of Akeeba Release System are made available through [our site's Download page](https://www.akeeba.com/download/official/contactus.html).
+Pre-built packages of Akeeba ContactUs are made available through [our site's Download page](https://www.akeeba.com/download/official/contactus.html).
 
 ## No support - For developers only
 

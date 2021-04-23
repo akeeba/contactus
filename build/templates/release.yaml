@@ -48,7 +48,7 @@ connections:
 # Release source files configuration.
 files:
   -
-    title: 'Contact Us package'
+    title: 'ContactUs package'
     connection: s3
     source: '%%RELEASEDIR%%/pkg_contactus-*.zip'
     access: 1
@@ -56,7 +56,7 @@ files:
 # Update sources
 updates:
   -
-    title: 'Contact Us updates'
+    title: 'ContactUs updates'
     connection: s3
     directory: 'updates'
     stream: 43
