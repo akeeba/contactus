@@ -51,7 +51,7 @@ $i = 0;
 				<?php else : ?>
 					<table class="table" id="articleList">
 						<caption class="visually-hidden">
-							<?= Text::_('COM_CONTACTUS_ITEMS_TABLE_CAPTION'); ?>,
+							<?= Text::_('COM_CONTACTUS_CATEGORIES_TABLE_CAPTION'); ?>,
 							<span id="orderedBy"><?= Text::_('JGLOBAL_SORTED_BY'); ?> </span>,
 							<span id="filteredBy"><?= Text::_('JGLOBAL_FILTERED_BY'); ?></span>
 						</caption>
@@ -74,7 +74,7 @@ $i = 0;
 							</th>
 							<?php if (Multilanguage::isEnabled()) : ?>
 							<th scope="col">
-								<?= HTMLHelper::_('searchtools.sort', 'JFIELD_LANGUAGE_LABEL', 'access', $listDirn, $listOrder); ?>
+								<?= HTMLHelper::_('searchtools.sort', 'JFIELD_LANGUAGE_LABEL', 'language', $listDirn, $listOrder); ?>
 							</th>
 							<?php endif; ?>
 							<th scope="col">
@@ -91,7 +91,7 @@ $i = 0;
 							$canEdit    = $user->authorise('core.edit', 'com_contactus');
 							$canCheckin = $user->authorise('core.manage', 'com_checkin') || $item->locked_by == $userId || is_null($item->locked_by);
 							$canEditOwn = $user->authorise('core.edit.own', 'com_contactus') && $item->created_by == $userId;
-							$canChange  = $user->authorise('core.edit.state', 'com_content') && $canCheckin;
+							$canChange  = $user->authorise('core.edit.state', 'com_contactus') && $canCheckin;
 							?>
 							<tr class="row<?= $i++ % 2; ?>" data-draggable-group="0">
 								<td class="text-center">
