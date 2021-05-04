@@ -75,7 +75,7 @@ $i = 0;
 						</thead>
 						<tbody>
 						<?php foreach ($this->items as $item) :?>
-							<tr class="row<?= $i % 2; ?>">
+							<tr class="row<?= $i++ % 2; ?>">
 								<td class="text-center">
 									<?= HTMLHelper::_('grid.id', $i, $item->contactus_item_id, !(empty($item->locked_on) || ($item->locked_on === $nullDate)), 'cid', 'cb', $item->subject); ?>
 								</td>
@@ -109,7 +109,7 @@ $i = 0;
 								</td>
 
 								<td class="text-center">
-									<?= HTMLHelper::_('jgrid.published', $item->enabled, $i, 'Items.', $user->authorise('core.edit.state', 'com_contactus'), 'cb'); ?>
+									<?= HTMLHelper::_('jgrid.published', $item->enabled, $i, 'items.', $user->authorise('core.edit.state', 'com_contactus'), 'cb'); ?>
 								</td>
 
 								<td class="w-1 d-none d-md-table-cell">
