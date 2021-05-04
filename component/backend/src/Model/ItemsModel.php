@@ -33,7 +33,7 @@ class ItemsModel extends ListModel
 		parent::__construct($config, $factory);
 	}
 
-	protected function populateState($ordering = 'id', $direction = 'asc')
+	protected function populateState($ordering = 'created_on', $direction = 'desc')
 	{
 		$app = Factory::getApplication();
 

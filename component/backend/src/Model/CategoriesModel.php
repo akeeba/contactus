@@ -36,7 +36,7 @@ class CategoriesModel extends ListModel
 		parent::__construct($config, $factory);
 	}
 
-	protected function populateState($ordering = 'id', $direction = 'asc')
+	protected function populateState($ordering = 'contactus_category_id', $direction = 'asc')
 	{
 		$app = Factory::getApplication();
 
