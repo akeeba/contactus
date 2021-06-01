@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <extension version="4.0" type="component" method="upgrade">
-	<name>Contactus</name>
+	<name>com_contactus</name>
 	<creationDate>##DATE##</creationDate>
 	<author>Nicholas K. Dionysopoulos</author>
 	<authorEmail>nicholas@akeeba.com</authorEmail>
