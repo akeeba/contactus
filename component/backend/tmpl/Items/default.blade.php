@@ -46,7 +46,18 @@ $model = $this->getModel();
     </div>
 
     <div class="akeeba-filter-element akeeba-form-group">
-        @jhtml('calendar', $model->created_on, 'created_on', 'created_on', '%Y-%m-%d', ['placeholder' => JText::_('COM_CONTACTUS_ITEMS_FIELD_CREATED_ON')])
+        @if (version_compare(JVERSION, '3.999.999', 'le'))
+            @jhtml('calendar', $model->created_on, 'created_on', 'created_on', '%Y-%m-%d', ['placeholder' => JText::_('COM_CONTACTUS_ITEMS_FIELD_CREATED_ON')])
+        @else
+            <input
+                    type="datetime-local"
+                    pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}"
+                    name="created_on"
+                    id="created_on"
+                    value="{{{ $model->created_on }}}"
+                    placeholder="@lang('COM_CONTACTUS_ITEMS_FIELD_CREATED_ON')"
+            >
+        @endif
     </div>
 
 @stop
