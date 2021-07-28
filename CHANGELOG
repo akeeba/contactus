@@ -1,4 +1,8 @@
 <?php die() ?>
+Contact Us 3.0.2
+================================================================================
+~ Changes in Joomla 4.0.0-RC5 broke the date and time input fields. Now using native HTML 5 controls.
+
 Contact Us 3.0.1
 ================================================================================
 - GPG support (incompatible with PHP 8.0)
