@@ -2,6 +2,7 @@
 Contact Us 3.0.2
 ================================================================================
 ~ Changes in Joomla 4.0.0-RC5 broke the date and time input fields. Now using native HTML 5 controls.
+# [HIGH] Uninstallation broken on Joomla 4 due to different installation script event handling.
 
 Contact Us 3.0.1
 ================================================================================
