@@ -34,6 +34,12 @@ class Com_ContactusInstallerScript
 	 */
 	public function preflight($type, $parent)
 	{
+		// Do not run on uninstall.
+		if ($type === 'uninstall')
+		{
+			return true;
+		}
+
 		// Check the minimum PHP version
 		if (!version_compare(PHP_VERSION, $this->minimumPHPVersion, 'ge'))
 		{
@@ -77,6 +83,12 @@ class Com_ContactusInstallerScript
 	 */
 	function postflight($type, $parent)
 	{
+		// Do not run on uninstall.
+		if ($type === 'uninstall')
+		{
+			return true;
+		}
+
 		// Remove obsolete files and folders
 		$this->removeFilesAndFolders($this->removeFiles);
 
