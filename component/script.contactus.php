@@ -132,7 +132,7 @@ class Pkg_ContactusInstallerScript
 		// Do not run on uninstall.
 		if ($type === 'uninstall')
 		{
-			return true;
+			return;
 		}
 
 		/**
