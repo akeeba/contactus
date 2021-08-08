@@ -42,7 +42,7 @@ class ContactUsComponent extends MVCComponent implements
 	 */
 	public function boot(ContainerInterface $container)
 	{
-		$dbo = $container->has('database.driver') ? $container->get('database.driver') : Factory::getDbo();
+		$dbo = $container->has('DatabaseDriver') ? $container->get('DatabaseDriver') : Factory::getDbo();
 
 		$this->getRegistry()->register('contactus', new ContactUsHtml($dbo));
 	}

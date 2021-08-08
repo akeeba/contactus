@@ -1,4 +1,8 @@
 <?php die() ?>
+ContactUs 4.0.1
+================================================================================
+# [HIGH] yet another last minute, undocumented, backwards incompatible change in Joomla is breaking things.
+
 ContactUs 4.0.0
 ================================================================================
 ~ Rewritten with Joomla 4 core MVC
