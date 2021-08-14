@@ -1,4 +1,8 @@
 <?php die() ?>
+Contact Us 4.0.1
+================================================================================
+# [HIGH] Does not work on Windows on the latest Joomla 4 RC versions
+
 Contact Us 4.0.0
 ================================================================================
 ~ Rewritten with Joomla 4 core MVC
