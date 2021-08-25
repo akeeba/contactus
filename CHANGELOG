@@ -1,4 +1,8 @@
 <?php die() ?>
+ContactUs 4.0.2
+================================================================================
+# [LOW] PHP Warning from the TriggerEvent mixin
+
 ContactUs 4.0.1
 ================================================================================
 # [HIGH] yet another last minute, undocumented, backwards incompatible change in Joomla is breaking things.
