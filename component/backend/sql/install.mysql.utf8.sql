@@ -1,5 +1,4 @@
-CREATE TABLE IF NOT EXISTS `#__contactus_categories`
-(
+CREATE TABLE IF NOT EXISTS `#__contactus_categories` (
     `contactus_category_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     `title`                 varchar(255)        NOT NULL DEFAULT '',
     `email`                 varchar(255)                 DEFAULT '',
@@ -17,11 +16,10 @@ CREATE TABLE IF NOT EXISTS `#__contactus_categories`
     `locked_by`             bigint(20) unsigned NOT NULL DEFAULT '0',
     PRIMARY KEY (`contactus_category_id`)
 ) ENGINE = InnoDB
-  DEFAULT COLLATE = utf8_general_ci;
+  DEFAULT COLLATE = utf8mb4_unicode_ci;
 
 
-CREATE TABLE IF NOT EXISTS `#__contactus_items`
-(
+CREATE TABLE IF NOT EXISTS `#__contactus_items` (
     `contactus_item_id`     bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     `contactus_category_id` bigint(20)          NOT NULL,
     `fromname`              varchar(255)        NOT NULL,
@@ -38,4 +36,4 @@ CREATE TABLE IF NOT EXISTS `#__contactus_items`
     `locked_by`             bigint(20)          NOT NULL DEFAULT '0',
     PRIMARY KEY (`contactus_item_id`)
 ) ENGINE = InnoDB
-  DEFAULT COLLATE = utf8_general_ci;
+  DEFAULT COLLATE = utf8mb4_unicode_ci;
