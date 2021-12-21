@@ -14,10 +14,6 @@ class Pkg_ContactusInstallerScript
 {
 	protected $minimumPHPVersion = '7.2.0';
 
-	protected $minimumJoomlaVersion = '4.0.0.b1';
-
-	protected $maximumJoomlaVersion = '4.0.999';
-	
 	/**
 	 * =================================================================================================================
 	 * DO NOT EDIT BELOW THIS LINE
@@ -49,24 +45,6 @@ class Pkg_ContactusInstallerScript
 		if (!version_compare(PHP_VERSION, $this->minimumPHPVersion, 'ge'))
 		{
 			$msg = "<p>You need PHP $this->minimumPHPVersion or later to install this package</p>";
-			Log::add($msg, Log::WARNING, 'jerror');
-
-			return false;
-		}
-
-		// Check the minimum Joomla! version
-		if (!version_compare(JVERSION, $this->minimumJoomlaVersion, 'ge'))
-		{
-			$msg = "<p>You need Joomla! $this->minimumJoomlaVersion or later to install this component</p>";
-			Log::add($msg, Log::WARNING, 'jerror');
-
-			return false;
-		}
-
-		// Check the maximum Joomla! version
-		if (!version_compare(JVERSION, $this->maximumJoomlaVersion, 'le'))
-		{
-			$msg = "<p>You need Joomla! $this->maximumJoomlaVersion or earlier to install this component</p>";
 			Log::add($msg, Log::WARNING, 'jerror');
 
 			return false;
