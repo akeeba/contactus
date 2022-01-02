@@ -1,3 +1,9 @@
+/**
+ * @package   contactus
+ * @copyright Copyright (c)2013-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @license   GNU General Public License version 3, or later
+ */
+
 CREATE TABLE IF NOT EXISTS `#__contactus_categories` (
     `contactus_category_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     `title`                 varchar(255)        NOT NULL DEFAULT '',
