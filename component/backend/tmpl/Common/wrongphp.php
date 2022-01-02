@@ -1,8 +1,9 @@
 <?php
 /**
- * @package    contactus
- * @copyright  Copyright (c)2013-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
- * @license    GNU General Public License version 3 or later
+ * Obsolete PHP version notification
+ *
+ * @copyright Copyright (c) 2018-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @license   GNU General Public License version 3, or later
  */
 
 (defined('_JEXEC') || defined('WPINC') || defined('APATH_BASE') || defined('AKEEBA_COMMON_WRONGPHP') || defined('KICKSTART')) or die;
