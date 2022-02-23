@@ -44,8 +44,8 @@ class Router extends RouterView
 			[$view, $task] = explode('.', $query['task']);
 		}
 
-		$query['view'] = strtolower($query['view'] ?? $view);
-		$query['task'] = strtolower($task ?? null);
+		$query['view'] = strtolower($query['view'] ?? ($view ?? ''));
+		$query['task'] = strtolower($task ?? '');
 
 		if (empty($query['task']))
 		{
