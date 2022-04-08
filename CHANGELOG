@@ -1,4 +1,8 @@
 <?php die() ?>
+ContactUs 4.0.4
+================================================================================
+# [HIGH] Immediate exception on Windows
+
 ContactUs 4.0.3
 ================================================================================
 # [LOW] PHP 8.1 Deprecated Notice in the Router
