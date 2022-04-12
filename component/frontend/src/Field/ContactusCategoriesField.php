@@ -27,7 +27,8 @@ class ContactusCategoriesField extends ListField
 			->select([
 				$db->qn('contactus_category_id'),
 				$db->qn('title'),
-			])->from($db->qn('#__contactus_categories'));
+			])->from($db->qn('#__contactus_categories'))
+			->where($db->quoteName('enabled') . ' = 1');
 
 		// Access filtering
 		$user       = Factory::getApplication()->getIdentity() ?: Factory::getUser();

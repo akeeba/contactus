@@ -2,6 +2,7 @@
 ContactUs 4.0.4
 ================================================================================
 # [HIGH] Immediate exception on Windows
+# [HIGH] Unpublished contact categories can be selected in the frontend
 
 ContactUs 4.0.3
 ================================================================================
