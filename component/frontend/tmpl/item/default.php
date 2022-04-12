@@ -25,6 +25,8 @@ $captcha           = $this->getCaptchaField();
 	  aria-label="<?= Text::_('COM_CONTACTUS_TITLE_ITEMS_EDIT', true); ?>"
 	  class="form-validate" id="profile-form" method="post" name="adminForm">
 
+	<?= \Akeeba\Component\ContactUs\Site\Helper\ModuleRenderHelper::loadPosition('contactus_top') ?>
+
 	<?php foreach ($this->form->getFieldsets() as $fieldset):
 		if ($fieldset->name === 'consent') continue;
 	?>
@@ -49,6 +51,8 @@ $captcha           = $this->getCaptchaField();
 		</div>
 	</div>
 	<?php endforeach; ?>
+
+	<?= \Akeeba\Component\ContactUs\Site\Helper\ModuleRenderHelper::loadPosition('contactus_middle') ?>
 
 	<div class="card mb-2 border-success">
 		<div class="card-body">
@@ -84,6 +88,8 @@ $captcha           = $this->getCaptchaField();
 			</div>
 		</div>
 	</div>
+
+	<?= \Akeeba\Component\ContactUs\Site\Helper\ModuleRenderHelper::loadPosition('contactus_bottom') ?>
 
 	<?= HTMLHelper::_('form.token'); ?>
 </form>

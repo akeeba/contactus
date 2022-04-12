@@ -1,6 +1,7 @@
 <?php die() ?>
 ContactUs 4.0.4
 ================================================================================
++ Added custom module positions in the contact form
 # [HIGH] Immediate exception on Windows
 # [HIGH] Unpublished contact categories can be selected in the frontend
 
