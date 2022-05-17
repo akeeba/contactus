@@ -2,6 +2,7 @@
 ContactUs 4.0.4
 ================================================================================
 + Added custom module positions in the contact form
++ Add Show Inline Help support in component options for Joomla 4.1
 # [HIGH] Immediate exception on Windows
 # [HIGH] Unpublished contact categories can be selected in the frontend
 

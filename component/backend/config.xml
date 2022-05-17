@@ -5,6 +5,7 @@
   ~ @license   GNU General Public License version 3, or later
   -->
 <config addfieldpath="/administrator/components/com_contactus/fields">
+    <inlinehelp button="show"/>
     <fieldset name="layout" label="COM_CONTACTUS_CONFIG_LAYOUT_TITLE">
         <field name="akismet_api_key"
                type="text"
