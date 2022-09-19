@@ -73,16 +73,8 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_CONTACTUS_TITLE_ITEMS_EDIT'), 'fa fa-envelope');
 
-		$toolbarButtons = [];
-
-		// If not checked out, can save the item.
-		$toolbarButtons[] = ['apply', 'Item.apply'];
-		$toolbarButtons[] = ['save', 'Item.save'];
-
-		ToolbarHelper::saveGroup(
-			$toolbarButtons,
-			'btn-success'
-		);
+		ToolbarHelper::apply('Item.apply');
+		ToolbarHelper::save('Item.save');
 
 		ToolbarHelper::cancel('Item.cancel', 'JTOOLBAR_CLOSE');
 	}

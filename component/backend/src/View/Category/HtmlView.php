@@ -76,16 +76,8 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_CONTACTUS_TITLE_CATEGORIES_' . ($isNew ? 'ADD' : 'EDIT')), 'fa fa-list-alt');
 
-		$toolbarButtons = [];
-
-		// If not checked out, can save the item.
-		$toolbarButtons[] = ['apply', 'Category.apply'];
-		$toolbarButtons[] = ['save', 'Category.save'];
-
-		ToolbarHelper::saveGroup(
-			$toolbarButtons,
-			'btn-success'
-		);
+		ToolbarHelper::apply('Category.apply');
+		ToolbarHelper::save('Category.save');
 
 		ToolbarHelper::cancel('Category.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
 	}

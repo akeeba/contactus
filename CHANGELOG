@@ -1,4 +1,8 @@
 <?php die() ?>
+ContactUs 4.0.6
+================================================================================
+~ Save and Save & Close buttons are now separate, as per Joomla 4.2 UI guidelines
+
 ContactUs 4.0.5
 ================================================================================
 # [HIGH] Add button in Categories page does nothing
