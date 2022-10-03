@@ -6,7 +6,7 @@
   -->
 
 <extension version="4.0" type="package" method="upgrade">
-    <name>ContactUs package</name>
+    <name>pkg_contactus</name>
     <author>Nicholas K. Dionysopoulos</author>
     <creationDate>##DATE##</creationDate>
     <packagename>contactus</packagename>
@@ -16,24 +16,19 @@
     <packagerurl>https://www.akeeba.com</packagerurl>
     <copyright>Copyright (c)2013-2021 Akeeba Ltd / Nicholas K. Dionysopoulos</copyright>
     <license>GNU GPL v3 or later</license>
-    <description>ContactUs installation package v.##VERSION##</description>
+    <description>PKG_CONTACTUS_XML_DESCRIPTION</description>
 
-    <!-- List of extensions to install -->
     <files>
-        <!-- Component -->
         <file type="component" id="com_contactus">com_contactus.zip</file>
-
-        <!-- Modules -->
-        <!--<file type="module" client="site" id="mod_example">mod_example.zip</file>-->
-
-        <!-- Plugins: system -->
-        <!--<file type="plugin" group="system" id="example">plg_system_example.zip</file>-->
     </files>
 
-    <!-- Installation script -->
+    <languages folder="language">
+        <language tag="en-GB">en-GB/pkg_contactus.sys.ini</language>
+    </languages>
+
+
     <scriptfile>script.contactus.php</scriptfile>
 
-    <!-- Update servers -->
     <updateservers>
         <server type="extension" priority="1" name="Akeeba ContactUs Updates">https://cdn.akeeba.com/updates/pkgcontactus.xml</server>
     </updateservers>
