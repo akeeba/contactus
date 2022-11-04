@@ -21,21 +21,27 @@ class Dispatcher extends ComponentDispatcher
 
 	public function dispatch()
 	{
-		// Check the minimum supported PHP version
-		$minPHPVersion = '7.2.0';
-		$softwareName  = 'Akeeba ContactUs';
-
-		if (!@require_once __DIR__ . '/../../tmpl/commontemplates/wrongphp.php')
-		{
-			return;
-		}
-
-		$jLang = $this->app->getLanguage();
-		$jLang->load($this->option, JPATH_ADMINISTRATOR, null, true, true);
-		$jLang->load($this->option, JPATH_SITE, null, true, true);
-
 		try
 		{
+			// Check the minimum supported PHP version
+			$minPHPVersion = '7.4.0';
+			$softwareName  = 'Akeeba ContactUs';
+
+			if (!version_compare(PHP_VERSION, $minPHPVersion))
+			{
+				throw new \RuntimeException(
+					sprintf(
+						'%s requires PHP %s or later',
+						$softwareName,
+						$minPHPVersion
+					)
+				);
+			}
+
+			$jLang = $this->app->getLanguage();
+			$jLang->load($this->option, JPATH_ADMINISTRATOR, null, true, true);
+			$jLang->load($this->option, JPATH_SITE, null, true, true);
+
 			// Apply the view and controller from the request, falling back to the default view/controller if necessary
 			$this->applyViewAndController();
 
