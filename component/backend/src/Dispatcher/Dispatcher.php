@@ -9,13 +9,13 @@ namespace Akeeba\Component\ContactUs\Administrator\Dispatcher;
 
 defined('_JEXEC') or die;
 
-use Akeeba\Component\ContactUs\Administrator\Controller\Mixin\TriggerEvent;
+use Akeeba\Component\ContactUs\Administrator\Mixin\TriggerEventTrait;
 use Joomla\CMS\Dispatcher\ComponentDispatcher;
 use Throwable;
 
 class Dispatcher extends ComponentDispatcher
 {
-	use TriggerEvent;
+	use TriggerEventTrait;
 
 	protected $defaultController = 'items';
 

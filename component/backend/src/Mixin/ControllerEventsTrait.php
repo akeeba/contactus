@@ -5,16 +5,16 @@
  * @license   GNU General Public License version 3, or later
  */
 
-namespace Akeeba\Component\ContactUs\Administrator\Controller\Mixin;
+namespace Akeeba\Component\ContactUs\Administrator\Mixin;
 
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Language\Text;
 use RuntimeException;
 
-trait ControllerEvents
+trait ControllerEventsTrait
 {
-	use TriggerEvent;
+	use TriggerEventTrait;
 
 	/**
 	 * Execute a task by triggering a method in the derived class.

@@ -9,12 +9,12 @@ namespace Akeeba\Component\ContactUs\Administrator\Controller;
 
 defined('_JEXEC') || die;
 
-use Akeeba\Component\ContactUs\Administrator\Controller\Mixin\ControllerEvents;
+use Akeeba\Component\ContactUs\Administrator\Mixin\ControllerEventsTrait;
 use Joomla\CMS\MVC\Controller\FormController;
 
 class CategoryController extends FormController
 {
-	use ControllerEvents;
+	use ControllerEventsTrait;
 
 	protected $text_prefix = 'COM_CONTACTUS_CATEGORY';
 }

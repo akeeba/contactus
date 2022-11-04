@@ -9,12 +9,10 @@ namespace Akeeba\Component\ContactUs\Administrator\Table;
 
 defined('_JEXEC') || die;
 
-use Akeeba\Component\ContactUs\Administrator\Table\Mixin\CreateModifyAware;
-use Joomla\CMS\Factory;
+use Akeeba\Component\ContactUs\Administrator\Mixin\TableCreateModifyTrait;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Table\Table;
 use Joomla\Database\DatabaseDriver;
-use Joomla\Event\DispatcherInterface;
 
 /**
  * ContactUs Item table
@@ -36,7 +34,7 @@ use Joomla\Event\DispatcherInterface;
  */
 class ItemTable extends Table
 {
-	use CreateModifyAware;
+	use TableCreateModifyTrait;
 
 	public function __construct(DatabaseDriver $db)
 	{

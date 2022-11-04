@@ -9,9 +9,9 @@ namespace Akeeba\Component\ContactUs\Administrator\View\Categories;
 
 defined('_JEXEC') or die;
 
+use Akeeba\Component\ContactUs\Administrator\Mixin\ViewLoadAnyTemplateTrait;
+use Akeeba\Component\ContactUs\Administrator\Mixin\ViewTaskBasedEventsTrait;
 use Akeeba\Component\ContactUs\Administrator\Model\CategoriesModel;
-use Akeeba\Component\ContactUs\Administrator\View\Mixin\LoadAnyTemplate;
-use Akeeba\Component\ContactUs\Administrator\View\Mixin\TaskBasedEvents;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Form\Form;
 use Joomla\CMS\Language\Text;
@@ -25,8 +25,8 @@ use Joomla\Registry\Registry;
 
 class HtmlView extends BaseHtmlView
 {
-	use LoadAnyTemplate;
-	use TaskBasedEvents;
+	use ViewLoadAnyTemplateTrait;
+	use ViewTaskBasedEventsTrait;
 
 	/**
 	 * The search tools form

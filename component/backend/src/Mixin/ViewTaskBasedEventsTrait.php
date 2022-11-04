@@ -5,15 +5,13 @@
  * @license   GNU General Public License version 3, or later
  */
 
-namespace Akeeba\Component\ContactUs\Administrator\View\Mixin;
+namespace Akeeba\Component\ContactUs\Administrator\Mixin;
 
 defined('_JEXEC') || die;
 
-use Akeeba\Component\ContactUs\Administrator\Controller\Mixin\TriggerEvent;
-
-trait TaskBasedEvents
+trait ViewTaskBasedEventsTrait
 {
-	use TriggerEvent;
+	use TriggerEventTrait;
 
 	public function display($tpl = null)
 	{

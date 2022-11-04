@@ -5,12 +5,11 @@
  * @license   GNU General Public License version 3, or later
  */
 
-namespace Akeeba\Component\ContactUs\Administrator\Table\Mixin;
-
+namespace Akeeba\Component\ContactUs\Administrator\Mixin;
 
 use Joomla\CMS\Factory;
 
-trait CreateModifyAware
+trait TableCreateModifyTrait
 {
 	public function onBeforeStore()
 	{

@@ -5,7 +5,7 @@
  * @license   GNU General Public License version 3, or later
  */
 
-namespace Akeeba\Component\ContactUs\Administrator\View\Mixin;
+namespace Akeeba\Component\ContactUs\Administrator\Mixin;
 
 defined('_JEXEC') || die;
 
@@ -21,7 +21,7 @@ use Throwable;
  *
  * @since  9.0.0
  */
-trait LoadAnyTemplate
+trait ViewLoadAnyTemplateTrait
 {
 	/**
 	 * Load any view template of the current component.

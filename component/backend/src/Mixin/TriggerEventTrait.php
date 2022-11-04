@@ -5,13 +5,13 @@
  * @license   GNU General Public License version 3, or later
  */
 
-namespace Akeeba\Component\ContactUs\Administrator\Controller\Mixin;
+namespace Akeeba\Component\ContactUs\Administrator\Mixin;
 
 use Akeeba\Component\ContactUs\Administrator\Helper\CacheCleaner;
 
 defined('_JEXEC') or die;
 
-trait TriggerEvent
+trait TriggerEventTrait
 {
 	/**
 	 * Triggers an object-specific event. The event runs both locally –if a suitable method exists– and through the

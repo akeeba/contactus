@@ -9,7 +9,7 @@ namespace Akeeba\Component\ContactUs\Administrator\Table;
 
 defined('_JEXEC') or die;
 
-use Akeeba\Component\ContactUs\Administrator\Table\Mixin\CreateModifyAware;
+use Akeeba\Component\ContactUs\Administrator\Mixin\TableCreateModifyTrait;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Table\Table;
@@ -35,7 +35,7 @@ use Joomla\Database\DatabaseDriver;
  */
 class CategoryTable extends Table
 {
-	use CreateModifyAware;
+	use TableCreateModifyTrait;
 
 	public function __construct(DatabaseDriver $db)
 	{
