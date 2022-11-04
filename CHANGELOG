@@ -2,6 +2,7 @@
 ContactUs 4.1.0
 ================================================================================
 + Minimum Joomla 4.2, PHP 7.4
+- Removed PHP version warnings
 ~ Save and Save & Close buttons are now separate, as per Joomla 4.2 UI guidelines
 
 ContactUs 4.0.5

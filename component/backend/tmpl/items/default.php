@@ -23,13 +23,6 @@ $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn  = $this->escape($this->state->get('list.direction'));
 $nullDate  = Factory::getDbo()->getNullDate();
 
-echo $this->loadAnyTemplate('commontemplates/phpversion_warning', false, [
-	'softwareName'          => 'ContactUs',
-	'class_priority_low'    => 'alert alert-info',
-	'class_priority_medium' => 'alert alert-warning',
-	'class_priority_high'   => 'alert alert-danger',
-]);
-
 $i = 0;
 ?>
 
