@@ -15,6 +15,7 @@ use Joomla\CMS\MVC\Model\ListModel;
 use Joomla\Database\ParameterType;
 use Joomla\Utilities\ArrayHelper;
 
+#[\AllowDynamicProperties]
 class CategoriesModel extends ListModel
 {
 	public function __construct($config = [], MVCFactoryInterface $factory = null)

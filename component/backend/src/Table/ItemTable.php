@@ -32,6 +32,7 @@ use Joomla\Database\DatabaseDriver;
  * @property string $locked_on
  * @property int    $locked_by
  */
+#[\AllowDynamicProperties]
 class ItemTable extends Table
 {
 	use TableCreateModifyTrait;
