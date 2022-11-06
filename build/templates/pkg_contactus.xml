@@ -5,7 +5,7 @@
   ~ @license   GNU General Public License version 3, or later
   -->
 
-<extension version="4.0" type="package" method="upgrade">
+<extension type="package" method="upgrade">
     <name>pkg_contactus</name>
     <author>Nicholas K. Dionysopoulos</author>
     <creationDate>##DATE##</creationDate>

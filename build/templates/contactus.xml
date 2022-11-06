@@ -6,7 +6,7 @@
   ~ @license   GNU General Public License version 3, or later
   -->
 
-<extension version="4.0" type="component" method="upgrade">
+<extension type="component" method="upgrade">
 	<name>com_contactus</name>
 	<creationDate>##DATE##</creationDate>
 	<author>Nicholas K. Dionysopoulos</author>
