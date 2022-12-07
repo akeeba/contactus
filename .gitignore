@@ -1,8 +1,6 @@
 ### Package XML file (copy)
 /pkg_*.xml
 
-.idea/*
-
 /build/override.properties
 
 /component/*.xml
