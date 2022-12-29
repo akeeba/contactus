@@ -11,7 +11,6 @@ defined('_JEXEC') || die;
 
 use Exception;
 use Joomla\CMS\Component\ComponentHelper;
-use Joomla\CMS\Date\Date;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
@@ -65,7 +64,7 @@ class ContactUs
 			}
 		}
 
-		$jDate = new Date($date, $tz);
+		$jDate = clone Factory::getDate($date, $tz);
 
 		if (empty($format))
 		{

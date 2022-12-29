@@ -1,4 +1,8 @@
 <?php die() ?>
+ContactUs 4.1.1
+================================================================================
+# [LOW] Wrong grammatical case (nominative instead of genitive) in months in some languages e.g. Greek
+
 ContactUs 4.1.0
 ================================================================================
 + Minimum Joomla 4.2, PHP 7.4
