@@ -1,4 +1,8 @@
 <?php die() ?>
+ContactUs 4.1.2
+================================================================================
+~ Replace Joomla's keepalive with a custom implementation (gh-21)
+
 ContactUs 4.1.1
 ================================================================================
 # [LOW] Wrong grammatical case (nominative instead of genitive) in months in some languages e.g. Greek

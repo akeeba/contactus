@@ -14,8 +14,18 @@ use Joomla\CMS\Router\Route;
 
 /** @var \Akeeba\Component\ContactUs\Site\View\Item\HtmlView $this */
 
+$keepalive = <<< JS
+setInterval(
+    () => fetch('index.php?option=com_ajax&format=json').then((response) => true),
+    30000
+);
+
+JS;
+
+
 $wa = $this->document->getWebAssetManager();
-$wa->useScript('keepalive')
+$wa
+	->addInlineScript($keepalive)
 	->useScript('form.validate');
 
 $privacyPolicyPage = ComponentHelper::getParams('com_contactus')->get('privacypolicy', '/privacy.html');
