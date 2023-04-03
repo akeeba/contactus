@@ -14,24 +14,25 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Table\Table;
 use Joomla\Database\DatabaseDriver;
+use Throwable;
 
 /**
  *
- * @property int    $contactus_category_id
- * @property string $title
- * @property string $email
- * @property int    $sendautoreply
- * @property string $autoreply
- * @property int    $access
- * @property string $language
- * @property int    $ordering
- * @property int    $enabled
- * @property string $created_on
- * @property int    $created_by
- * @property string $modified_on
- * @property int    $modified_by
- * @property string $locked_on
- * @property int    $locked_by
+ * @property int      $contactus_category_id
+ * @property string   $title
+ * @property string[] $email
+ * @property int      $sendautoreply
+ * @property string   $autoreply
+ * @property int      $access
+ * @property string   $language
+ * @property int      $ordering
+ * @property int      $enabled
+ * @property string   $created_on
+ * @property int      $created_by
+ * @property string   $modified_on
+ * @property int      $modified_by
+ * @property string   $locked_on
+ * @property int      $locked_by
  */
 #[\AllowDynamicProperties]
 class CategoryTable extends Table
@@ -48,10 +49,23 @@ class CategoryTable extends Table
 		$this->setColumnAlias('checked_out_time', 'locked_on');
 
 		$this->created_on = Factory::getDate()->toSql();
-		$this->autoreply = 0;
-		$this->access = 1;
-		$this->language = '*';
+		$this->autoreply  = 0;
+		$this->access     = 1;
+		$this->language   = '*';
 	}
+
+	public function bind($src, $ignore = [])
+	{
+		$ret = parent::bind($src, $ignore);
+
+		if ($ret)
+		{
+			$this->explodeEmail();
+		}
+
+		return $ret;
+	}
+
 
 	public function check()
 	{
@@ -105,6 +119,59 @@ class CategoryTable extends Table
 	{
 		$this->onBeforeStore();
 
-		return parent::store($updateNulls);
+		if (is_array($this->email))
+		{
+			$this->email =
+				implode(
+					',',
+					array_filter(
+						array_map(
+							fn($item) => $item['item'] ?? '',
+							$this->email
+						),
+						fn($x) => !empty(trim($x))
+					)
+				);
+		}
+
+		try
+		{
+			$ret = parent::store($updateNulls);
+		}
+		catch (Throwable $e)
+		{
+			$ret = false;
+		}
+
+		$this->explodeEmail();
+
+		if (isset($e) && $e instanceof Throwable)
+		{
+			throw $e;
+		}
+
+		return $ret;
+	}
+
+	private function explodeEmail()
+	{
+		if (is_array($this->email))
+		{
+			return;
+		}
+
+		/** @noinspection PhpParamsInspection */
+		$this->email = array_map(
+			fn($x) => ['item' => $x],
+			array_filter(
+				array_map(
+					'trim', explode(
+						',',
+						$this->email
+					)
+				),
+				fn($x) => !empty($x)
+			)
+		);
 	}
 }

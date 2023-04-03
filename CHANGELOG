@@ -1,6 +1,7 @@
 <?php die() ?>
 ContactUs 4.1.2
 ================================================================================
++ Reintroduce multiple email addresses per category
 ~ Replace Joomla's keepalive with a custom implementation (gh-21)
 
 ContactUs 4.1.1

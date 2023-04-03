@@ -27,12 +27,27 @@
 
         <field
                 name="email"
-                type="email"
+                type="subform"
                 label="COM_CONTACTUS_CATEGORIES_FIELD_EMAIL"
                 description="COM_CONTACTUS_CATEGORIES_FIELD_EMAIL_DESC"
+                layout="joomla.form.field.subform.repeatable-table"
+                multiple="true"
+                min="1"
+                buttons="add,remove,move"
+                groupByFieldset="false"
+                validate="subform"
                 default=""
-                required="true"
-        />
+        >
+            <form>
+                <field
+                        name="item"
+                        type="email"
+                        label="COM_CONTACTUS_CATEGORIES_FIELD_EMAIL"
+                        default=""
+                        required="true"
+                />
+            </form>
+        </field>
 
         <field
                 name="sendautoreply"

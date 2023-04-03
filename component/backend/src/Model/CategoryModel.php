@@ -12,6 +12,7 @@ defined('_JEXEC') || die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Form\Form;
 use Joomla\CMS\MVC\Model\AdminModel;
+use Joomla\CMS\Object\CMSObject;
 
 #[\AllowDynamicProperties]
 class CategoryModel extends AdminModel
@@ -61,5 +62,18 @@ class CategoryModel extends AdminModel
 			$table->modified_by = $user->id;
 		}
 	}
+
+	protected function preprocessData($context, &$data, $group = 'content')
+	{
+		parent::preprocessData($context, $data, $group);
+
+		if (!is_object($data) || !$data->email instanceof CMSObject)
+		{
+			return;
+		}
+
+		$data->email = $data->email->getProperties();
+	}
+
 
 }
