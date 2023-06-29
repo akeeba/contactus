@@ -17,6 +17,7 @@
     <copyright>Copyright (c)2013-2023 Akeeba Ltd / Nicholas K. Dionysopoulos</copyright>
     <license>GNU GPL v3 or later</license>
     <description>PKG_CONTACTUS_XML_DESCRIPTION</description>
+    <blockChildUninstall>true</blockChildUninstall>
 
     <files>
         <file type="component" id="com_contactus">com_contactus.zip</file>
