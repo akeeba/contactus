@@ -18,6 +18,7 @@ use Joomla\CMS\Extension\BootableExtensionInterface;
 use Joomla\CMS\Extension\MVCComponent;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLRegistryAwareTrait;
+use Joomla\Database\DatabaseInterface;
 use Psr\Container\ContainerInterface;
 
 class ContactUsComponent extends MVCComponent implements
@@ -42,7 +43,7 @@ class ContactUsComponent extends MVCComponent implements
 	 */
 	public function boot(ContainerInterface $container)
 	{
-		$dbo = $container->has('DatabaseDriver') ? $container->get('DatabaseDriver') : Factory::getDbo();
+		$dbo = $container->has(DatabaseInterface::class) ? $container->get('DatabaseDriver') : Factory::getDbo();
 
 		$this->getRegistry()->register('contactus', new ContactUsHtml($dbo));
 	}
