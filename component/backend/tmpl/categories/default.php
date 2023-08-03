@@ -17,6 +17,11 @@ use Joomla\CMS\Session\Session;
 
 /** @var \Akeeba\Component\ContactUs\Administrator\View\Categories\HtmlView $this */
 
+if (version_compare(JVERSION, '4.999.999', 'lt'))
+{
+	$this->loadAnyTemplate('Commontemplates/joomla_eol');
+}
+
 HTMLHelper::_('behavior.multiselect');
 
 $user      = Factory::getApplication()->getIdentity() ?: Factory::getUser();

@@ -1,6 +1,7 @@
 <?php die() ?>
 ContactUs 4.1.3
 ================================================================================
++ Notice about Joomla 4 End of Service
 ~ Joomla 5 preparation: Use DatabaseInterface instead of DatabaseDriver
 ~ Block uninstallation of child extensions
 ~ Force Joomla to create its namespace map afresh at the end of installation, in case it failed to do that automatically
