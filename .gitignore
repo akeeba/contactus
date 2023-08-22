@@ -18,6 +18,7 @@
 /test_encrypt/message.html
 
 /release
+/pkg_*.xml
 
 /*/.DS_Store
 
