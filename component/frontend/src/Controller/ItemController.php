@@ -7,7 +7,9 @@
 
 namespace Akeeba\Component\ContactUs\Site\Controller;
 
+defined('_JEXEC') || die;
 
+use Akeeba\Component\ContactUs\Administrator\Mixin\RunPluginsTrait;
 use Exception;
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Application\SiteApplication;
@@ -24,6 +26,7 @@ use function count;
 class ItemController extends BaseController
 {
 	use FormFactoryAwareTrait;
+	use RunPluginsTrait;
 
 	protected $context = 'item';
 
@@ -70,7 +73,7 @@ class ItemController extends BaseController
 
 		// Send an object which can be modified through the plugin event
 		$objData = (object) $data;
-		$app->triggerEvent(
+		$this->triggerPluginEvent(
 			'onContentNormaliseRequestData',
 			[$this->option . '.' . $this->context, $objData, $form]
 		);

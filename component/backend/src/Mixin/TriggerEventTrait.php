@@ -7,12 +7,12 @@
 
 namespace Akeeba\Component\ContactUs\Administrator\Mixin;
 
-use Akeeba\Component\ContactUs\Administrator\Helper\CacheCleaner;
-
 defined('_JEXEC') or die;
 
 trait TriggerEventTrait
 {
+	use RunPluginsTrait;
+
 	/**
 	 * Triggers an object-specific event. The event runs both locally –if a suitable method exists– and through the
 	 * Joomla! plugin system. A true/false return value is expected. The first false return cancels the event.
@@ -62,17 +62,17 @@ trait TriggerEventTrait
 		$className      = array_pop($namespaceParts);
 		$objectType     = array_pop($namespaceParts);
 		array_pop($namespaceParts);
-		$bareComponent  = strtolower(array_pop($namespaceParts));
+		$bareComponent = strtolower(array_pop($namespaceParts));
 
 		// Get the component/model prefix for the event
 		$prefix .= 'Com' . ucfirst($bareComponent);
 		$prefix .= ucfirst($className);
 
-		// The event name will be something like onComFoobarControllerItemsBeforeSomething
+		// The event name will be something like onComFoobarItemsControllerBeforeSomething
 		$event = $prefix . $event;
 
 		// Call the Joomla! plugins
-		$results = CacheCleaner::runPlugins($event, $arguments);
+		$results = $this->triggerPluginEvent($event, $arguments);
 
 		return !in_array(false, $results, true);
 	}
