@@ -9,6 +9,7 @@ namespace Akeeba\Component\ContactUs\Administrator\Table;
 
 defined('_JEXEC') || die;
 
+use Akeeba\Component\ContactUs\Administrator\Mixin\GetPropertiesAwareTrait;
 use Akeeba\Component\ContactUs\Administrator\Mixin\TableCreateModifyTrait;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Table\Table;
@@ -36,6 +37,7 @@ use Joomla\Database\DatabaseDriver;
 class ItemTable extends Table
 {
 	use TableCreateModifyTrait;
+	use GetPropertiesAwareTrait;
 
 	public function __construct(DatabaseDriver $db)
 	{

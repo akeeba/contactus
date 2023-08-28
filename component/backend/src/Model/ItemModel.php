@@ -37,7 +37,7 @@ class ItemModel extends AdminModel
 
 		if (empty($data))
 		{
-			$data = $this->getItem();
+			$data = (object) $this->getItem()->getProperties();
 		}
 
 		$this->preprocessData('com_contactus.item', $data);
