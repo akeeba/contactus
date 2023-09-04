@@ -6,7 +6,6 @@ ContactUs 4.1.3
 ~ Joomla 5 preparation: Normalise plugin event calling
 ~ Joomla 5 preparation: Loading form data MUST NOT return a Table anymore
 ~ Block uninstallation of child extensions
-~ Force Joomla to create its namespace map afresh at the end of installation, in case it failed to do that automatically
 
 ContactUs 4.1.2
 ================================================================================
