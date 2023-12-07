@@ -1,4 +1,8 @@
 <?php die() ?>
+ContactUs 4.2.1
+================================================================================
+# [LOW] PHP 8.3 deprecated notice in ComponentParameters service (no functional issue)
+
 ContactUs 4.2.0
 ================================================================================
 + Notice about Joomla 4 End of Service
