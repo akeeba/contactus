@@ -18,9 +18,12 @@ use Joomla\CMS\Application\SiteApplication;
 use Joomla\CMS\Captcha\Captcha;
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Multilanguage;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Mail\MailerFactoryInterface;
 use Joomla\CMS\Table\Table;
+use Joomla\CMS\User\UserFactoryInterface;
+use Joomla\Database\ParameterType;
 use RuntimeException;
 use stdClass;
 
@@ -81,6 +84,11 @@ class ItemModel extends AdminItemModel
 		// Make sure we have explicit consent and the CAPTCHA is valid
 		try
 		{
+			// Re-validate the selected category server-side. The selection field only *displays* enabled
+			// categories the current user may access; without this check a crafted request could submit to a
+			// disabled or access-restricted category, bypassing those gates.
+			$this->assertValidCategory($data['contactus_category_id'] ?? null);
+
 			$this->assertNotEmpty($data['consent'], 'COM_CONTACTUS_ITEM_ERR_CONSENT');
 
 			$captcha = $this->getCaptchaObject();
@@ -139,6 +147,49 @@ class ItemModel extends AdminItemModel
 		$this->assertNotEmpty($table->fromemail, 'COM_CONTACTUS_ITEM_ERR_FROMEMAIL_EMPTY');
 		$this->assertNotEmpty($table->subject, 'COM_CONTACTUS_ITEM_ERR_SUBJECT_EMPTY');
 		$this->assertNotEmpty($table->body, 'COM_CONTACTUS_ITEM_ERR_BODY_EMPTY');
+	}
+
+	/**
+	 * Asserts that the submitted category exists, is enabled, and is accessible to the current user.
+	 *
+	 * This mirrors the filtering applied by the category selection field
+	 * (\Akeeba\Component\ContactUs\Site\Field\ContactusCategoriesField) so that the access level, enabled
+	 * state, and language gates enforced when rendering the form cannot be bypassed by a crafted request.
+	 *
+	 * @param   mixed  $categoryId  The submitted contact category ID
+	 *
+	 * @return  void
+	 * @throws  RuntimeException  When the category is missing, disabled, or not accessible
+	 */
+	private function assertValidCategory($categoryId): void
+	{
+		$categoryId = (int) $categoryId;
+
+		$this->assert($categoryId > 0, 'COM_CONTACTUS_ITEM_ERR_CATEGORY_EMPTY');
+
+		$app        = Factory::getApplication();
+		$user       = $app->getIdentity() ?: Factory::getContainer()->get(UserFactoryInterface::class)->loadUserById(0);
+		$viewLevels = $user->getAuthorisedViewLevels();
+
+		$db    = $this->getDatabase();
+		$query = (method_exists($db, 'createQuery') ? $db->createQuery() : $db->getQuery(true))
+			->select($db->quoteName('contactus_category_id'))
+			->from($db->quoteName('#__contactus_categories'))
+			->where($db->quoteName('contactus_category_id') . ' = :catid')
+			->where($db->quoteName('enabled') . ' = 1')
+			->whereIn($db->quoteName('access'), $viewLevels)
+			->bind(':catid', $categoryId, ParameterType::INTEGER);
+
+		// Multiple language filter, matching the category selection field
+		if (Multilanguage::isEnabled())
+		{
+			$languages = ['', '*', $app->getLanguage()->getTag()];
+			$query->whereIn($db->quoteName('language'), $languages, ParameterType::STRING);
+		}
+
+		$exists = (int) $db->setQuery($query)->loadResult();
+
+		$this->assert($exists > 0, 'COM_CONTACTUS_ITEM_ERR_CATEGORY_INVALID');
 	}
 
 	private function assert(bool $condition, string $message): void
