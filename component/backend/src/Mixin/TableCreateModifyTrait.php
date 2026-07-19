@@ -10,6 +10,8 @@ namespace Akeeba\Component\ContactUs\Administrator\Mixin;
 use Joomla\CMS\Factory;
 use Joomla\CMS\User\UserFactoryInterface;
 
+defined('_JEXEC') || die;
+
 trait TableCreateModifyTrait
 {
 	public function onBeforeStore()

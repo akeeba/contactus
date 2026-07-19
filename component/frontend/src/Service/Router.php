@@ -15,6 +15,8 @@ use Joomla\CMS\Component\Router\Rules\NomenuRules;
 use Joomla\CMS\Component\Router\Rules\StandardRules;
 use Joomla\CMS\Menu\AbstractMenu;
 
+defined('_JEXEC') || die;
+
 class Router extends RouterView
 {
 	public function __construct(?SiteApplication $app = null, ?AbstractMenu $menu = null)

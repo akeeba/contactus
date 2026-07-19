@@ -13,6 +13,8 @@ use Joomla\CMS\Uri\Uri;
 use Joomla\Http\HttpFactory;
 use Joomla\Utilities\IpHelper;
 
+defined('_JEXEC') || die;
+
 class Akismet
 {
 	public static function isSpamContent(string $apiKey, string $name, string $email, string $content): bool
