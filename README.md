@@ -34,7 +34,7 @@ You will need to use the exact folder names specified here.
 
 ### Useful Phing tasks
 
-All of the following commands are to be run from the MAIN/build directory.
+All of the following commands are to be run from the root of this repository.
 Lines starting with $ indicate a Mac OS X / Linux / other *NIX system commands.
 Lines starting with > indicate Windows commands. The starting character ($ or >)
 MUST NOT be typed!
@@ -42,7 +42,7 @@ MUST NOT be typed!
 #### Creating a dev release installation package
 
 This creates the installable ZIP packages of the component inside the
-MAIN/release directory.
+repository's `release` directory.
 
     $ phing git
     > phing git
