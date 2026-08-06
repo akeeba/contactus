@@ -2,6 +2,7 @@
 ContactUs 4.2.7
 ================================================================================
 # [HIGH] Contact category selection was not re-validated on submission, allowing disabled or access-restricted categories to be targeted
+# [LOW] Form factory accessors were exposed as frontend controller tasks
 ~ Joomla 7.0 compatibility: replace removed $app->input property access
 ~ PHP 8.4 compatibility: implicit nullable method parameter in ItemController
 ~ Moved from Babel to Terser for JavaScript minification

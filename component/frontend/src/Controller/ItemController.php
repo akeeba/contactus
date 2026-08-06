@@ -45,6 +45,10 @@ class ItemController extends BaseController
 		// Set the form factory
 		$this->setFormFactory($formFactory);
 
+		// Do not expose the form factory accessors as controller tasks
+		$this->unregisterTask('getFormFactory');
+		$this->unregisterTask('setFormFactory');
+
 		// Set the default task
 		$this->registerDefaultTask('add');
 	}
