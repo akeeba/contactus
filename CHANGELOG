@@ -5,7 +5,7 @@ ContactUs 4.2.7
 ~ PHP 8.4 compatibility: implicit nullable method parameter in ItemController
 ~ Moved from Babel to Terser for JavaScript minification
 + Machine translations for de-DE, el-GR, es-ES, fr-FR, it-IT, pt-PT
-# [HIGH] Contact category selection was not re-validated on submission, allowing disabled or access-restricted categories to be targeted
+# [HIGH] You could target disabled or access-restricted categories on submission 
 # [LOW] Form factory accessors were exposed as frontend controller tasks
 # [LOW] Fixed British English spelling and grammar in en-GB language files
 
