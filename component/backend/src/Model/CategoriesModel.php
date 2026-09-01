@@ -9,6 +9,7 @@ namespace Akeeba\Component\ContactUs\Administrator\Model;
 
 defined('_JEXEC') || die;
 
+use Akeeba\Component\ContactUs\Administrator\Helper\DbQuery;
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\CMS\MVC\Model\ListModel;
@@ -75,7 +76,7 @@ class CategoriesModel extends ListModel
 	protected function getListQuery()
 	{
 		$db    = $this->getDatabase();
-		$query = (method_exists($db, 'createQuery') ? $db->createQuery() : $db->getQuery(true))
+		$query = DbQuery::create($db)
 			->select([
 				$db->quoteName('c') . '.*',
 				$db->quoteName('l.title', 'language_title'),

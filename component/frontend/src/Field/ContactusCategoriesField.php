@@ -9,6 +9,7 @@ namespace Akeeba\Component\ContactUs\Site\Field;
 
 defined('_JEXEC') or die;
 
+use Akeeba\Component\ContactUs\Administrator\Helper\DbQuery;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Form\Field\ListField;
 use Joomla\CMS\Language\Multilanguage;
@@ -25,7 +26,7 @@ class ContactusCategoriesField extends ListField
 	{
 		/** @var DatabaseDriver $db */
 		$db    = Factory::getContainer()->get(DatabaseInterface::class);
-		$query = (method_exists($db, 'createQuery') ? $db->createQuery() : $db->getQuery(true))
+		$query = DbQuery::create($db)
 			->select([
 				$db->qn('contactus_category_id'),
 				$db->qn('title'),

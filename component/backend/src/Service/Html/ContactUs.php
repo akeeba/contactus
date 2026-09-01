@@ -9,6 +9,7 @@ namespace Akeeba\Component\ContactUs\Administrator\Service\Html;
 
 defined('_JEXEC') || die;
 
+use Akeeba\Component\ContactUs\Administrator\Helper\DbQuery;
 use Exception;
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
@@ -126,7 +127,7 @@ class ContactUs
 		}
 
 		$db    = $this->dbo;
-		$query = (method_exists($db, 'createQuery') ? $db->createQuery() : $db->getQuery(true))
+		$query = DbQuery::create($db)
 			->select([
 				$db->quoteName('contactus_category_id'),
 				$db->quoteName('title'),

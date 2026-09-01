@@ -9,6 +9,7 @@ namespace Akeeba\Component\ContactUs\Site\Model;
 
 defined('_JEXEC') or die;
 
+use Akeeba\Component\ContactUs\Administrator\Helper\DbQuery;
 use Akeeba\Component\ContactUs\Administrator\Mixin\CMSObjectWorkaroundTrait;
 use Akeeba\Component\ContactUs\Administrator\Model\ItemModel as AdminItemModel;
 use Akeeba\Component\ContactUs\Administrator\Table\ItemTable;
@@ -120,7 +121,7 @@ class ItemModel extends AdminItemModel
 
 			// Load the category
 			$db       = $this->getDatabase();
-			$query    = (method_exists($db, 'createQuery') ? $db->createQuery() : $db->getQuery(true))
+			$query    = DbQuery::create($db)
 				->select('*')
 				->from($db->quoteName('#__contactus_categories'))
 				->where($db->quoteName('contactus_category_id') . ' = :catid')
@@ -172,7 +173,7 @@ class ItemModel extends AdminItemModel
 		$viewLevels = $user->getAuthorisedViewLevels();
 
 		$db    = $this->getDatabase();
-		$query = (method_exists($db, 'createQuery') ? $db->createQuery() : $db->getQuery(true))
+		$query = DbQuery::create($db)
 			->select($db->quoteName('contactus_category_id'))
 			->from($db->quoteName('#__contactus_categories'))
 			->where($db->quoteName('contactus_category_id') . ' = :catid')
