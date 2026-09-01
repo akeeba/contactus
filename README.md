@@ -1,10 +1,10 @@
 # Akeeba ContactUs
 
-A simple contact form component for Joomla™ 4
+A simple contact form component for Joomla™ 5 and 6
 
 ## What does it do?
 
-It lets you add a very simple contact form on your Joomla 4 site. Each contact category can have a different set of recipients. Also, each contact category can have an auto-responder. We built this for use on our site. 
+It lets you add a very simple contact form on your Joomla 5 or 6 site. Each contact category can have a different set of recipients. Also, each contact category can have an auto-responder. We built this for use on our site. 
 
 ## Download
 

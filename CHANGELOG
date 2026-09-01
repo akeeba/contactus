@@ -1,6 +1,8 @@
 <?php die() ?>
-ContactUs 4.2.8
+ContactUs 4.3.0
 ================================================================================
+~ Supported PHP versions: 8.1 to 8.6
+~ Supported Joomla versions: 5.4 to 6.2
 ~ Funnelled the createQuery()/getQuery(true) compatibility branch through a single Helper\DbQuery::create() call
 
 ContactUs 4.2.7

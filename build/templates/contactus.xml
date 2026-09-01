@@ -15,7 +15,7 @@
 	<copyright>Copyright (c)2013-2026 Nicholas K. Dionysopoulos / Akeeba Ltd</copyright>
 	<license>GNU GPL v3 or later</license>
 	<version>##VERSION##</version>
-	<description>A category-based contact form component for Joomla! 4.4 to 7.0</description>
+	<description>A category-based contact form component for Joomla! 5.4 to 6.2</description>
 	<namespace path="src">Akeeba\Component\ContactUs</namespace>
 
 	<!-- Public front end files -->

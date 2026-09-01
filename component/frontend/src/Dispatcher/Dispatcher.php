@@ -23,7 +23,7 @@ class Dispatcher extends ComponentDispatcher
 	{
 		try
 		{
-			$minPHPVersion = '7.4.0';
+			$minPHPVersion = '8.1.0';
 			$softwareName  = 'Akeeba ContactUs';
 
 			if (!version_compare(PHP_VERSION, $minPHPVersion))
