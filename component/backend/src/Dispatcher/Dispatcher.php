@@ -21,48 +21,35 @@ class Dispatcher extends ComponentDispatcher
 
 	public function dispatch()
 	{
-		try
+		// Check the minimum supported PHP version
+		$minPHPVersion = '8.1.0';
+		$softwareName  = 'Akeeba ContactUs';
+
+		if (!version_compare(PHP_VERSION, $minPHPVersion))
 		{
-			// Check the minimum supported PHP version
-			$minPHPVersion = '8.1.0';
-			$softwareName  = 'Akeeba ContactUs';
-
-			if (!version_compare(PHP_VERSION, $minPHPVersion))
-			{
-				throw new \RuntimeException(
-					sprintf(
-						'%s requires PHP %s or later',
-						$softwareName,
-						$minPHPVersion
-					)
-				);
-			}
-
-			$jLang = $this->app->getLanguage();
-			$jLang->load($this->option, JPATH_ADMINISTRATOR, null, true, true);
-			$jLang->load($this->option, JPATH_SITE, null, true, true);
-
-			// Apply the view and controller from the request, falling back to the default view/controller if necessary
-			$this->applyViewAndController();
-
-			// Dispatch the component
-			$this->triggerEvent('onBeforeDispatch');
-
-			parent::dispatch();
-
-			// This will only execute if there is no redirection set by the Controller
-			$this->triggerEvent('onAfterDispatch');
+			throw new \RuntimeException(
+				sprintf(
+					'%s requires PHP %s or later',
+					$softwareName,
+					$minPHPVersion
+				)
+			);
 		}
-		catch (Throwable $e)
-		{
-			$title = 'Akeeba Contactus';
-			$isPro = false;
 
-			if (!(include_once __DIR__ . '/../../tmpl/commontemplates/errorhandler.php'))
-			{
-				throw $e;
-			}
-		}
+		$jLang = $this->app->getLanguage();
+		$jLang->load($this->option, JPATH_ADMINISTRATOR, null, true, true);
+		$jLang->load($this->option, JPATH_SITE, null, true, true);
+
+		// Apply the view and controller from the request, falling back to the default view/controller if necessary
+		$this->applyViewAndController();
+
+		// Dispatch the component
+		$this->triggerEvent('onBeforeDispatch');
+
+		parent::dispatch();
+
+		// This will only execute if there is no redirection set by the Controller
+		$this->triggerEvent('onAfterDispatch');
 	}
 
 	private function applyViewAndController(): void

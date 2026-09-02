@@ -1,23 +1,6 @@
 <h3>What's new</h3>
 
 <p>
-	This release adds new language translations, fixes compatibility with upcoming Joomla and PHP versions, and closes a security-relevant issue around category access restrictions.
+	<strong>Removed legacy error handler</strong>.
+	We removed our legacy custom error handler. If you are met with an Exception or PHP error when using our software, please go to your site's administrator, System, Global Configuration, and set Debug Mode to Yes and Error Reporting to Developer. Then, reproduce the error. You will get the same level of information as our now-removed error handler. It is enough to help us help you.
 </p>
-
-<p>
-	<strong>Highlights</strong>
-</p>
-<ul>
-	<li><strong>Security fix:</strong> it was possible to submit a contact request against a category that was disabled or access-restricted, bypassing the intended visibility rules. Frontend controller tasks were also restricted to only what the frontend actually needs, reducing the exposed attack surface.</li>
-	<li><strong>New translations</strong> for German (de-DE), Greek (el-GR), Spanish (es-ES), French (fr-FR), Italian (it-IT), and Portuguese (pt-PT), generated via machine translation.</li>
-	<li><strong>Compatibility:</strong> updated for Joomla 7.0 (removed <code>$app->input</code> property access) and PHP 8.4 (implicit nullable method parameters).</li>
-</ul>
-
-<p>
-	<strong>Bug fixes</strong>
-</p>
-<ul>
-	<li><strong>[HIGH]</strong> You could target disabled or access-restricted categories on submission.</li>
-	<li><strong>[LOW]</strong> Form factory accessors were exposed as frontend controller tasks.</li>
-	<li><strong>[LOW]</strong> Fixed British English spelling and grammar in en-GB language files.</li>
-</ul>
