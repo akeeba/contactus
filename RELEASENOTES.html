@@ -1,6 +1,11 @@
 <h3>What's new</h3>
 
 <p>
+	<strong>PHP and Joomla version compatibility is now enforced</strong>.
+	Previously, the supported PHP and Joomla version range was only checked when you installed or updated the component. If your host later changed your PHP version, or your site's Joomla version moved outside the range we tested against, the software kept running anyway. From this release, the supported range is checked and enforced every time the component runs, not only at install time. If your server's PHP version, or your site's Joomla version, falls outside what this release supports, the component's backend will show a clear message telling you exactly what to upgrade (or downgrade). To restore normal operation, either change your PHP/Joomla version to match a supported range, or install a version of Akeeba ContactUs that supports what you currently have.
+</p>
+
+<p>
 	<strong>Removed legacy error handler</strong>.
 	We removed our legacy custom error handler. If you are met with an Exception or PHP error when using our software, please go to your site's administrator, System, Global Configuration, and set Debug Mode to Yes and Error Reporting to Developer. Then, reproduce the error. You will get the same level of information as our now-removed error handler. It is enough to help us help you.
 </p>

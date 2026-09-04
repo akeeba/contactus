@@ -9,6 +9,7 @@ namespace Akeeba\Component\ContactUs\Administrator\Dispatcher;
 
 defined('_JEXEC') or die;
 
+use Akeeba\Component\ContactUs\Administrator\Helper\VersionLimits;
 use Akeeba\Component\ContactUs\Administrator\Mixin\TriggerEventTrait;
 use Joomla\CMS\Dispatcher\ComponentDispatcher;
 use Throwable;
@@ -21,20 +22,8 @@ class Dispatcher extends ComponentDispatcher
 
 	public function dispatch()
 	{
-		// Check the minimum supported PHP version
-		$minPHPVersion = '8.1.0';
-		$softwareName  = 'Akeeba ContactUs';
-
-		if (!version_compare(PHP_VERSION, $minPHPVersion))
-		{
-			throw new \RuntimeException(
-				sprintf(
-					'%s requires PHP %s or later',
-					$softwareName,
-					$minPHPVersion
-				)
-			);
-		}
+		// Check the supported PHP and Joomla version limits
+		VersionLimits::throwIfVersionsIncompatible();
 
 		$jLang = $this->app->getLanguage();
 		$jLang->load($this->option, JPATH_ADMINISTRATOR, null, true, true);

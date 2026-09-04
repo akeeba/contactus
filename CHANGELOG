@@ -1,6 +1,7 @@
 <?php die() ?>
 ContactUs 4.3.0
 ================================================================================
+! PHP and Joomla minimum and maximum version compatibility is now enforced
 - Removed legacy error handler
 ~ Supported PHP versions: 8.1 to 8.6
 ~ Supported Joomla versions: 5.4 to 6.2
