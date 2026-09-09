@@ -2,6 +2,9 @@
 
 A simple contact form component for Joomla™ 5 and 6
 
+> [!IMPORTANT]
+> Developing and maintaining world-class software is neither easy nor free. The development of this software is subsidised by sales of our commercial offerings. If you like this software and would like to see it maintained in the future, please consider [purchasing a subscription](https://www.akeeba.com/subscribe.html) to one of our commercial offerings. _Thank you!_
+
 ## What does it do?
 
 It lets you add a very simple contact form on your Joomla 5 or 6 site. Each contact category can have a different set of recipients. Also, each contact category can have an auto-responder. We built this for use on our site. 
