@@ -37,7 +37,16 @@ tests/integration/docker/run.sh
 ```
 
 That one command scrubs, brings the stack up, installs Joomla, points its mailer at Mailpit, builds and installs
-ContactUs, provisions the fixtures, runs the suite, and tears the stack down.
+ContactUs, provisions the fixtures, runs the suite, and tears the stack down — containers, networks and the database
+volume — however it ends: the suite finishing, a failed step, or Ctrl-C. Only `--keep-containers` and `--no-tests`
+leave it up. After a passing run `docker/www/` is deleted too; after a failure it is left for inspection, and the next
+run clears it.
+
+The `php` and `web` images are not built here. They are the `akeeba-e2e/*` images every Akeeba E2E stack shares,
+defined in the sibling `buildfiles` repository under `docker/e2e/` (see its `README.md`); `run.sh` calls
+`../buildfiles/docker/e2e/images.sh ensure` for each before bringing the stack up. ContactUs's own PHP settings,
+`docker/config/php.ini`, are bind-mounted into the `php` container; Apache uses the shared image's default vhost. A PHP
+extension the suite needs goes into that shared image, never into a project-local Dockerfile.
 
 To iterate, keep the stack up and re-run PHPUnit directly — provisioning is the slow part, the tests themselves
 take seconds:
@@ -126,7 +135,8 @@ baseline configuration has no Akismet key, so ordinary submissions never try to 
 | Piece | What it does |
 |---|---|
 | `docker/run.sh` | The one-shot orchestrator described above |
-| `docker/docker-compose.yml` | The services |
+| `docker/docker-compose.yml` | The services, on the shared `akeeba-e2e/*` images |
+| `docker/config/php.ini` | The site's PHP settings, bind-mounted into the `php` container |
 | `assets/e2e-provision.php` | Runs **inside** the container: the nested-set fixtures — the user groups and the component's permission rules |
 | `assets/e2e-probe.php` | Runs inside the container: reports who a session belongs to and what it may do |
 | `src/SiteProvisioner.php` | Host-side: runs the above, then seeds everything flat over PDO (users, contact categories, component options); hands fixtures to tests by name; creates messages |
