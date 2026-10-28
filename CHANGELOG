@@ -17,6 +17,7 @@ ContactUs 4.3.0
 # [LOW] The version compatibility error disclosed exact PHP and Joomla versions on public pages
 # [LOW] Backend edit forms were readable with inadequate permissions
 # [LOW] Malformed array filter parameters caused persistent HTTP 500 errors in backend lists
+# [LOW] Searching or filtering by access level in the backend categories list caused an HTTP 500 error
 # [LOW] Raw database or mailer error messages could be shown to visitors on oversized or invalid input
 # [LOW] The privacy policy URL was printed unescaped into the public form
 # [LOW] PHP warnings were logged on ordinary requests with missing consent or frontend errors

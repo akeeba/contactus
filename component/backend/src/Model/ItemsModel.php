@@ -10,6 +10,7 @@ namespace Akeeba\Component\ContactUs\Administrator\Model;
 defined('_JEXEC') || die;
 
 use Akeeba\Component\ContactUs\Administrator\Helper\DbQuery;
+use Akeeba\Component\ContactUs\Administrator\Mixin\SanitiseListFiltersTrait;
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\CMS\MVC\Model\ListModel;
@@ -18,6 +19,8 @@ use Joomla\Database\ParameterType;
 #[\AllowDynamicProperties]
 class ItemsModel extends ListModel
 {
+	use SanitiseListFiltersTrait;
+
 	public function __construct($config = [], ?MVCFactoryInterface $factory = null)
 	{
 		if (empty($config['filter_fields']))
@@ -41,6 +44,8 @@ class ItemsModel extends ListModel
 
 	protected function populateState($ordering = 'created_on', $direction = 'desc')
 	{
+		$this->sanitiseListFilters();
+
 		parent::populateState($ordering, $direction);
 	}
 

@@ -99,7 +99,7 @@ $i = 0;
 								<?= Text::_('JPUBLISHED') ?>
 							</th>
 							<th scope="col" class="w-1 d-none d-md-table-cell">
-								<?= HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'contactus_item_id', $listDirn, $listOrder); ?>
+								<?= HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'contactus_category_id', $listDirn, $listOrder); ?>
 							</th>
 						</tr>
 						</thead>

@@ -10,6 +10,7 @@ namespace Akeeba\Component\ContactUs\Administrator\Model;
 defined('_JEXEC') || die;
 
 use Akeeba\Component\ContactUs\Administrator\Helper\DbQuery;
+use Akeeba\Component\ContactUs\Administrator\Mixin\SanitiseListFiltersTrait;
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\CMS\MVC\Model\ListModel;
@@ -19,6 +20,8 @@ use Joomla\Utilities\ArrayHelper;
 #[\AllowDynamicProperties]
 class CategoriesModel extends ListModel
 {
+	use SanitiseListFiltersTrait;
+
 	public function __construct($config = [], ?MVCFactoryInterface $factory = null)
 	{
 		if (empty($config['filter_fields']))
@@ -26,6 +29,7 @@ class CategoriesModel extends ListModel
 			$config['filter_fields'] = [
 				'contactus_category_id',
 				'title',
+				'email',
 				'enabled',
 				'sendautoreply',
 				'access',
@@ -43,6 +47,8 @@ class CategoriesModel extends ListModel
 
 	protected function populateState($ordering = 'contactus_category_id', $direction = 'asc')
 	{
+		$this->sanitiseListFilters(['access']);
+
 		parent::populateState($ordering, $direction);
 	}
 
@@ -82,7 +88,7 @@ class CategoriesModel extends ListModel
 			if (stripos($search, 'id:') === 0)
 			{
 				$ids = (int) substr($search, 3);
-				$query->where($db->quoteName('contactus_category_id') . ' = :id')
+				$query->where($db->quoteName('c.contactus_category_id') . ' = :id')
 					->bind(':id', $ids, ParameterType::INTEGER);
 			}
 			else
@@ -90,8 +96,8 @@ class CategoriesModel extends ListModel
 				$search = '%' . $db->escape($search, true) . '%';
 				$query->where(
 					'(' .
-					$db->qn('title') . ' LIKE :search1' . ' OR ' .
-					$db->qn('email') . ' LIKE :search2'
+					$db->qn('c.title') . ' LIKE :search1' . ' OR ' .
+					$db->qn('c.email') . ' LIKE :search2'
 					. ')'
 				)
 					->bind(':search1', $search)
@@ -105,7 +111,7 @@ class CategoriesModel extends ListModel
 		if (is_numeric($enabled))
 		{
 			$enabled = (int) $enabled;
-			$query->where($db->quoteName('enabled') . ' = :enabled')
+			$query->where($db->quoteName('c.enabled') . ' = :enabled')
 				->bind(':enabled', $enabled, ParameterType::INTEGER);
 		}
 
@@ -115,7 +121,7 @@ class CategoriesModel extends ListModel
 		if (is_numeric($autoReply))
 		{
 			$autoReply = (int) $autoReply;
-			$query->where($db->quoteName('sendautoreply') . ' = :autoreply')
+			$query->where($db->quoteName('c.sendautoreply') . ' = :autoreply')
 				->bind(':autoreply', $autoReply, ParameterType::INTEGER);
 		}
 
@@ -125,13 +131,13 @@ class CategoriesModel extends ListModel
 		if (is_numeric($access))
 		{
 			$access = (int) $access;
-			$query->where($db->quoteName('access') . ' = :access')
+			$query->where($db->quoteName('c.access') . ' = :access')
 				->bind(':access', $access, ParameterType::INTEGER);
 		}
 		elseif (is_array($access))
 		{
 			$access = ArrayHelper::toInteger($access);
-			$query->whereIn($db->quoteName('access'), $access);
+			$query->whereIn($db->quoteName('c.access'), $access);
 		}
 
 		// Language filter
@@ -146,7 +152,7 @@ class CategoriesModel extends ListModel
 		// List ordering clause
 		$orderCol  = $this->getState('list.ordering', 'contactus_category_id');
 		$orderDirn = $this->getState('list.direction', 'ASC');
-		$ordering  = $db->escape($orderCol) . ' ' . $db->escape($orderDirn);
+		$ordering  = $db->quoteName('c.' . $orderCol) . ' ' . $db->escape($orderDirn);
 
 		$query->order($ordering);
 
