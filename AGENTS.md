@@ -6,7 +6,7 @@ This file provides guidance to coding agents when working with code in this repo
 
 See `README.md` for build prerequisites and the `buildfiles` sibling-directory layout.
 
-This project's JS-only target is `phing compile-javascript` (not `compile-js` as in most Akeeba projects).
+The JS-only target is `phing compile-js`.
 
 ## Tests
 
