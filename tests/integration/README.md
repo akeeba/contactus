@@ -63,6 +63,17 @@ tests/integration/docker/run.sh --down   # tear it all down
 While the stack is up: the site is on <http://localhost:8170> (`admin` / `test`), and Mailpit's web UI is on
 <http://localhost:8175>.
 
+## Remote host
+
+The whole suite can run on another machine over SSH instead: `run.sh --host=HOST`, `E2E_DOCKER_HOST` (environment or
+`docker/.env`), or `e2e.docker.host` in your `build.properties`. `--host=local` forces this machine. Every run on the
+host gets its own slot (staging tree, Compose project and ports), so any number can run at once, also from Git
+worktrees. The Joomla package is downloaded there; this machine's `inbox/` is not sent. After a failed run the PHP
+error log comes back into `tests/integration/remote-results/`. The host ports above apply to local runs only; a kept
+remote stack prints its ports and the `ssh -L` command to reach it. There, run PHPUnit by re-running `run.sh` (with
+`--skip-build` and, if you like, `--filter`); the direct `phpunit` commands above are for a local stack. Details and
+host requirements: "Remote E2E hosts" in the sibling `buildfiles` repository's README.
+
 ## `run.sh` options
 
 | Option | Effect |
@@ -75,6 +86,8 @@ While the stack is up: the site is on <http://localhost:8170> (`admin` / `test`)
 | `--no-tests` | Provision the site but don't run the suite (leaves it up) |
 | `--keep-containers` | Leave the stack running afterwards |
 | `--down` | Tear everything down and exit |
+| `--host=HOST` | Run on `HOST` over SSH, or `local`; see "Remote host" |
+| `--slot=N` | With `--down` or a repeat run on a remote host: which kept slot |
 | `-- <args>` | Everything after `--` goes to PHPUnit |
 
 ## The version matrix
